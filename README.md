@@ -32,6 +32,28 @@
 
 ## Design Wireframes
 
+<details> <summary> Low fidelity mobile wireframes</summary>
+
+![Home Page](docs/wireframes/mobile/home-page-mobile.png)
+
+![Signup Page](docs/wireframes/mobile/signup-page-mobile.png)
+
+![Login Page](docs/wireframes/mobile/login-page-mobile.png)
+
+![Bookshelf](docs/wireframes/mobile/bookshelf-page-mobile.png)
+
+![Review Book](docs/wireframes/mobile/review-page-mobile.png)
+
+![Book Listing](docs/wireframes/mobile/book-listing-page-mobile.png)
+
+![Write a review](docs/wireframes/mobile/write-review-page-mobile.png)
+
+![My Books](docs/wireframes/mobile/my-books-page-mobile.png)
+
+![Contact Page](docs/wireframes/mobile/contact-page-mobile.png)
+
+</details>
+
 
 ## Site Structure
 
