@@ -76,6 +76,30 @@
 
 </details>
 
+<details> <summary> Low fidelity Desktop wireframes</summary>
+
+![Home Page User Logged Out](docs/wireframes/desktop/home-page-loggedout-desktop.png)
+
+![Home Page User Logged In](docs/wireframes/desktop/home-page-loggedin-desktop.png)
+
+![Signup Page](docs/wireframes/desktop/signup-page-desktop.png)
+
+![Login Page](docs/wireframes/desktop/login-page-desktop.png)
+
+![Bookshelf](docs/wireframes/desktop/bookshelf.png)
+
+![Review Book](docs/wireframes/desktop/review-book-page-desktop.png)
+
+![Book Listing](docs/wireframes/desktop/book-listing-page-desktop.png)
+
+![Write a review](docs/wireframes/desktop/write-review-page-desktop.png)
+
+![My Books](docs/wireframes/desktop/my-books-page-desktop.png)
+
+![Contact Page](docs/wireframes/desktop/contact-page-desktop.png)
+
+</details>
+
 
 ## Site Structure
 
