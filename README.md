@@ -54,6 +54,28 @@
 
 </details>
 
+<details> <summary> Low fidelity tablet wireframes</summary>
+
+![Home Page](docs/wireframes/tablet/home-page-tablet.png)
+
+![Signup Page](docs/wireframes/tablet/signup-page-tablet.png)
+
+![Login Page](docs/wireframes/tablet/login-page-tablet.png)
+
+![Bookshelf](docs/wireframes/tablet/bookshelf-page-tablet.png)
+
+![Review Book](docs/wireframes/tablet/review-book-page-tablet.png)
+
+![Book Listing](docs/wireframes/tablet/book-listing-page-tablet.png)
+
+![Write a review](docs/wireframes/tablet/write-review-page-tablet.png)
+
+![My Books](docs/wireframes/tablet/mybooks-page-tablet.png)
+
+![Contact Page](docs/wireframes/tablet/contact-page-tablet.png)
+
+</details>
+
 
 ## Site Structure
 
