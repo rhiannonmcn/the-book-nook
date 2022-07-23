@@ -22,6 +22,9 @@ class Book(models.Model):
 
     class Meta:
         ordering = ['-book_created_on']
+        constraints = [
+            models.UniqueConstraint(fields=['title', 'book_author'], name='unique_book_listing_ci')
+        ]
 
     def __str__(self):
         return self.title
