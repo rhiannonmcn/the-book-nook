@@ -100,6 +100,11 @@
 
 </details>
 
+## Database Schema
+
+![Database Schema](docs/database/database-schema.jpg)
+
+
 
 ## Site Structure
 
