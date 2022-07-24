@@ -12,7 +12,7 @@
             <div class="col-4 col-sm-4 col-md-4 col-lg-2">
               <div class="card book-listing">
                 <div class="card-body book-listing-body">
-                  <a href="#" class="books-link">
+                  <a href="{% url 'book_detail' book.slug %}" class="books-link">
                     {% if "placeholder" in book.book_image.url %}
                     <img
                       class="card-img-top"
