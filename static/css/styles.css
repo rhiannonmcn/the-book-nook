@@ -5,8 +5,9 @@
   --linen: #f5e7e0;
   --darkSienna: #3d0814;
   --oldBurgundy: #442f38;
-  --warmBlack: #104547;
-  --mediumPurple: #9d8df1;
+  --warmBlack: #2F278A;
+  --flatPink: #AD4566;
+  --hoverPurple:#9d8df1;
 }
 
 * {
@@ -34,6 +35,7 @@ body {
 .page-subtitle {
   font-size: 1.6rem;
   font-weight: 700;
+  color: var(--flatPink);
 }
 
 /* needed to clear bootstrap padding and margins */
@@ -44,7 +46,20 @@ body {
 
 a {
   text-decoration: none;
+  color: var(--flatPink);
+  font-weight: 700;
 }
+
+a:visited {
+  text-decoration: none;
+  color: var(--flatPink);
+}
+
+a:hover {
+  text-decoration: none;
+  color:var(--hoverPurple);
+}
+
 
 /* Styles for mobile first */
 
