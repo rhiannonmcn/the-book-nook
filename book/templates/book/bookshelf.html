@@ -1,17 +1,16 @@
 {% extends "base.html" %} {% load static %} {% block content %}
 <section id="bookshelf">
-  <h1>Bookshelf</h1>
+  <h1 class="page-title">Bookshelf</h1>
+
   <div>
-    <div class="container-fluid">
+    <div class="book-listing-container container-fluid">
       <div class="row">
         <!-- Book Entries -->
         <div class="col-12">
-          <div class="row">
-
+          <div class="book-row row">
             {% for book in book_list %}
-            <div class="col-4 col-sm-4 col-md-4">
-
-              <div class="card book-listing mb-4">
+            <div class="col-4 col-sm-4 col-md-4 col-lg-2">
+              <div class="card book-listing">
                 <div class="card-body book-listing-body">
                   <a href="#" class="books-link">
                     {% if "placeholder" in book.book_image.url %}
@@ -35,11 +34,10 @@
                   </a>
                 </div>
               </div>
-
             </div>
             {% if forloop.counter|divisibleby:6 %}
           </div>
-          <div class="row">{% endif %} {% endfor %}</div>
+          <div class="book-row row">{% endif %} {% endfor %}</div>
         </div>
       </div>
       {% if is_paginated %}
@@ -59,7 +57,6 @@
               NEXT &raquo;</a
             >
           </li>
-
           {% endif %}
         </ul>
       </nav>
