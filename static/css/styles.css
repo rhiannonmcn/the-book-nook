@@ -1,0 +1,25 @@
+
+/* Color scheme variables */
+:root {
+    --linen: #f5e7e0;
+    --darkSienna: #3d0814;
+    --oldBurgundy: #442f38;
+    --warmBlack: #104547;
+    --mediumPurple: #9d8df1;
+  }
+
+  * {
+    color: var(--darkSienna);
+    letter-spacing: 3px;
+    font-size: 14px;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: var(--linen);
+  }
+
+  /* Styles for mobile first */
+
