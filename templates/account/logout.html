@@ -1,21 +1,43 @@
-{% extends "account/base.html" %}
+{% extends "base.html" %} {% load i18n %} {% block head_title %}{% trans "Log
+Out" %}{% endblock %} {% block content %}
 
-{% load i18n %}
+<section class="accounts-section-styles">
+  <div class="logout-container">
+    <div class="row">
+      <div
+        class="col-12 d-flex flex-column justify-content-center align-items-center"
+      >
+        <img
+          class="book-image"
+          src="https://res.cloudinary.com/ddhmc5wvm/image/upload/v1658703652/book-nook/images/back-later-book_tnqw4q.svg"
+          alt="image of a book upside down and spread open"
+          height="243.1109"
+          width="400"
+        />
+      </div>
+      <div
+        class="col-12 d-flex flex-column justify-content-center align-items-center"
+      >
+        <h1>{% trans "Log Out" %}</h1>
+        <h2 class="page-subtitle text-center">
+          Sleep is good...and books are better
+        </h2>
 
-{% block head_title %}{% trans "Sign Out" %}{% endblock %}
+        <p class="text-center">{% trans 'Are you sure you want to log out?' %}</p>
 
-{% block content %}
-<h1>{% trans "Sign Out" %}</h1>
-
-<p>{% trans 'Are you sure you want to sign out?' %}</p>
-
-<form method="post" action="{% url 'account_logout' %}">
-  {% csrf_token %}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
-  {% endif %}
-  <button type="submit">{% trans 'Sign Out' %}</button>
-</form>
-
+        <form method="post" action="{% url 'account_logout' %}">
+          {% csrf_token %} {% if redirect_field_value %}
+          <input
+            type="hidden"
+            name="{{ redirect_field_name }}"
+            value="{{ redirect_field_value }}"
+          />
+          {% endif %}
+          <button class="btn btn-dark btn-styles" type="submit">{% trans 'Log Out' %}</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
 
 {% endblock %}
