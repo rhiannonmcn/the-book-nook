@@ -1,3 +1,4 @@
+from re import template
 from django.shortcuts import render, get_object_or_404
 from django.views import generic, View
 from .models import Book
@@ -17,7 +18,7 @@ class BookDetails(View):
         queryset = Book.objects.filter(book_approved=True)
         book = get_object_or_404(queryset, slug=slug)
         reviews = book.reviews.filter(review_approved=True).order_by('-review_created_on')
-        
+   
         return render(
             request,
             'book/book.html',
@@ -26,5 +27,3 @@ class BookDetails(View):
                 'reviews': reviews
             },
         )
-
-

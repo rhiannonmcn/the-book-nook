@@ -43,14 +43,20 @@
                 <a class="nav-link" href="#">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Bookshelf</a>
+                <a class="nav-link" href="{% url 'book_shelf' %}">Bookshelf</a>
+              </li>
+              {% if user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+              </li>
+              {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'account_login' %}">Login</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Login</a>
+                <a class="nav-link" href="{% url 'account_signup' %}">Signup</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Signup</a>
-              </li>
+              {% endif %}
               <li class="nav-item">
                 <a class="nav-link" href="#">Contact</a>
               </li>
