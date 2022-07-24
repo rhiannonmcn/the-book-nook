@@ -31,6 +31,11 @@ body {
   padding: 20px 10px 5px 10px;
 }
 
+.page-subtitle {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
 /* needed to clear bootstrap padding and margins */
 .row {
   padding: 0;
@@ -129,6 +134,21 @@ footer{
 .review-btn {
   background-color: var(--darkSienna);
   color: var(--linen);
+}
+
+/* Log In Styles */
+
+#login{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.book-image{
+  width:250px;
+  height:auto;
+  padding: 20px 0;
 }
 
 @media screen and (min-width: 700px) {
