@@ -12,11 +12,14 @@
   * {
     font-family: "Courier Prime", sans serif;
     color: var(--darkSienna);
-    letter-spacing: 2px;
     font-size: 14px;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+  }
+
+  a{
+    text-decoration: none;
   }
 
   body {
@@ -57,3 +60,24 @@
   .footer-icons-container{
     padding: 55px 21px 21px 21px;
   }
+
+
+/* Bookshelf Styles */
+
+.book-listing-body{
+    padding:0px;
+}
+
+.book-listing-title, .book-listing-author{
+    display:none;
+}
+
+.book-listing-text{
+    display:none;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+}
