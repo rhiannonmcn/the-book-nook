@@ -1,0 +1,51 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+<section id="book-detail">
+  <div class="book-container conatiner-fluid">
+    <div class="row">
+      <div class="col-4 col-md-2">
+        {% if "placeholder" in book.book_image.url %}
+        <img
+          class="card-img-top"
+          src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg"
+        />
+        {% else %}
+        <img
+          class="card-img-top book-detail-image"
+          src=" {{ book.book_image.url }}"
+        />
+        {% endif %}
+      </div>
+      <div class="col-8 col-md-10">
+        <div class="row">
+          <div class="col-12">
+            <h1 class="book-title">{{ book.title }}</h1>
+          </div>
+          <div class="col-12">
+            <h2 class="book-subtitle">by {{ book.book_author }}</h2>
+          </div>
+          <div class="row">
+            <div class='col-6 col-sm-4 col-md-2'>
+              <button type="button" class="btn btn-styles">Review</button>
+            </div>
+            <div class="col-6 col-sm-8 col-md-10">
+                Rating stars
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="excerpt">
+    <h3>Blurb</h3>
+    <p>{{ book.book_blurb }}</p>
+  </div>
+</section>
+
+<!--Reviews section of Book page-->
+<section id="reviews">
+    <div class="reviews-container">
+        <h3>Reviews</h3>
+    </div>
+</section>
+
+{% endblock %}

@@ -9,6 +9,7 @@ gunicorn = "*"
 dj-database-url = "*"
 psycopg2 = "*"
 dj3-cloudinary-storage = "*"
+django-allauth = "*"
 
 [dev-packages]
 
