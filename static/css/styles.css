@@ -60,10 +60,18 @@ a:hover {
   color:var(--hoverPurple);
 }
 
+.btn-styles {
+  background-color: var(--darkSienna);
+  color: var(--linen);
+  border:none;
+}
+
+.btn-styles:hover {
+  background-color: var(--hoverPurple);
+  color: var(--linen);
+}
 
 /* Styles for mobile first */
-
-/*styles for extra small mobile screen (Galaxy Fold) */
 
 .book-title {
   font-size: 1.4rem;
@@ -144,11 +152,6 @@ footer{
 .excerpt,
 .reviews-container {
   padding: 20px 10px 0 10px;
-}
-
-.review-btn {
-  background-color: var(--darkSienna);
-  color: var(--linen);
 }
 
 /* Log In Styles */
