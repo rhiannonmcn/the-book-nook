@@ -20,7 +20,7 @@ class BookDetails(View):
         
         return render(
             request,
-            'book.html',
+            'book/book.html',
             {
                 'book': book,
                 'reviews': reviews
