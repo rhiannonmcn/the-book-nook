@@ -4,10 +4,9 @@
 :root {
   --linen: #f5e7e0;
   --darkSienna: #3d0814;
-  --oldBurgundy: #442f38;
-  --warmBlack: #2F278A;
-  --flatPink: #AD4566;
-  --hoverPurple:#9d8df1;
+  --seashell: #fcf5f1;
+  --irresistable: #AD4566;
+  --mediumPurple:#9d8df1;
 }
 
 * {
@@ -39,7 +38,7 @@ body {
 .page-subtitle {
   font-size: 1.6rem;
   font-weight: 700;
-  color: var(--flatPink);
+  color: var(--irresistable);
 }
 
 /* needed to clear bootstrap padding and margins */
@@ -50,18 +49,18 @@ body {
 
 a {
   text-decoration: none;
-  color: var(--flatPink);
+  color: var(--irresistable);
   font-weight: 700;
 }
 
 a:visited {
   text-decoration: none;
-  color: var(--flatPink);
+  color: var(--irresistable);
 }
 
 a:hover {
   text-decoration: none;
-  color:var(--hoverPurple);
+  color:var(--mediumPurple);
 }
 
 .btn-styles {
@@ -71,20 +70,11 @@ a:hover {
 }
 
 .btn-styles:hover {
-  background-color: var(--hoverPurple);
+  background-color: var(--mediumPurple);
   color: var(--linen);
 }
 
 /* Styles for mobile first */
-
-.book-title {
-  font-size: 1.4rem;
-  font-weight: 700;
-}
-
-.book-subtitle{
-    font-size: 1.2rem;
-}
 
 /* Navbar Styles */
 
@@ -123,6 +113,35 @@ footer{
   padding: 55px 21px 21px 21px;
 }
 
+/* Home Page Styles */
+
+.hero-info{
+  padding-bottom:40px;
+}
+
+#book-corner-section{
+  background-color: var(--seashell);
+}
+
+.homepage-subtitle{
+  font-size: 1.8rem;
+  color:var(--darkSienna);
+}
+
+.homepage-quote{
+  padding: 20px 0;
+}
+
+.btn-homepage{
+  margin-top: 5px;
+  width:70%;
+}
+
+.section-title{
+
+  padding: 20px 10px;
+}
+
 /* Bookshelf Styles */
 
 .book-row {
@@ -143,6 +162,15 @@ footer{
 }
 
 /* book.html */
+
+.book-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.book-subtitle{
+    font-size: 1.2rem;
+}
 
 .book-container {
   padding: 20px 5px 0 5px;

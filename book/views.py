@@ -4,6 +4,12 @@ from django.views import generic, View
 from .models import Book
 
 
+class HomeBookList(generic.ListView):
+    model = Book
+    queryset = Book.objects.filter(book_approved=True).order_by('?')
+    template_name = 'index.html'
+    
+
 
 class BookList(generic.ListView):
     model = Book

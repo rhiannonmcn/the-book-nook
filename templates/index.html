@@ -1,0 +1,26 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+
+<section id="hero-section">
+  <div>
+    <div class="row">
+      <div class="col-12 d-flex flex-column justify-content-center align-items-center">
+        <img
+          class="book-image" src="https://res.cloudinary.com/ddhmc5wvm/image/upload/v1658737960/book-nook/images/open-book-image-1_pbji0b.svg"
+          height="260.311 "
+          width="400"
+          alt="Image of an open book with sparkles"
+        />
+      </div>
+      <div class="hero-info col-12 d-flex flex-column justify-content-center align-items-center">
+        <h1 class="page-title">The Book Nook</h1>
+        <h2 class="page-subtitle homepage-subtitle">Review & Search Books</h2>
+        <h3 class="text-center homepage-quote page-subtitle"> A room without a book is like a body without a soul</h3>
+        <button class="btn btn-dark btn-homepage btn-styles">Login</button>
+        <button class="btn btn-dark btn-homepage btn-styles">Sign Up</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% endblock %}
