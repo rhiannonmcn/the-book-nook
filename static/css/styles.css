@@ -5,8 +5,8 @@
   --linen: #f5e7e0;
   --darkSienna: #3d0814;
   --seashell: #fcf5f1;
-  --irresistable: #AD4566;
-  --mediumPurple:#9d8df1;
+  --irresistable: #ad4566;
+  --mediumPurple: #9d8df1;
 }
 
 * {
@@ -18,8 +18,8 @@
   box-sizing: border-box;
 }
 
-html{
-  height:100%;
+html {
+  height: 100%;
 }
 
 body {
@@ -60,13 +60,13 @@ a:visited {
 
 a:hover {
   text-decoration: none;
-  color:var(--mediumPurple);
+  color: var(--mediumPurple);
 }
 
 .btn-styles {
   background-color: var(--darkSienna);
   color: var(--linen);
-  border:none;
+  border: none;
 }
 
 .btn-styles:hover {
@@ -105,8 +105,8 @@ a:hover {
 
 /*Footer Styles */
 
-footer{
-    margin-top:auto;
+footer {
+  margin-top: auto;
 }
 
 .footer-icons-container {
@@ -115,31 +115,43 @@ footer{
 
 /* Home Page Styles */
 
-.hero-info{
-  padding-bottom:40px;
+.hero-info {
+  padding-bottom: 40px;
 }
 
-#book-corner-section{
+#book-corner-section {
   background-color: var(--seashell);
 }
 
-.homepage-subtitle{
+.homepage-subtitle {
   font-size: 1.8rem;
-  color:var(--darkSienna);
+  color: var(--darkSienna);
 }
 
-.homepage-quote{
+.homepage-quote {
   padding: 20px 0;
 }
 
-.btn-homepage{
-  margin-top: 5px;
-  width:70%;
+.btn-homepage {
+  margin: 5px;
+  width: 40%;
 }
 
-.section-title{
-
+.section-title {
   padding: 20px 10px;
+}
+
+#carousel-section {
+  padding: 20px 0;
+  background-color: var(--seashell);
+}
+
+.owl-carousel {
+  margin-top: 20px;
+}
+
+.card-home {
+  margin: 0 8px;
 }
 
 /* Bookshelf Styles */
@@ -168,8 +180,8 @@ footer{
   font-weight: 700;
 }
 
-.book-subtitle{
-    font-size: 1.2rem;
+.book-subtitle {
+  font-size: 1.2rem;
 }
 
 .book-container {
@@ -188,22 +200,26 @@ footer{
 
 /* Log In Styles */
 
-.accounts-section-styles{
+.accounts-section-styles {
   display: flex;
   justify-content: center;
   align-items: center;
   padding-bottom: 20px;
-  height:100%;
+  height: 100%;
 }
 
-.book-image{
-  width:250px;
-  height:auto;
+.book-image {
+  width: 250px;
+  height: auto;
   padding: 20px 0;
 }
 
 @media screen and (min-width: 700px) {
   /* book.html */
+
+  #hero-section {
+    padding: 40px;
+  }
 
   .book-detail-image {
     max-height: 160px;
@@ -212,5 +228,13 @@ footer{
   .book-title {
     font-size: 2.4rem;
     font-weight: 700;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  /* book.html */
+
+  #hero-section {
+    padding: 100px;
   }
 }

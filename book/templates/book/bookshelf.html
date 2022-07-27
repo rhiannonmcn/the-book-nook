@@ -12,16 +12,16 @@
             <div class="col-4 col-sm-4 col-md-4 col-lg-2">
               <div class="card book-listing">
                 <div class="card-body book-listing-body">
-                  <a href="{% url 'book_detail' book.slug %}" class="books-link">
+                  <a href="{% url 'book_detail' book.slug %}" >
                     {% if "placeholder" in book.book_image.url %}
                     <img
                       class="card-img-top"
                       src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg"
-                    />
+                      alt="{{ book.title }} by {{ book.book_author }} book listing with no book cover" />
                     {% else %}
                     <img
                       class="card-img-top"
-                      src=" {{ book.book_image.url }}"
+                      src=" {{ book.book_image.url }}" alt="{{ book.title }} by {{ book.book_author }} book listing"
                     />
                     {% endif %}
                     <p class="book-listing-text card-text">
