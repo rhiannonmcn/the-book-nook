@@ -26,4 +26,12 @@ class BookReviewAdmin(admin.ModelAdmin):
         queryset.update(approved=True)
 
 
-admin.site.register(Genre)
+@admin.register(Genre)
+class GenreAdmin(admin.ModelAdmin):
+
+    prepopulated_fields = {'slug': ['genre_name']}
+    list_filter = ['genre_name']
+    list_display = ['genre_name']
+
+    def approve_reviews(self, request, queryset):
+        queryset.update(approved=True)
