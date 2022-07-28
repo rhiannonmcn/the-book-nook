@@ -4,21 +4,26 @@ from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 
 
-class Category(models.Model):
-    category = models.CharField(max_length=50) 
+class Genre(models.Model):
+    genre_name = models.CharField(max_length=50)
+    slug = models.SlugField(max_length=200, unique=True)
  
     def __str__(self):
-        return self.category
+        return self.genre.name
 
 class Book(models.Model):
     title = models.CharField(max_length=200, null=False, blank=False)
     book_author = models.CharField(max_length=200, null=False, blank=False)
     book_image = CloudinaryField('image', default='placeholder')
     book_blurb = models.TextField()
-    book_category = models.ForeignKey(Category, on_delete=models.PROTECT, related_name='book_category')
+    book_genre = models.ForeignKey(Genre, on_delete=models.PROTECT, related_name='book_genre')
     slug = models.SlugField(max_length=200, unique=True)
     book_approved = models.BooleanField(default=False)
     book_created_on = models.DateTimeField(auto_now_add=True)
+    book_favourites = models.ManyToManyField(
+        User,
+        related_name='book_favourites',
+        blank=True)
 
     class Meta:
         ordering = ['-book_created_on']
