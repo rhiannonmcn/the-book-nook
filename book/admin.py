@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Book, BookReview, Category
+from .models import Book, BookReview, Genre
 
 @admin.register(Book)
 class BookAdmin(admin.ModelAdmin):
@@ -26,4 +26,4 @@ class BookReviewAdmin(admin.ModelAdmin):
         queryset.update(approved=True)
 
 
-admin.site.register(Category)
+admin.site.register(Genre)
