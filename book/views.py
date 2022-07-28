@@ -1,9 +1,6 @@
-from msilib.schema import ListView
-from re import template
-from unicodedata import category
 from django.shortcuts import render, get_object_or_404
 from django.views import generic, View
-from .models import Book, Genre
+from .models import Book
 
 
 class HomeList(generic.ListView):
