@@ -5,7 +5,7 @@
       <div class="col-4 col-md-2">
         {% if "placeholder" in book.book_image.url %}
         <img
-          class="card-img-top"
+          class="card-img-top book-detail-image"
           src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg"
         />
         {% else %}
@@ -24,12 +24,10 @@
             <h2 class="book-subtitle">by {{ book.book_author }}</h2>
           </div>
           <div class="row">
-            <div class='col-6 col-sm-4 col-md-2'>
+            <div class="col-6 col-sm-4 col-md-2">
               <button type="button" class="btn btn-styles">Review</button>
             </div>
-            <div class="col-6 col-sm-8 col-md-10">
-                Rating stars
-            </div>
+            <div class="col-6 col-sm-8 col-md-10">Rating stars</div>
           </div>
         </div>
       </div>
@@ -43,9 +41,9 @@
 
 <!--Reviews section of Book page-->
 <section id="reviews">
-    <div class="reviews-container">
-        <h3>Reviews</h3>
-    </div>
+  <div class="reviews-container">
+    <h3>Reviews</h3>
+  </div>
 </section>
 
 {% endblock %}
