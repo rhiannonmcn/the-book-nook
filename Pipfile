@@ -10,6 +10,7 @@ dj-database-url = "*"
 psycopg2 = "*"
 dj3-cloudinary-storage = "*"
 django-allauth = "*"
+django-crispy-forms = "*"
 
 [dev-packages]
 
