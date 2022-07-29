@@ -11,19 +11,19 @@ class BookAdmin(admin.ModelAdmin):
     actions = ['approve_books']
 
     def approve_books(self, request, queryset):
-        queryset.update(approved=True)
+        queryset.update(book_approved=True)
 
 
 @admin.register(BookReview)
 class BookReviewAdmin(admin.ModelAdmin):
 
     list_filter = ('review_approved', 'review_created_on')
-    list_display = ('review_username', 'book_listing','review_created_on', 'review_approved' )
-    search_fields = ('review_username', 'book_listing')
+    list_display = ('review_username', 'review_detail', 'book_listing','review_created_on', 'review_approved' )
+    search_fields = ('review_username', 'review_detail')
     actions = ['approve_reviews']
 
     def approve_reviews(self, request, queryset):
-        queryset.update(approved=True)
+        queryset.update(review_approved=True)
 
 
 @admin.register(Genre)
@@ -32,6 +32,3 @@ class GenreAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ['genre_name']}
     list_filter = ['genre_name']
     list_display = ['genre_name']
-
-    def approve_reviews(self, request, queryset):
-        queryset.update(approved=True)
