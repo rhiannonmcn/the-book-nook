@@ -1,5 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
+from django.http import HttpResponseRedirect
 from .models import Book
 from .forms import BookForm
 
@@ -49,6 +50,9 @@ class BookDetails(View):
         book = get_object_or_404(queryset, slug=slug)
         reviews = book.reviews.filter(
             review_approved=True).order_by('-review_created_on')
+        favourite = False
+        if book.book_favourites.filter(id=self.request.user.id).exists():
+            favourite = True
 
         return render(
             request,
@@ -57,6 +61,7 @@ class BookDetails(View):
                 'book': book,
                 'reviews': reviews,
                 'reviewed': False,
+                'favourite': favourite,
                 'review_form': BookForm()
             },
         )
@@ -75,6 +80,9 @@ class BookDetails(View):
         book = get_object_or_404(queryset, slug=slug)
         reviews = book.reviews.filter(
             review_approved=True).order_by('-review_created_on')
+        favourite = False
+        if book.book_favourites.filter(id=self.request.user.id).exists():
+            favourite = True
         
         review_form = BookForm(data=request.POST)
         if review_form.is_valid():
@@ -94,6 +102,33 @@ class BookDetails(View):
                 'book': book,
                 'reviews': reviews,
                 'reviewed': True,
+                'favourite': favourite,
                 'review_form': review_form
             },
         )
+
+   
+class BookFavourite(View):
+    """_summary_
+
+    Args:
+        View (_type_): _description_
+    """
+    def post(self, request, slug, *args, **kwargs):
+        """_summary_
+
+        Args:
+            request (_type_): _description_
+            slug (_type_): _description_
+
+        Returns:
+            _type_: _description_
+        """
+        book = get_object_or_404(Book, slug=slug)
+        
+        if book.book_favourites.filter(id=request.user.id).exists():
+            book.book_favourites.remove(request.user)
+        else:
+            book.book_favourites.add(request.user)
+            
+        return HttpResponseRedirect(reverse('book_detail', args=[slug]))
