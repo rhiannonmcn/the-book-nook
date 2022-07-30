@@ -195,7 +195,38 @@ footer {
 
 .excerpt,
 .reviews-container {
-  padding: 20px 10px 0 10px;
+  padding: 40px 0;
+}
+
+.reviews-container {
+  margin:0 10px;
+}
+
+#book-detail,
+#reviews {
+  padding: 40px 0;
+}
+
+#reviews {
+  background-color: var(--seashell);
+}
+
+.p-bold, .review-heading h4, .review-heading p{
+  font-weight: 700;
+}
+
+.h3-styles{
+  font-weight: 700;
+  font-size: 1.8rem;
+}
+
+.h3-links a{
+  font-weight: 700;
+  font-size: 1.8rem;
+}
+
+.asteriskField{
+  display:none;
 }
 
 /* Log In Styles */
