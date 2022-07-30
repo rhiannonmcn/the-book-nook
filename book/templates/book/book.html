@@ -24,11 +24,52 @@
           <div class="col-12">
             <h2 class="book-subtitle">by {{ book.book_author }}</h2>
           </div>
-          <div class="row">
+          <div class="row align-items-center">
             <div class="col-6 col-sm-4">
-              <a href="#reviews"><button type="button" class="btn btn-styles">Review</button></a>
+              <a href="#reviews"
+                ><button type="button" class="btn btn-styles">Review</button></a
+              >
             </div>
-            <div class="col-6 col-sm-8">Rating stars</div>
+            <div class="col-6">
+              <strong>
+                {% if user.is_authenticated %}
+                <form
+                  class="d-inline"
+                  action="{% url 'book_favourite' book.slug %}"
+                  method="POST"
+                >
+                  {% csrf_token %} {% if favourite %}
+                  <button
+                    type="submit"
+                    name="book_id"
+                    value="{{book.slug}}"
+                    class="btn-like"
+                  >
+                    <i class="fa-solid fa-heart"></i>
+                  </button>
+                  {% else %}
+                  <button
+                    type="submit"
+                    name="book_id"
+                    value="{{book.slug}}"
+                    class="btn-like"
+                  >
+                    <i class="fa-regular fa-heart"></i>
+                  </button>
+                  {% endif %}
+                </form>
+                {% else %}
+                <span><i class="fa-regular fa-heart"></i>></span>
+                {% endif %}
+
+                <span class="text-secondary"
+                  >{{ book.number_of_favourites }}
+                </span>
+              </strong>
+            </div>
+            <div class="row mt-2">
+              <div class="col-12">Rating stars</div>
+            </div>
           </div>
         </div>
       </div>
@@ -60,7 +101,10 @@
         </form>
       </div>
       {% else %}
-      <h3 class="h3-styles h3-links text-center">Please <a href="{% url 'account_login' %}">Log In</a> or <a href="{% url 'account_signup' %}">Sign Up</a> to review</h3>
+      <h3 class="h3-styles h3-links text-center">
+        Please <a href="{% url 'account_login' %}">Log In</a> or
+        <a href="{% url 'account_signup' %}">Sign Up</a> to review
+      </h3>
       {% endif %} {% endif %}
     </div>
   </div>
@@ -84,9 +128,7 @@
           <div class="row">
             <div class="review-body col">
               <p class="p-bold">reviewed:</p>
-              <p>
-              {{ review.review_detail | linebreaks}}
-              </p>
+              <p>{{ review.review_detail | linebreaks}}</p>
             </div>
           </div>
         </div>

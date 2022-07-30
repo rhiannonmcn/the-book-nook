@@ -51,6 +51,14 @@ class Book(models.Model):
 
     def __str__(self):
         return self.title
+    
+    def number_of_favourites(self):
+        """_summary_
+
+        Returns:
+            _type_: _description_
+        """
+        return self.book_favourites.count()
 
     
 class BookReview(models.Model):
