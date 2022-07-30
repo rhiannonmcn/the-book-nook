@@ -1,10 +1,8 @@
-{% extends "base.html" %} {% load static %} {% block content %}
-
-{% load crispy_forms_tags %}
+{% extends "base.html" %} {% load static %} {% block content %} {% load crispy_forms_tags %}
 
 <section id="book-detail">
   <div class="book-container conatiner-fluid">
-    <div class="row">
+    <div class="row justify-content-center">
       <div class="col-4 col-md-2">
         {% if "placeholder" in book.book_image.url %}
         <img
@@ -18,7 +16,7 @@
         />
         {% endif %}
       </div>
-      <div class="col-8 col-md-10">
+      <div class="col-8 col-md-6">
         <div class="row">
           <div class="col-12">
             <h1 class="book-title">{{ book.title }}</h1>
@@ -27,46 +25,74 @@
             <h2 class="book-subtitle">by {{ book.book_author }}</h2>
           </div>
           <div class="row">
-            <div class="col-6 col-sm-4 col-md-2">
-              <button type="button" class="btn btn-styles">Review</button>
+            <div class="col-6 col-sm-4">
+              <a href="#reviews"><button type="button" class="btn btn-styles">Review</button></a>
             </div>
-            <div class="col-6 col-sm-8 col-md-10">Rating stars</div>
+            <div class="col-6 col-sm-8">Rating stars</div>
           </div>
         </div>
       </div>
     </div>
   </div>
   <div class="excerpt">
-    <h3>Blurb</h3>
-    <p>{{ book.book_blurb }}</p>
+    <div class="row justify-content-center">
+      <div class="col col-md-8">
+        <h3 class="h3-styles">Blurb</h3>
+        <p>{{ book.book_blurb | linebreaks }}</p>
+      </div>
+    </div>
   </div>
 </section>
 
 <!--Reviews section of Book page-->
 <section id="reviews">
-  {% if reviewed %}
-
-  <div class="alert alert-success">
-    Your review is awaiting approval
+  <div class="row justify-content-center">
+    <div class="col col-md-8">
+      {% if reviewed %}
+      <div class="alert alert-success">Your review is awaiting approval</div>
+      {% else %} {% if user.is_authenticated %}
+      <div>
+        <h3 class="h3-styles">Leave a Review</h3>
+        <p>Posting as: {{ user.username }}</p>
+        <form method="post" style="margin-top: 1.3em">
+          {{ review_form | crispy }} {% csrf_token %}
+          <button type="submit" class="btn btn-styles">Review</button>
+        </form>
+      </div>
+      {% else %}
+      <h3 class="h3-styles h3-links text-center">Please <a href="{% url 'account_login' %}">Log In</a> or <a href="{% url 'account_signup' %}">Sign Up</a> to review</h3>
+      {% endif %} {% endif %}
+    </div>
   </div>
 
-  {% else %}
-
-
-  {% if user.is_authenticated %}
-  <div>
-    <h3>Leave a Review</h3>
-    <p>Posting as: {{ user.username }}</p>
-    <form method="post" style="margin-top : 1.3em;">
-      {{ review_form | crispy }}
-      {% csrf_token %}
-      <button type="submit" class="btn btn-styles">Review</button>
-    </form>
-  </div>
-  {% endif %}
-  {% endif %}
-  <div class="reviews-container">
-    <h3>Reviews</h3>
+  <div class="reviews-container row justify-content-center">
+    <div class="col col-md-8">
+      <h3 class="h3-styles">Reviews</h3>
+    </div>
+    <div class="row justify-content-center">
+      {% for review in reviews %}
+      <div class="card mt-4 col col-md-8">
+        <div class="card-body">
+          <div class="review-heading row py-2">
+            <div class="col-12 col-md-6">
+              <h4>{{ review.review_username }}</h4>
+            </div>
+            <div class="col-12 col-md-6">
+              <p>{{ review.review_created_on }}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="review-body col">
+              <p class="p-bold">reviewed:</p>
+              <p>
+              {{ review.review_detail | linebreaks}}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
   </div>
 </section>
 
