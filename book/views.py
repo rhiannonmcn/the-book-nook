@@ -1,20 +1,26 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
-from .models import Book
+from django.db.models import Q
+from .models import Book, Genre
 from .forms import BookForm
 
 
 class HomeList(generic.ListView):
-    """_summary_
-
-    Args:
-        generic (_type_): _description_
-    """
+    
     model = Book
-    queryset = Book.objects.filter(book_approved=True).order_by('?')
     template_name = 'index.html'
+    queryset = Book.objects.filter(book_approved=True).order_by('?')
+    
+    def get_context_data(self, **kwargs):
+        """_summary_
 
+        Returns:
+            _type_: _description_
+        """
+        context_data = super().get_context_data(**kwargs)
+        context_data['genre_list'] = Genre.objects.all()
+        return context_data
 
 class BookList(generic.ListView):
     """_summary_
@@ -132,3 +138,24 @@ class BookFavourite(View):
             book.book_favourites.add(request.user)
             
         return HttpResponseRedirect(reverse('book_detail', args=[slug]))
+    
+    
+class GenreDetail(View):
+        
+    def get(self, request, slug, *args, **kwargs):
+    
+        genre_object = Genre.objects.all()
+        genres = get_object_or_404(genre_object, slug=slug)
+        books = genres.book_genre.filter(
+            book_approved=True).order_by('-book_created_on')
+        
+
+        return render(
+            request,
+            'book/genre.html',
+            {
+                'books': books,
+                'genres': genres,
+                'genre_object':genre_object
+            },
+        )

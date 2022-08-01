@@ -7,10 +7,10 @@
       <div class="row">
         <!-- Book Entries -->
         <div class="col-12">
-          <div class="book-row row">
+          <div class="row">
             {% for book in book_list %}
-            <div class="col-4 col-sm-4 col-md-4 col-lg-2">
-              <div class="card book-listing">
+            <div class="col-4 col-sm-4 col-md-2">
+              <div class="card">
                 <div class="card-body book-listing-body">
                   <a href="{% url 'book_detail' book.slug %}" >
                     {% if "placeholder" in book.book_image.url %}
@@ -37,7 +37,7 @@
             </div>
             {% if forloop.counter|divisibleby:6 %}
           </div>
-          <div class="book-row row">{% endif %} {% endfor %}</div>
+          <div class="row">{% endif %} {% endfor %}</div>
         </div>
       </div>
       {% if is_paginated %}
