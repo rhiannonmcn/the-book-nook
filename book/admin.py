@@ -6,7 +6,7 @@ class BookAdmin(admin.ModelAdmin):
 
     prepopulated_fields = {'slug': ('title', 'book_author')}
     list_filter = ('book_approved', 'book_created_on')
-    list_display = ('title', 'book_author', 'slug', 'book_created_on', 'book_approved' )
+    list_display = ('title', 'book_author', 'slug', 'book_genre','book_created_on', 'book_approved' )
     search_fields = ('title', 'book_author')
     actions = ['approve_books']
 
@@ -31,4 +31,4 @@ class GenreAdmin(admin.ModelAdmin):
 
     prepopulated_fields = {'slug': ['genre_name']}
     list_filter = ['genre_name']
-    list_display = ['genre_name']
+    list_display = ('genre_name','genre_image','slug')

@@ -1,9 +1,117 @@
 {% extends "base.html" %} {% load static %} {% block content %}
 
-<div>
-  {% for genre in genre_list %}
-  <li>{{ genre.genre_name }}</li>
-  {% endfor %}
-</div>
+<section id="genre">
+  <div class="row justify-content-center">
+    <div class="col col-sm-10">
+      <h1 class="page-title">{{ genres }}</h1>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col col-sm-10">
+      <div class="book-listing-container container-fluid">
+        <div class="row">
+          <!-- Book Entries for specific categories -->
+          <div class="col-12">
+            <div class="row">
+              {% for book in books %} {% if book.book_genre == genres %}
+              <div class="col-4 col-sm-4 col-md-2">
+                <div class="card">
+                  <div class="card-body book-listing-body">
+                    <a href="{% url 'book_detail' book.slug %}">
+                      {% if "placeholder" in book.book_image.url %}
+                      <img
+                        class="card-img-top"
+                        src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg"
+                        alt="{{ book.title }} by {{ book.book_author }} book listing with no book cover"
+                      />
+                      {% else %}
+                      <img
+                        class="card-img-top"
+                        src=" {{ book.book_image.url }}"
+                        alt="{{ book.title }} by {{ book.book_author }} book listing"
+                      />
+                      {% endif %}
+                      <p class="book-listing-text card-text">
+                        {{book.book_blurb|truncatewords:10}}
+                      </p>
+                      <h2 class="book-listing-title card-title">
+                        {{ book.title }}
+                      </h2>
+                      <p class="book-listing-author">
+                        by {{ book.book_author }}
+                      </p>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              {% if forloop.counter|divisibleby:6 %}
+            </div>
+            <div class="row">
+              {% endif %} {% endif %} {% empty %}
+              <h2>No books in this category yet</h2>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        {% if is_paginated %}
+        <nav aria-label="Page navigation">
+          <ul class="pagination justify-content-center">
+            {% if page_obj.has_previous %}
+            <li>
+              <a
+                href="?page={{ page_obj.previous_page_number }}"
+                class="page-link"
+                >&laquo; PREV
+              </a>
+            </li>
+            {% endif %} {% if page_obj.has_next %}
+            <li>
+              <a href="?page={{ page_obj.next_page_number }}" class="page-link">
+                NEXT &raquo;</a
+              >
+            </li>
+            {% endif %}
+          </ul>
+        </nav>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="more-genres">
+  <h3 class="text-center page-subtitle">More Genres</h3>
+  <!--Owl Carousel-->
+  <div class="owl-carousel owl-theme">
+    {% for value in genre_object %}
+    <div class="item">
+      <div class="card genre-card">
+        <div class="card-body home-card-body">
+          <a href="{% url 'genre_detail' value.slug %}">
+            {% if "placeholder" in book.book_image.url %}
+            <img
+              class="card-img genre-card-img"
+              src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg"
+              alt="#"
+            />
+            {% else %}
+            <img
+              class="card-img genre-card-img"
+              src=" {{ value.genre_image.url }} "
+              alt="#"
+            />
+            {% endif %}
+            <div class="card-img-overlay align-items-center">
+              <div class="card-img-overlay card-title-bg">
+                <h4 class="card-title text-center">{{ value.genre_name }}</h4>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
 
 {% endblock %}

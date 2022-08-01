@@ -154,11 +154,51 @@ footer {
   margin: 0 8px;
 }
 
-/* Bookshelf Styles */
-
-.book-row {
+#home-genres {
   padding: 20px 0;
 }
+
+.home-card-body {
+  padding: 0;
+}
+
+.home-card-body h4 {
+  font-size: 1.2rem;
+  color: var(--linen);
+}
+
+.genre-card{
+  margin: 0 2px;
+  --bs-card-inner-border-radius:0;
+  border-radius:0;
+  border:none;
+
+}
+
+.genre-card-img {
+  height: 80px;
+  object-fit: cover;
+}
+
+.home-card-body .card-img-overlay{
+  padding:0 2px;
+  border-radius:0;
+}
+
+.card-title-bg{
+  background-color: var(--seashell);
+  width:100%;
+  opacity:0.8;
+  height: 50px;
+}
+
+.card-title-bg h4{
+  color:var(--darkSienna);
+  font-weight: 700;
+  padding-top:10px;
+}
+
+/* Bookshelf Styles */
 
 .book-listing-body {
   padding: 0px;
@@ -199,11 +239,13 @@ footer {
 }
 
 .reviews-container {
-  margin:0 10px;
+  margin: 0 10px;
 }
 
 #book-detail,
-#reviews {
+#reviews,
+#genre,
+#more-genres {
   padding: 40px 0;
 }
 
@@ -211,33 +253,35 @@ footer {
   background-color: var(--seashell);
 }
 
-.p-bold, .review-heading h4, .review-heading p{
+.p-bold,
+.review-heading h4,
+.review-heading p {
   font-weight: 700;
 }
 
-.h3-styles{
-  font-weight: 700;
-  font-size: 1.8rem;
-}
-
-.h3-links a{
+.h3-styles {
   font-weight: 700;
   font-size: 1.8rem;
 }
 
-.asteriskField{
-  display:none;
+.h3-links a {
+  font-weight: 700;
+  font-size: 1.8rem;
+}
+
+.asteriskField {
+  display: none;
 }
 
 .btn-like {
-  color: #E84610;
+  color: #e84610;
   border: none;
   background: transparent;
 }
 
 .btn-like:hover,
 .btn-like:active {
-  color: #E84610;
+  color: #e84610;
   background: transparent;
   border: none;
 }
@@ -258,12 +302,31 @@ footer {
   padding: 20px 0;
 }
 
+/* Genre Page Styles */
+
+.btn-genre {
+  background-color: var(--mediumPurple);
+}
+
+.btn-genre:hover {
+  background-color: var(--irresistable);
+}
+
+#more-genres {
+  background-color: var(--seashell);
+}
+
 @media screen and (min-width: 700px) {
-  /* book.html */
+  /* Home styles */
 
   #hero-section {
     padding: 40px;
   }
+
+  .genre-card-img {
+    height: 100px;
+  }
+  /* book.html */
 
   .book-detail-image {
     max-height: 160px;
@@ -276,6 +339,7 @@ footer {
 }
 
 @media screen and (min-width: 1000px) {
+
   /* book.html */
 
   #hero-section {

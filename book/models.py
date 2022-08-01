@@ -14,6 +14,7 @@ class Genre(models.Model):
         _type_: _description_
     """
     genre_name = models.CharField(max_length=50)
+    genre_image = CloudinaryField('image', default='placeholder')
     slug = models.SlugField(max_length=200, unique=True)
  
     def __str__(self):
