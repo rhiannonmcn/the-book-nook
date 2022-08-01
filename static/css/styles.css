@@ -245,7 +245,8 @@ footer {
 #book-detail,
 #reviews,
 #genre,
-#more-genres {
+#more-genres,
+#add-book {
   padding: 40px 0;
 }
 

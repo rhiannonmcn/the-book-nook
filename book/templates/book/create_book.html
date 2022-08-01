@@ -1,0 +1,19 @@
+{% extends "base.html" %} {% load static %} {% block content %}{% load crispy_forms_tags %}
+
+<section id="add-book">
+  <div class="row justify-content-center">
+    <div class="col col-8">
+      <h1 class="page-title">Add a Book</h1>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col col-md-8">
+      <form action="." method="POST" style="margin-top: 1.3em">
+        {{ form | crispy }}{% csrf_token %}
+        <button type="submit" class="btn btn-styles">Save</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
