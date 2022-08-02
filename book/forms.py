@@ -18,6 +18,6 @@ class BookForm(forms.ModelForm):
 class AddBookForm(forms.ModelForm):
     class Meta:
         model = Book
-        fields = ('title', 'book_author', 'book_image','book_blurb', 'slug', 'book_genre')
+        fields = ('title', 'book_author', 'book_image','book_blurb', 'book_genre')
     
     

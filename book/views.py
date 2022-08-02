@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views.generic import View, CreateView, ListView
 from django.http import HttpResponseRedirect
+from django.utils.text import slugify
 from .models import Book, Genre
 from .forms import AddBookForm, BookForm
 
@@ -21,6 +22,7 @@ class HomeList(ListView):
         context_data['genre_list'] = Genre.objects.all()
         return context_data
 
+
 class BookList(ListView):
     """_summary_
 
@@ -33,34 +35,25 @@ class BookList(ListView):
     template_name = 'book/bookshelf.html'
     paginate_by = 18
     
-    
-    
-    # def get_context_data(self, **kwargs):
-    #     """_summary_
 
-    #     Returns:
-    #         _type_: _description_
-    #     """
-    #     context_data = super().get_context_data(**kwargs)
-    #     context_data['genre_list'] = Genre.objects.all()
-    #     return context_data
-    
-
-class CreateBookListing(CreateView):
+class AddBook(CreateView):
     """_summary_
 
     Args:
         generic (_type_): _description_
     """
-    template_name = 'book/create_book.html'
+    template_name = 'book/add_book.html'
     form_class = AddBookForm
     queryset = Book.objects.all()
     get_context_object_name = 'book_form'
     
+    
     def form_valid(self, form):
-        print(form.cleaned_data)
+        form = form.save(commit=False)
+        form.slug = slugify(form.title + "-" + form.book_author)
         return(super().form_valid(form))
-        
+
+            
 
 class BookDetails(View):
     """_summary_
