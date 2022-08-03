@@ -5,6 +5,14 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col">
+        <form method="GET" action="">
+          <input class="searchfield" id="searchbox" name="search" type="text" placeholder="Search"/>
+
+          <input class="searchbutton" type="submit" value="Search"/>
+        </form>
+
+      </div>
+      <div class="col">
         <a href="{% url 'add_book' %}"
           ><button class="btn btn-styles mb-5">Add a Book</button></a
         >

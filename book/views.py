@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views.generic import View, CreateView, ListView
 from django.http import HttpResponseRedirect
+from django.db.models import Q
 from django.utils.text import slugify
 from .models import Book, Genre
 from .forms import AddBookForm, BookForm
@@ -34,6 +35,19 @@ class BookList(ListView):
         book_approved=True).order_by('-book_created_on')
     template_name = 'book/bookshelf.html'
     paginate_by = 18
+    
+    def get_queryset(self):
+        """_summary_
+
+        Returns:
+            _type_: _description_
+        """
+        name = self.request.GET.get('search', '')
+        object_list = Book.objects.all()
+        if name:
+            object_list = object_list.filter(title__icontains=name)
+        return object_list
+    
 
 
 class AddBook(CreateView):
