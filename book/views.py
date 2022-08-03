@@ -1,17 +1,17 @@
 from django.shortcuts import render, get_object_or_404, reverse
-from django.views import generic, View
+from django.views.generic import View, CreateView, ListView
 from django.http import HttpResponseRedirect
-from django.db.models import Q
+from django.utils.text import slugify
 from .models import Book, Genre
-from .forms import BookForm
+from .forms import AddBookForm, BookForm
 
 
-class HomeList(generic.ListView):
-    
+class HomeList(ListView):
+
     model = Book
     template_name = 'index.html'
     queryset = Book.objects.filter(book_approved=True).order_by('?')
-    
+
     def get_context_data(self, **kwargs):
         """_summary_
 
@@ -22,7 +22,8 @@ class HomeList(generic.ListView):
         context_data['genre_list'] = Genre.objects.all()
         return context_data
 
-class BookList(generic.ListView):
+
+class BookList(ListView):
     """_summary_
 
     Args:
@@ -33,6 +34,27 @@ class BookList(generic.ListView):
         book_approved=True).order_by('-book_created_on')
     template_name = 'book/bookshelf.html'
     paginate_by = 18
+
+
+class AddBook(CreateView):
+    """_summary_
+
+    Args:
+        generic (_type_): _description_
+    """
+    template_name = 'book/add_book.html'
+    form_class = AddBookForm
+    queryset = Book.objects.all()
+    get_context_object_name = 'book_form'
+
+    def form_valid(self, form):
+        form = AddBookForm(self.request.POST, self.request.FILES)
+        form = form.save(commit=False)
+        form.slug = slugify(form.title + "-" + form.book_author)
+        return (super().form_valid(form))
+
+    def get_success_url(self):
+        return reverse('book_shelf')
 
 
 class BookDetails(View):
@@ -89,7 +111,7 @@ class BookDetails(View):
         favourite = False
         if book.book_favourites.filter(id=self.request.user.id).exists():
             favourite = True
-        
+
         review_form = BookForm(data=request.POST)
         if review_form.is_valid():
             review = review_form.save(commit=False)
@@ -113,13 +135,14 @@ class BookDetails(View):
             },
         )
 
-   
+
 class BookFavourite(View):
     """_summary_
 
     Args:
         View (_type_): _description_
     """
+
     def post(self, request, slug, *args, **kwargs):
         """_summary_
 
@@ -131,24 +154,23 @@ class BookFavourite(View):
             _type_: _description_
         """
         book = get_object_or_404(Book, slug=slug)
-        
+
         if book.book_favourites.filter(id=request.user.id).exists():
             book.book_favourites.remove(request.user)
         else:
             book.book_favourites.add(request.user)
-            
+
         return HttpResponseRedirect(reverse('book_detail', args=[slug]))
-    
-    
+
+
 class GenreDetail(View):
-        
+
     def get(self, request, slug, *args, **kwargs):
-    
+
         genre_object = Genre.objects.all()
         genres = get_object_or_404(genre_object, slug=slug)
         books = genres.book_genre.filter(
             book_approved=True).order_by('-book_created_on')
-        
 
         return render(
             request,
@@ -156,6 +178,6 @@ class GenreDetail(View):
             {
                 'books': books,
                 'genres': genres,
-                'genre_object':genre_object
+                'genre_object': genre_object
             },
         )
