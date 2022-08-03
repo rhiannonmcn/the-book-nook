@@ -31,7 +31,7 @@
   </div>
 </section>
 
-<section id="carousel-section">
+<section id="carousel-section" class="bg-seashell">
   <h3 class="text-center page-subtitle">Discover</h3>
   <!--Owl Carousel-->
   <div class="owl-carousel owl-theme">
@@ -75,19 +75,11 @@
       <div class="card genre-card">
         <div class="card-body home-card-body">
           <a href="{% url 'genre_detail' genre.slug %}">
-            {% if "placeholder" in book.book_image.url %}
-            <img
-              class="card-img genre-card-img"
-              src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg"
-              alt="#"
-            />
-            {% else %}
             <img
               class="card-img genre-card-img"
               src=" {{ genre.genre_image.url }} "
-              alt="#"
+              alt="image associated with {{ genre.genre.name }}"
             />
-            {% endif %}
             <div class="card-img-overlay align-items-center">
               <div class="card-img-overlay card-title-bg">
                 <h4 class="card-title text-center">{{ genre.genre_name }}</h4>
