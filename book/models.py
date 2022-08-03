@@ -1,6 +1,7 @@
 from unicodedata import category
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
 from cloudinary.models import CloudinaryField
 
 
@@ -60,6 +61,7 @@ class Book(models.Model):
             _type_: _description_
         """
         return self.book_favourites.count()
+
 
     
 class BookReview(models.Model):
