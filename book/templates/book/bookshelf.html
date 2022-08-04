@@ -1,21 +1,32 @@
 {% extends "base.html" %} {% load static %} {% block content %}
+
 <section id="bookshelf">
   <h1 class="page-title">Bookshelf</h1>
 
   <div class="container-fluid">
-    <div class="row">
-      <div class="col">
-        <form method="GET" action="">
-          <input class="searchfield" id="searchbox" name="search" type="text" placeholder="Search"/>
-
-          <input class="searchbutton" type="submit" value="Search"/>
-        </form>
-
-      </div>
-      <div class="col">
-        <a href="{% url 'add_book' %}"
-          ><button class="btn btn-styles mb-5">Add a Book</button></a
-        >
+    <div class="row justify-content-center">
+      <div class="col-12 col-sm-10 col-md-8">
+        <div class="row">
+          <div class="col-12 col-sm-6 col-md-8 mt-4">
+            <form method="GET" action="">
+              {% csrf_token %}
+              <input
+                class="searchfield form-control"
+                name="search"
+                type="text"
+                placeholder="Search"
+              />
+              <button type="submit" class="btn btn-styles" value="Search">
+                <i class="fa-solid fa-magnifying-glass icon-lg"></i>
+              </button>
+            </form>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4 mt-4 d-flex justify-content-center">
+            <a href="{% url 'add_book' %}"
+              ><button class="btn btn-styles mb-5">Add a Book</button></a
+            >
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -23,7 +34,7 @@
   <div class="bg-seashell pb-5">
     <div class="row">
       <div class="col">
-        <h3 class="page-subtitle text-center pt-5 pb-3">Newly Added</h3>
+        <h3 class="page-subtitle text-center pt-5 pb-3">Books</h3>
       </div>
     </div>
     <div class="book-listing-container container-fluid">
@@ -95,4 +106,5 @@
     </div>
   </div>
 </section>
+
 {% endblock %}

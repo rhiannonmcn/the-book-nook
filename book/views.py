@@ -8,6 +8,14 @@ from .forms import AddBookForm, BookForm
 
 
 class HomeList(ListView):
+    """_summary_
+
+    Args:
+        ListView (_type_): _description_
+
+    Returns:
+        _type_: _description_
+    """
 
     model = Book
     template_name = 'index.html'
@@ -45,7 +53,9 @@ class BookList(ListView):
         name = self.request.GET.get('search', '')
         object_list = Book.objects.all()
         if name:
-            object_list = object_list.filter(title__icontains=name)
+            object_list = object_list.filter(Q(title__icontains=name) | Q(
+            book_author__icontains=name) | Q(
+            book_blurb__icontains=name))
         return object_list
     
 
