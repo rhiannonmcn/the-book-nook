@@ -48,7 +48,7 @@ body {
 
 /* Any page sub title, h2 and down, general styles */
 .page-subtitle {
-  font-size: 1.6rem;
+  font-size: 2.6rem;
   font-weight: 700;
   color: var(--irresistable);
 }
@@ -139,6 +139,7 @@ footer {
 
 .homepage-quote {
   padding: 20px 0;
+  font-size: 1.6rem;
 }
 
 .btn-homepage {
@@ -223,7 +224,7 @@ footer {
 
 .searchfield{
   display:inline;
-  max-width: 80%;
+  max-width: 60%;
 }
 
 /* book.html */
@@ -332,6 +333,7 @@ footer {
   .genre-card-img {
     height: 100px;
   }
+
   /* book.html */
 
   .book-detail-image {
@@ -346,6 +348,12 @@ footer {
 
 @media screen and (min-width: 1000px) {
 
+    /* bookshelf styles */
+
+    .searchfield{
+      max-width: 80%;
+    }
+    
   /* book.html */
 
   #hero-section {

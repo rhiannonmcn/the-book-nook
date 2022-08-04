@@ -3,6 +3,7 @@ from django.views.generic import View, CreateView, ListView
 from django.http import HttpResponseRedirect
 from django.db.models import Q
 from django.utils.text import slugify
+from django.db.models import Max
 from .models import Book, Genre
 from .forms import AddBookForm, BookForm
 
@@ -72,12 +73,25 @@ class AddBook(CreateView):
     get_context_object_name = 'book_form'
 
     def form_valid(self, form):
+        """_summary_
+
+        Args:
+            form (_type_): _description_
+
+        Returns:
+            _type_: _description_
+        """
         form = AddBookForm(self.request.POST, self.request.FILES)
         form = form.save(commit=False)
         form.slug = slugify(form.title + "-" + form.book_author)
         return (super().form_valid(form))
 
     def get_success_url(self):
+        """_summary_
+
+        Returns:
+            _type_: _description_
+        """
         return reverse('book_shelf')
 
 
@@ -188,6 +202,11 @@ class BookFavourite(View):
 
 
 class GenreDetail(View):
+    """_summary_
+
+    Args:
+        View (_type_): _description_
+    """
 
     def get(self, request, slug, *args, **kwargs):
 
