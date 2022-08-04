@@ -9,5 +9,6 @@ urlpatterns = [
     path('genre/<slug:slug>', views.GenreDetail.as_view(), name='genre_detail' ),
     path('favourite/<slug:slug>', views.BookFavourite.as_view(), name='book_favourite'),
     path('add_book/', views.AddBook.as_view(), name='add_book'),
+    path('my_books/', views.MyBooks.as_view(), name='my_books')
 
 ]

@@ -26,12 +26,12 @@
             <h2 class="book-subtitle">by {{ book.book_author }}</h2>
           </div>
           <div class="row align-items-center">
-            <div class="col-6 col-sm-4">
+            <div class="col-6 col-md-4">
               <a href="#reviews"
                 ><button type="button" class="btn btn-styles">Review</button></a
               >
             </div>
-            <div class="col-6">
+            <div class="col-12 col-md-6 mt-3 ">
               <strong>
                 {% if user.is_authenticated %}
                 <form
@@ -40,6 +40,9 @@
                   method="POST"
                 >
                   {% csrf_token %} {% if favourite %}
+                  <span class="text-secondary"
+                  >{{ book.number_of_favourites }}
+                </span>
                   <button
                     type="submit"
                     name="book_id"
@@ -49,6 +52,9 @@
                     <i class="fa-solid fa-bookmark"></i>
                   </button>
                   {% else %}
+                  <span class="text-secondary"
+                  >{{ book.number_of_favourites }}
+                </span>
                   <button
                     type="submit"
                     name="book_id"
@@ -60,12 +66,13 @@
                   {% endif %}
                 </form>
                 {% else %}
-                <span><i class="fa-regular fa-bookmark"></i></span>
-                {% endif %}
-
                 <span class="text-secondary"
                   >{{ book.number_of_favourites }}
                 </span>
+                <span><i class="fa-regular fa-bookmark"></i></span>
+                <span><a href="{% url 'account_login' %}">Log In</a> or
+                  <a href="{% url 'account_signup' %}">Sign Up</a> to Bookmark</span>
+                {% endif %}
               </strong>
             </div>
             <div class="row mt-2">
