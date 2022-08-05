@@ -3,8 +3,8 @@ from django.views.generic import View, CreateView, ListView
 from django.http import HttpResponseRedirect
 from django.db.models import Q
 from django.utils.text import slugify
-from django.db.models import Max
-from .models import Book, Genre
+from django.contrib.auth.mixins import LoginRequiredMixin
+from .models import Book, BookReview, Genre
 from .forms import AddBookForm, BookForm
 
 
@@ -209,6 +209,15 @@ class GenreDetail(View):
     """
 
     def get(self, request, slug, *args, **kwargs):
+        """_summary_
+
+        Args:
+            request (_type_): _description_
+            slug (_type_): _description_
+
+        Returns:
+            _type_: _description_
+        """
 
         genre_object = Genre.objects.all()
         genres = get_object_or_404(genre_object, slug=slug)
@@ -224,3 +233,32 @@ class GenreDetail(View):
                 'genre_object': genre_object
             },
         )
+
+
+class MyBooks(LoginRequiredMixin, CreateView):
+    """_summary_
+
+    Args:
+        LoginRequiredMixin (_type_): _description_
+        View (_type_): _description_
+
+    """
+
+    def get(self, request, *args, **kwargs):
+        """_summary_
+
+        Args:
+            request (_type_): _description_
+
+        Returns:
+            _type_: _description_
+        """
+        username = request.user
+        user_fav = Book.objects.filter(book_favourites=request.user)
+        user_review = BookReview.objects.filter(review_username=username)
+        return render(request,
+                      'book/my_books.html',
+                      {'user_fav': user_fav,
+                       'user_review' : user_review,
+                       'username' : username})
+        
