@@ -43,7 +43,6 @@ body {
 .page-title {
   font-size: 3rem;
   font-weight: 700;
-  padding: 20px 10px 5px 10px;
 }
 
 /* Any page sub title, h2 and down, general styles */
@@ -261,7 +260,7 @@ footer {
 #genre,
 #more-genres,
 #add-book {
-  padding: 40px 0;
+  padding-bottom:40px;
 }
 
 .p-bold,

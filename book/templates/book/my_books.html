@@ -1,65 +1,69 @@
 {% extends "base.html" %} {% load static %} {% block content %}
-
-<h1 class="page-title">My Books</h1>
 <section>
-    <div class="row">
-        <div class="col-12 col-sm-10 col-md-8">
-            <h2 class="page-subtitle">
-                My Bookmarks
-            </h2>
-        </div>
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-10">
+      <h1 class="page-title mt-5 mb-5">My Books</h1>
     </div>
-    <div class="col-12">
-        <div class="row">
-          {% for book in user_fav %}
-          <div class="col-4 col-sm-4 col-md-2">
-            <div class="card">
-              <div class="card-body book-listing-body">
-                <a href="{% url 'book_detail' book.slug %}">
-                  {% if "placeholder" in book.book_image.url %}
-                  <img
-                    class="card-img-top"
-                    src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg"
-                    alt="{{ book.title }} by {{ book.book_author }} book listing with no book cover"
-                  />
-                  {% else %}
-                  <img
-                    class="card-img-top"
-                    src=" {{ book.book_image.url }}"
-                    alt="{{ book.title }} by {{ book.book_author }} book listing"
-                  />
-                  {% endif %}
-                  <p class="book-listing-text card-text">
-                    {{book.book_blurb|truncatewords:10}}
-                  </p>
-                  <h2 class="book-listing-title card-title">
-                    {{ book.title }}
-                  </h2>
-                  <p class="book-listing-author">by {{ book.book_author }}</p>
-                </a>
-              </div>
-            </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-10">
+      <h3 class="page-subtitle user-title">Username</h3>
+    </div>
+  </div>
+</section>
+<section class="bg-seashell pt-5 pb-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-10">
+      <h2 class="page-subtitle text-center">My Bookmarks</h2>
+    </div>
+  </div>
+  <div class="col-12">
+    <div class="row">
+      {% for book in user_fav %}
+      <div class="col-4 col-sm-4 col-md-2">
+        <div class="card">
+          <div class="card-body book-listing-body">
+            <a href="{% url 'book_detail' book.slug %}">
+              {% if "placeholder" in book.book_image.url %}
+              <img
+                class="card-img-top"
+                src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg"
+                alt="{{ book.title }} by {{ book.book_author }} book listing with no book cover"
+              />
+              {% else %}
+              <img
+                class="card-img-top"
+                src=" {{ book.book_image.url }}"
+                alt="{{ book.title }} by {{ book.book_author }} book listing"
+              />
+              {% endif %}
+              <p class="book-listing-text card-text">
+                {{book.book_blurb|truncatewords:10}}
+              </p>
+              <h2 class="book-listing-title card-title">{{ book.title }}</h2>
+              <p class="book-listing-author">by {{ book.book_author }}</p>
+            </a>
           </div>
-          {% if forloop.counter|divisibleby:6 %}
-        </div>
-        <div class="row">
-          {% endif %} {% empty %}
-          <div class="col-12 col-md-8">
-            <h3>No Books</h3>
-          </div>
-          {% endfor %}
         </div>
       </div>
+      {% if forloop.counter|divisibleby:6 %}
+    </div>
+    <div class="row">
+      {% endif %} {% empty %}
+      <div class="col-12 col-md-8">
+        <h3>No Books</h3>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
 </section>
 <section class="pt-5 pb-5">
-    <div class="row">
-        <div class="col-12 col-sm-10 col-md-8">
-            <h2 class="page-subtitle">
-                My Reviews
-            </h2>
-        </div>
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-10">
+      <h2 class="page-subtitle text-center">My Reviews</h2>
     </div>
+  </div>
+  <p>{{ user_review }}</p>
 </section>
-
 
 {% endblock %}

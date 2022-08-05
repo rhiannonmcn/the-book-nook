@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 from django.db.models import Q
 from django.utils.text import slugify
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Book, Genre
+from .models import Book, BookReview, Genre
 from .forms import AddBookForm, BookForm
 
 
@@ -234,12 +234,13 @@ class GenreDetail(View):
             },
         )
         
-class MyBooks(LoginRequiredMixin, View):
+class MyBooks(LoginRequiredMixin, CreateView):
     """_summary_
 
     Args:
         LoginRequiredMixin (_type_): _description_
         View (_type_): _description_
+        
     """
     
     def get(self, request, *args, **kwargs):
@@ -253,7 +254,9 @@ class MyBooks(LoginRequiredMixin, View):
         """
         
         user_fav = Book.objects.filter(book_favourites=request.user)
+        user_review = BookReview.objects.filter(review_username=request.user)
         return render(request,
                       'book/my_books.html',
-                      {'user_fav': user_fav})
-
+                      {'user_fav': user_fav,
+                       'user_review' : user_review})
+        
