@@ -233,16 +233,17 @@ class GenreDetail(View):
                 'genre_object': genre_object
             },
         )
-        
+
+
 class MyBooks(LoginRequiredMixin, CreateView):
     """_summary_
 
     Args:
         LoginRequiredMixin (_type_): _description_
         View (_type_): _description_
-        
+
     """
-    
+
     def get(self, request, *args, **kwargs):
         """_summary_
 
@@ -252,11 +253,12 @@ class MyBooks(LoginRequiredMixin, CreateView):
         Returns:
             _type_: _description_
         """
-        
+        username = request.user
         user_fav = Book.objects.filter(book_favourites=request.user)
-        user_review = BookReview.objects.filter(review_username=request.user)
+        user_review = BookReview.objects.filter(review_username=username)
         return render(request,
                       'book/my_books.html',
                       {'user_fav': user_fav,
-                       'user_review' : user_review})
+                       'user_review' : user_review,
+                       'username' : username})
         
