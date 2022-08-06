@@ -65,43 +65,44 @@
     </div>
   </div>
 
-  <section class="pt-5 pb-5">
-    <div class="row mx-2 justify-content-center">
-      {% for review in user_review %}
-      <div class="card mt-4 col-12 col-md-8">
-        <div class="card-body">
-          <div class="review-heading row py-2">
-            <div class="col-12 col-md-6">
-              <a href="{% url 'book_detail' review.book_listing.slug %}"><h4 class="book-link">{{ review.book_listing }}</h4></a>
-            </div>
-            <div class="col-12 col-md-6">
-              <p>{{ review.review_created_on }}</p>
-            </div>
+  <div class="row mx-2 justify-content-center">
+    {% for review in user_review %}
+    <div class="card mt-4 col-12 col-md-8">
+      <div class="card-body">
+        <div class="review-heading row py-2">
+          <div class="col-12 col-md-6">
+            <a href="{% url 'book_detail' review.book_listing.slug %}"
+              ><h4 class="book-link">{{ review.book_listing }}</h4></a
+            >
           </div>
-          <div class="row">
-            <div class="review-body col">
-              <p class="p-bold">review:</p>
-              <p>{{ review.review_detail | linebreaks}}</p>
-            </div>
+          <div class="col-12 col-md-6">
+            <p>{{ review.review_created_on }}</p>
           </div>
-          <div class="row">
-            <div class="col">
-              <a href="#">
-                <button class="btn btn-styles">Update</button>
-              </a>
-              <a href="#">
-                <button class="btn btn-styles">Delete</button>
-              </a>
-            </div>
+        </div>
+        <div class="row">
+          <div class="review-body col">
+            <p class="p-bold">review:</p>
+            <p>{{ review.review_detail | linebreaks}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <a href=" {% url 'edit_review' review.pk %} ">
+              <button class="btn btn-styles">Update</button>
+            </a>
+            <a href="#">
+              <button class="btn btn-styles">Delete</button>
+            </a>
           </div>
         </div>
       </div>
-      {% empty %}
-      <div class="col-12 col-md-8">
-        <h3>No reviews made yet</h3>
-      </div>
-      {% endfor %}
     </div>
-  </section>
-  {% endblock %}
+    {% empty %}
+    <div class="col-12 col-md-8">
+      <h3>No reviews made yet</h3>
+    </div>
+    {% endfor %}
+  </div>
+
 </section>
+{% endblock %}

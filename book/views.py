@@ -1,9 +1,11 @@
 from django.shortcuts import render, get_object_or_404, reverse
-from django.views.generic import View, CreateView, ListView
+from django.views.generic import View, CreateView, ListView, UpdateView
 from django.http import HttpResponseRedirect
 from django.db.models import Q
 from django.utils.text import slugify
+from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse_lazy
 from .models import Book, BookReview, Genre
 from .forms import AddBookForm, BookForm
 
@@ -261,4 +263,24 @@ class MyBooks(LoginRequiredMixin, CreateView):
                       {'user_fav': user_fav,
                        'user_review' : user_review,
                        'username' : username})
-        
+
+
+class EditReview(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
+    """_summary_
+
+    Args:
+        SuccessMessageMixin (_type_): _description_
+        LoginRequiredMixin (_type_): _description_
+        UpdateView (_type_): _description_
+    """
+    model = BookReview
+    fields = ['review_detail', ]
+    template_name = 'book/edit_review.html'
+    success_url = reverse_lazy('my_books')
+    success_message = "You have updated your review!"
+    
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['book_title']=self.object.book_listing
+        return context
