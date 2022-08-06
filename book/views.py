@@ -281,6 +281,11 @@ class EditReview(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     
     
     def get_context_data(self, **kwargs):
+        """_summary_
+
+        Returns:
+            _type_: _description_
+        """
         context = super().get_context_data(**kwargs)
         context['book_title']=self.object.book_listing
         return context
