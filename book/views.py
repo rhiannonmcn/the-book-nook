@@ -1,9 +1,12 @@
 from django.shortcuts import render, get_object_or_404, reverse
-from django.views.generic import View, CreateView, ListView
+from django.views.generic import View, CreateView, ListView, UpdateView, DeleteView
 from django.http import HttpResponseRedirect
 from django.db.models import Q
 from django.utils.text import slugify
+from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse_lazy
+from django.contrib import messages
 from .models import Book, BookReview, Genre
 from .forms import AddBookForm, BookForm
 
@@ -44,7 +47,7 @@ class BookList(ListView):
         book_approved=True).order_by('-book_created_on')
     template_name = 'book/bookshelf.html'
     paginate_by = 18
-    
+
     def get_queryset(self):
         """_summary_
 
@@ -54,11 +57,10 @@ class BookList(ListView):
         name = self.request.GET.get('search', '')
         object_list = Book.objects.all()
         if name:
-            object_list = object_list.filter(Q(title__icontains=name) | Q(
-            book_author__icontains=name) | Q(
-            book_blurb__icontains=name))
+            object_list = object_list.filter(
+                Q(title__icontains=name) | Q(book_author__icontains=name)
+                | Q(book_blurb__icontains=name))
         return object_list
-    
 
 
 class AddBook(CreateView):
@@ -256,9 +258,78 @@ class MyBooks(LoginRequiredMixin, CreateView):
         username = request.user
         user_fav = Book.objects.filter(book_favourites=request.user)
         user_review = BookReview.objects.filter(review_username=username)
-        return render(request,
-                      'book/my_books.html',
-                      {'user_fav': user_fav,
-                       'user_review' : user_review,
-                       'username' : username})
+        return render(request, 'book/my_books.html', {
+            'user_fav': user_fav,
+            'user_review': user_review,
+            'username': username,
+        })
+
+
+class EditReview(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
+    """_summary_
+
+    Args:
+        SuccessMessageMixin (_type_): _description_
+        LoginRequiredMixin (_type_): _description_
+        UpdateView (_type_): _description_
+    """
+    
+    
+    model = BookReview
+    fields = [
+        'review_detail',
+    ]
+    template_name = 'book/edit_review.html'
+    success_url = reverse_lazy('my_books')
+    success_message = "You have updated your review and it has been flagged for approval!"
+    
+    
+    
+    def get_context_data(self, **kwargs):
+        """_summary_
+
+        Returns:
+            _type_: _description_
+        """
+        context = super().get_context_data(**kwargs)        
+        context['book_title']=self.object.book_listing
+        
+        return context
+
+    
+    def form_valid(self, form):
+        form.instance.review_approved = False
+        form.save()
+        return super().form_valid(form)
+
+
+class DeleteReview(SuccessMessageMixin, LoginRequiredMixin, DeleteView):
+    """_summary_
+
+    Args:
+        SuccessMessageMixin (_type_): _description_
+        LoginRequiredMixin (_type_): _description_
+        generic (_type_): _description_
+
+    Returns:
+        _type_: _description_
+    """
+    model = BookReview
+    success_url = reverse_lazy('my_books')
+    success_message = "Review deleted!"
+    template_name = 'book/delete_review.html'
+    
+    def get_context_data(self, **kwargs):
+        """_summary_
+
+        Returns:
+            _type_: _description_
+        """
+        context = super().get_context_data(**kwargs)        
+        context['book_title']=self.object.book_listing
+        context['review_detail']=self.object.review_detail
+        context['user'] = self.object.review_username
+        context['date'] = self.object.review_created_on
+        
+        return context
         
