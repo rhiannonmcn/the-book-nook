@@ -1,11 +1,12 @@
 from django.shortcuts import render, get_object_or_404, reverse
-from django.views.generic import View, CreateView, ListView, UpdateView
+from django.views.generic import View, CreateView, ListView, UpdateView, DeleteView
 from django.http import HttpResponseRedirect
 from django.db.models import Q
 from django.utils.text import slugify
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
+from django.contrib import messages
 from .models import Book, BookReview, Genre
 from .forms import AddBookForm, BookForm
 
@@ -302,4 +303,33 @@ class EditReview(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
         return super().form_valid(form)
 
 
+class DeleteReview(SuccessMessageMixin, LoginRequiredMixin, DeleteView):
+    """_summary_
+
+    Args:
+        SuccessMessageMixin (_type_): _description_
+        LoginRequiredMixin (_type_): _description_
+        generic (_type_): _description_
+
+    Returns:
+        _type_: _description_
+    """
+    model = BookReview
+    success_url = reverse_lazy('my_books')
+    success_message = "Review deleted!"
+    template_name = 'book/delete_review.html'
+    
+    def get_context_data(self, **kwargs):
+        """_summary_
+
+        Returns:
+            _type_: _description_
+        """
+        context = super().get_context_data(**kwargs)        
+        context['book_title']=self.object.book_listing
+        context['review_detail']=self.object.review_detail
+        context['user'] = self.object.review_username
+        context['date'] = self.object.review_created_on
+        
+        return context
         
