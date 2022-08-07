@@ -1,7 +1,7 @@
 {% extends "base.html" %} {% load static %} {% block content %} 
 {% load crispy_forms_tags %}
 
-<section id="book-detail">
+<section id="book-detail" class="pb-5 pt-5">
   <div class="book-container conatiner-fluid">
     <div class="row justify-content-center">
       <div class="col-4 col-md-2">
@@ -97,7 +97,7 @@
 </section>
 
 <!--Reviews section of Book page-->
-<section id="reviews" class="bg-seashell">
+<section id="reviews" class="bg-seashell pt-5 pb-5">
   <div class="row justify-content-center">
     <div class="col col-md-8">
       {% if reviewed %}
@@ -121,12 +121,12 @@
   </div>
 
   <div class="reviews-container row justify-content-center">
-    <div class="col col-md-8">
+    <div class="col-12 col-md-8">
       <h3 class="h3-styles">Reviews</h3>
     </div>
     <div class="row justify-content-center">
       {% for review in reviews %}
-      <div class="card mt-4 col col-md-8">
+      <div class="card mt-4 col-12 col-md-8">
         <div class="card-body">
           <div class="review-heading row py-2">
             <div class="col-12 col-md-6">
@@ -137,7 +137,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="review-body col">
+            <div class="review-body col-12">
               <p class="p-bold">reviewed:</p>
               <p>{{ review.review_detail | linebreaks}}</p>
             </div>

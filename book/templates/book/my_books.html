@@ -76,6 +76,11 @@
             >
           </div>
           <div class="col-12 col-md-6">
+            {% if review.review_approved is False %}
+            <div class="approval-tag">
+              <p class="text-center">Waiting on approval</p>
+            </div>
+            {% endif %}
             <p>{{ review.review_created_on }}</p>
           </div>
         </div>

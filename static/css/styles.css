@@ -254,14 +254,6 @@ footer {
   margin: 0 10px;
 }
 
-#book-detail,
-#reviews,
-#genre,
-#more-genres,
-#add-book {
-  padding-bottom: 40px;
-}
-
 .p-bold,
 .review-heading h4,
 .review-heading p {
@@ -324,7 +316,7 @@ footer {
 /* My Books styles */
 
 .user-title {
-  font-size: 2.2rem;
+  font-size: 1.8rem;
 }
 
 .book-link {
@@ -333,6 +325,18 @@ footer {
 
 .book-link:hover {
   color: var(--mediumPurple);
+}
+
+.approval-tag{
+  border-radius: 2px;
+  background-color: var(--irresistable);
+  max-width:225px;
+}
+
+.approval-tag p{
+  color:var(--seashell);
+  font-size: 1rem;
+  font-weight: 400;
 }
 
 /*edit review styles */

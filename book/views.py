@@ -260,7 +260,7 @@ class MyBooks(LoginRequiredMixin, CreateView):
         return render(request, 'book/my_books.html', {
             'user_fav': user_fav,
             'user_review': user_review,
-            'username': username
+            'username': username,
         })
 
 
@@ -280,7 +280,7 @@ class EditReview(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     ]
     template_name = 'book/edit_review.html'
     success_url = reverse_lazy('my_books')
-    success_message = "You have updated your review!"
+    success_message = "You have updated your review and it has been flagged for approval!"
     
     
     
@@ -292,7 +292,6 @@ class EditReview(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
         """
         context = super().get_context_data(**kwargs)        
         context['book_title']=self.object.book_listing
-        context['approval']=self.object.review_approved
         
         return context
 
