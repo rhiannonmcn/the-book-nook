@@ -24,8 +24,17 @@
         <h3 class="text-center homepage-quote page-subtitle">
           A room without a book is like a body without a soul
         </h3>
-        <button class="btn btn-dark btn-homepage btn-styles">Login</button>
-        <button class="btn btn-dark btn-homepage btn-styles">Sign Up</button>
+        {% if user.is_authenticated %}
+        <h3 class="text-center page-subtitle">
+          Welcome {{ user }}
+        </h3>
+        <a href="{% url 'my_books' %}">
+          <button class="btn btn-homepage btn-styles">My Books</button>
+        </a>
+        {% else %}
+        <a href="{% url 'account_login' %}"><button class="btn btn-homepage btn-styles">Login</button></a>
+        <a href="{% url 'account_signup' %}"><button class="btn btn-homepage mt-3 btn-styles">Sign Up</button></a>
+        {% endif %}
       </div>
     </div>
   </div>

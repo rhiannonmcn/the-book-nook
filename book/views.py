@@ -47,6 +47,7 @@ class BookList(ListView):
         book_approved=True).order_by('-book_created_on')
     template_name = 'book/bookshelf.html'
     paginate_by = 18
+    context_object_name = 'bookshelf'
 
     def get_queryset(self):
         """_summary_
@@ -55,7 +56,7 @@ class BookList(ListView):
             _type_: _description_
         """
         name = self.request.GET.get('search', '')
-        object_list = Book.objects.all()
+        object_list = Book.objects.filter(book_approved=True)
         if name:
             object_list = object_list.filter(
                 Q(title__icontains=name) | Q(book_author__icontains=name)
@@ -258,11 +259,12 @@ class MyBooks(LoginRequiredMixin, CreateView):
         username = request.user
         user_fav = Book.objects.filter(book_favourites=request.user)
         user_review = BookReview.objects.filter(review_username=username)
-        return render(request, 'book/my_books.html', {
-            'user_fav': user_fav,
-            'user_review': user_review,
-            'username': username,
-        })
+        return render(
+            request, 'book/my_books.html', {
+                'user_fav': user_fav,
+                'user_review': user_review,
+                'username': username,
+            })
 
 
 class EditReview(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
@@ -273,8 +275,7 @@ class EditReview(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
         LoginRequiredMixin (_type_): _description_
         UpdateView (_type_): _description_
     """
-    
-    
+
     model = BookReview
     fields = [
         'review_detail',
@@ -282,21 +283,18 @@ class EditReview(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     template_name = 'book/edit_review.html'
     success_url = reverse_lazy('my_books')
     success_message = "You have updated your review and it has been flagged for approval!"
-    
-    
-    
+
     def get_context_data(self, **kwargs):
         """_summary_
 
         Returns:
             _type_: _description_
         """
-        context = super().get_context_data(**kwargs)        
-        context['book_title']=self.object.book_listing
-        
+        context = super().get_context_data(**kwargs)
+        context['book_title'] = self.object.book_listing
+
         return context
 
-    
     def form_valid(self, form):
         form.instance.review_approved = False
         form.save()
@@ -316,20 +314,19 @@ class DeleteReview(SuccessMessageMixin, LoginRequiredMixin, DeleteView):
     """
     model = BookReview
     success_url = reverse_lazy('my_books')
-    success_message = "Review deleted!"
+    success_message = "Review successfully deleted!"
     template_name = 'book/delete_review.html'
-    
+
     def get_context_data(self, **kwargs):
         """_summary_
 
         Returns:
             _type_: _description_
         """
-        context = super().get_context_data(**kwargs)        
-        context['book_title']=self.object.book_listing
-        context['review_detail']=self.object.review_detail
+        context = super().get_context_data(**kwargs)
+        context['book_title'] = self.object.book_listing
+        context['review_detail'] = self.object.review_detail
         context['user'] = self.object.review_username
         context['date'] = self.object.review_created_on
-        
+
         return context
-        

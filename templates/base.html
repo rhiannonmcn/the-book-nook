@@ -93,6 +93,13 @@
               <li class="nav-item">
                 <a class="nav-link" href="#">Contact</a>
               </li>
+              {% if user.is_authenticated %}
+              <li class="nav-item user-nav-item">
+                <a class="nav-link" href="{% url 'my_books' %}"
+                  ><i class="fa-solid fa-book-open icon-lg"></i> {{ user }}</a
+                >
+              </li>
+              {% endif %}
             </ul>
           </div>
         </div>
@@ -101,7 +108,22 @@
 
     <!-- Messages-->
     {% if messages %} {% for message in messages %}
-    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+    <div class="row justify-content-center">
+      <div class="col col-md-8">
+        <div
+          class="alert mt-3 alert{{ message.tag }} text-center alert-dismissible fade show user-alert"
+        >
+          {{ message }}
+          <button
+            type="button"
+            class="btn-close user-alert"
+            data-bs-dismiss="alert"
+            aria-label="Close"
+          ></button>
+        </div>
+      </div>
+    </div>
+
     {% endfor %} {% endif %}
 
     <!--Page Content-->
