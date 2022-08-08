@@ -29,6 +29,12 @@ body {
   flex-direction: column;
 }
 
+.user-alert{
+  background-color: var(--irresistable);
+  color:var(--seashell);
+}
+
+
 /* Any sections that need the lighter color background */
 .bg-seashell {
   background-color: var(--seashell);
@@ -293,6 +299,14 @@ footer {
   color: #e84610;
   background: transparent;
   border: none;
+}
+
+.alert-link a{
+  color:var(--seashell);
+}
+
+.alert-link a:hover{
+  color:var(--mediumPurple);
 }
 
 /* Log In Styles */
