@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, reverse
-from django.views.generic import View, CreateView, ListView, UpdateView, DeleteView
+from django.views.generic import View, CreateView, ListView, UpdateView, DeleteView, FormView
 from django.http import HttpResponseRedirect
 from django.db.models import Q
 from django.utils.text import slugify
@@ -8,7 +8,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.contrib import messages
 from .models import Book, BookReview, Genre
-from .forms import AddBookForm, BookForm
+from .forms import AddBookForm, BookForm, ContactForm
 
 
 class HomeList(ListView):
@@ -330,3 +330,18 @@ class DeleteReview(SuccessMessageMixin, LoginRequiredMixin, DeleteView):
         context['date'] = self.object.review_created_on
 
         return context
+    
+
+class Contact(SuccessMessageMixin, FormView ):
+    """_summary_
+
+    Args:
+        CreateView (_type_): _description_
+    """
+    
+    template_name = 'contact.html'
+    form_class = ContactForm
+    success_url=reverse_lazy('contact')
+    success_message='Thank you, your message has been sent and someone will be in contact with you as soon as possible!'
+
+
