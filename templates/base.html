@@ -93,6 +93,13 @@
               <li class="nav-item">
                 <a class="nav-link" href="#">Contact</a>
               </li>
+              {% if user.is_authenticated %}
+              <li class="nav-item user-nav-item">
+                <a class="nav-link" href="{% url 'my_books' %}"
+                  ><i class="fa-solid fa-book-open icon-lg"></i>  {{ user }}</a
+                >
+              </li>
+              {% endif %}
             </ul>
           </div>
         </div>

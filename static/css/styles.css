@@ -115,6 +115,15 @@ a:hover {
   transform: scale(1.1);
 }
 
+.user-nav-item {
+  background-color: var(--irresistable);
+  border-radius: 2px;;
+}
+
+.user-nav-item p{
+  color:var(--seashell);
+}
+
 /*Footer Styles */
 
 footer {
