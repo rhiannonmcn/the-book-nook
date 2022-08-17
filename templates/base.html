@@ -47,6 +47,14 @@
     <!--styesheet link-->
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
 
+    <!--Emailjs link and initialisation script-->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init('lauwE--GbIW5Ohr0M');
+        })();
+    </script>
+
     <title>Document</title>
   </head>
   <body>
@@ -91,7 +99,7 @@
               </li>
               {% endif %}
               <li class="nav-item">
-                <a class="nav-link" href="#">Contact</a>
+                <a class="nav-link" href="{% url 'contact' %}">Contact</a>
               </li>
               {% if user.is_authenticated %}
               <li class="nav-item user-nav-item">
@@ -201,6 +209,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+    <!-- Script for owl carousel initilisation and settings-->
     <script>
       $(".owl-carousel").owlCarousel({
         loop: true,
@@ -223,5 +232,11 @@
         },
       });
     </script>
+    <!--Script for emailjs contact form-->
+    <script type="text/javascript">
+      document.getElementById('contact-form').addEventListener('submit', function(){
+        emailjs.sendForm('service_d8hp71m', 'template_so1j2dk', '#contact-form')
+      });
+  </script>
   </body>
 </html>
