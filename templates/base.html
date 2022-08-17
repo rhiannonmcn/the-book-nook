@@ -47,14 +47,12 @@
     <!--styesheet link-->
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
 
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"
-    ></script>
+    <!--Emailjs link and initialisation script-->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script type="text/javascript">
-      (function () {
-        emailjs.init("lauwE--GbIW5Ohr0M");
-      })();
+        (function() {
+            emailjs.init('lauwE--GbIW5Ohr0M');
+        })();
     </script>
 
     <title>Document</title>
@@ -101,7 +99,7 @@
               </li>
               {% endif %}
               <li class="nav-item">
-                <a class="nav-link" href="#">Contact</a>
+                <a class="nav-link" href="{% url 'contact' %}">Contact</a>
               </li>
               {% if user.is_authenticated %}
               <li class="nav-item user-nav-item">
@@ -187,7 +185,6 @@
     </footer>
 
     <!-- scripts-->
-    <script src="{% static 'js/script.js' %}"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
       integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
@@ -212,6 +209,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+    <!-- Script for owl carousel initilisation and settings-->
     <script>
       $(".owl-carousel").owlCarousel({
         loop: true,
@@ -234,5 +232,11 @@
         },
       });
     </script>
+    <!--Script for emailjs contact form-->
+    <script type="text/javascript">
+      document.getElementById('contact-form').addEventListener('submit', function(){
+        emailjs.sendForm('service_d8hp71m', 'template_so1j2dk', '#contact-form')
+      });
+  </script>
   </body>
 </html>

@@ -343,5 +343,3 @@ class Contact(SuccessMessageMixin, FormView ):
     form_class = ContactForm
     success_url=reverse_lazy('contact')
     success_message='Thank you, your message has been sent and someone will be in contact with you as soon as possible!'
-
-
