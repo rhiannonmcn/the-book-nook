@@ -1,11 +1,15 @@
-# **The Book Nook - Project Portfolio 4 - Javascript**
+# **The Book Nook - Project Portfolio 4 **
+The Book Nook is a Book Search and Review website, for users who would like to look up book reviews to help them decide their nexxt book, and in turn to leave reviews on books to help others.
+
+
+You can view the live site here - <a href="https://rhi-book-nook.herokuapp.com/" target="_blank"> The Book Nook </a>
 
 # Contents
 
 * [Objective](<#objective>) 
 * [User Experience](<#user-experience-ux>)
     * [Site Aims](<#site-aims>)
-    * [User Stories](<#user-stories>)
+    * [Agile Methodology](<#agile-methodology>)
     * [Design Wireframes](<#design-wireframes>)
     * [Site Structure](<#site-structure>)
     * [Design Choices](<#design-choices>)
@@ -19,6 +23,7 @@
 
 # Objective
 
+The aim of this site is to deliver an interactive website that users can engage with via a user log in system to acess a book database in which they can engage with to leave and edit their reviews, search books, bookmark their favourite books, and upload books that may not be in the database.
 
 [Back to top](<#contents>)
 
@@ -27,7 +32,44 @@
 ## Site Aims
 
 
-## User Stories
+## Agile Methodology
+
+The Agile Methodology was used to plan this project. This was implemented through Github and the Project Board which can be seen here -  <a href="https://github.com/users/rhiannonmcn/projects/6" target="_blank"> The Book Nook Project </a>
+
+Through the use of the Kanban board in the projects view in Github, the project was divived into a few different sections:
+* Backlog
+* Current Iteration
+* In Progress
+* Done
+
+Github issues were used to create User Stories and any other Fixes or Updates for the project. This was where the project user was assigned, labels were added to provide clarity, and the story was added to the appropriate Iteration and the project. Each User Story, Fix or Update had a clear title, acceptance criteria and smaller tasks (if appropriate). 
+
+Milestones were used to create Iterations. There were 3 Iterations each dated appropriately. User Stories were completed based on the current Iteration that was in progress. Each Iteration was completed on time.
+
+Development branches were used to complete User Stories. This offered a greater level of control in developing the various aspects of the website. Certain User Stories could also be grouped together and worked on in one development branch. Once the User Stories were completed within the branch and the deveoplment branch was up to date with code pushed, a pull request was created. Using the **Closes #User-Story-number** keyword, the various in progress User Story issues that were being worked on would automatically be closed when the pull request was merged with the main branch. The development branch would then be deleted and a new one created with a new set of user story/ies to be worked on.
+
+### User Stories
+
+**Iteration 1**
+* As a **user**  I can **easily see the purpose of this website on the home page** so that **I can easily navigate it**
+* As a **user**  I can **view a list of book genres** so that **so that I can see a list of book reviews in a genre I am currently in**
+* As a **user**  I can **view a paginated list of books* so that **I can view book reviews easily**
+* As a **user**  I can **save books** so that **that I can have a list of books I want to read in the future**
+* As a **user**  I can **create a review for a book** so that **so that I can let other's know what I thought of the book**
+* As a **site admin**  I can **add a book listing** so that **users can review a book that isn't already on the website**
+* As a **user**  I can **see a list of books already reviewed by all users** so that **I can find a new book to read**
+* As a **user**  I can **register an account** so that **so that I can review books I have read and save books I want to read**
+* As a **user**  I can **choose the category for a book I upload** so that **the book is easily searchable**
+* As a **site admin**  I can **approve or decline reviews and book listings made** so that **I can filter out ingenuine reviews or duplicate book records**
+
+**Iteration 2**
+* As a **user**  I can **fill out a contact form** so that **so that I can easily contact**
+* As a **user**  I can **update and delete reviews I have already made** so that **I can have control over content I have posted**
+* As a **user**  I can **save books** so that **I can easily see books of interest to me**
+* As a **user**  I can **see my book reviews, username and liked books on a profile page** so that **I can easily keep track of my activity on the site**
+* As a **user**  I can **see reviews I have made** so that **I can edit, update or delete my reviews**
+* As a **user**  I can **search the website for books** so that **so I can easily find book lisitings**
+* As a **user**  I can **add book listings** so that **review a book that isn't already in the database**
 
 
 ## Design Wireframes
@@ -102,11 +144,27 @@
 
 ## Database Schema
 
+![Database Schema](docs/database/database-schema.jpg)
 
 ## Site Structure
 
+The Book Nook website consists of 5 pages visible from the navigation bar, the categories page which is only accessible from the home page and with another form page only acessible by adding a book to the database. 
+
+The Home page, Bookshelf, Login, Signup and Contact pages can be accessed by all users. Once a user logs in or signsup they have access to the My Books page. The Signup page is removed from the navbar once the user logs in and the log in page is changed to a log out page.
+
 
 ## Design Choices
+
+### Color Scheme
+The final color scheme chosen was a rich dark red with warm cream whites and a magenta and bright purple used as highlights. The main colors were chosen after a lot of research into colors associated with books and reading, with the rich red a color often used in valuable, rich and old books and the cream whites a nod to the parchment color of the pages of books. The magenta and purple colors modernise it a bit
+
+![Site colour scheme](docs/images/color-scheme.png)
+
+### Typography
+
+One font was chosen for this website and that was Courier Prime. Courier Prime is a serif font that looks like a typewriter font, again a nod to the printed word in books.
+
+This gives a very vintage feel to the project but ties in nicely with the color scheme and theme and with the use of letter spacing it slightly modernises the look of the font.
 
 
 [Back to top](<#contents>)
