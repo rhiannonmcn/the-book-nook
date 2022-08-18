@@ -10,7 +10,7 @@
     <div class="row justify-content-center">
       <div class="col-12 col-sm-10">
         <div class="row">
-          <div class="col-12 col-sm-6 col-md-8 mt-4 ">
+          <div class="col-12 col-sm-6 col-md-8 mt-4 mb-4 ">
             <form method="GET" action="">
               {% csrf_token %}
               <input
@@ -27,11 +27,13 @@
               </button></a>
             </form>
           </div>
-          <div class="col-12 col-sm-6 col-md-4 mt-4 d-flex justify-content-center ">
+          {% if user.is_authenticated %}
+          <div class="col-12 col-sm-6 col-md-4 mt-4 mb-4 d-flex justify-content-center ">
             <a href="{% url 'add_book' %}"
               ><button class="btn btn-styles mb-5">Add a Book</button></a
             >
           </div>
+          {% endif %}
         </div>
       </div>
     </div>
