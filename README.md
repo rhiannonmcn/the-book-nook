@@ -147,6 +147,10 @@ Development branches were used to complete User Stories. This offered a greater 
 
 ## Site Structure
 
+The Book Nook website consists of 5 pages visible from the navigation bar, the categories page which is only accessible from the home page and with another form page only acessible by adding a book to the database. 
+
+The Home page, Bookshelf, Login, Signup and Contact pages can be accessed by all users. Once a user logs in or signsup they have access to the My Books page. The Signup page is removed from the navbar once the user logs in and the log in page is changed to a log out page.
+
 
 ## Design Choices
 
