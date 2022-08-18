@@ -144,6 +144,7 @@ Development branches were used to complete User Stories. This offered a greater 
 
 ## Database Schema
 
+![Database Schema](docs/database/database-schema.jpg)
 
 ## Site Structure
 
@@ -153,6 +154,17 @@ The Home page, Bookshelf, Login, Signup and Contact pages can be accessed by all
 
 
 ## Design Choices
+
+### Color Scheme
+The final color scheme chosen was a rich dark red with warm cream whites and a magenta and bright purple used as highlights. The main colors were chosen after a lot of research into colors associated with books and reading, with the rich red a color often used in valuable, rich and old books and the cream whites a nod to the parchment color of the pages of books. The magenta and purple colors modernise it a bit
+
+![Site colour scheme](docs/images/color-scheme.png)
+
+### Typography
+
+One font was chosen for this website and that was Courier Prime. Courier Prime is a serif font that looks like a typewriter font, again a nod to the printed word in books.
+
+This gives a very vintage feel to the project but ties in nicely with the color scheme and theme and with the use of letter spacing it slightly modernises the look of the font.
 
 
 [Back to top](<#contents>)
