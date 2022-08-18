@@ -9,6 +9,7 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 from .models import Book, BookReview, Genre
 from .forms import AddBookForm, BookForm, ContactForm
+from django.contrib.auth.mixins import UserPassesTestMixin
 
 
 class HomeList(ListView):
@@ -74,6 +75,7 @@ class AddBook(CreateView):
     form_class = AddBookForm
     queryset = Book.objects.all()
     get_context_object_name = 'book_form'
+    success_message = "You have added a book listing and it has been flagged for approval!"
 
     def form_valid(self, form):
         """_summary_
@@ -343,3 +345,41 @@ class Contact(SuccessMessageMixin, FormView ):
     form_class = ContactForm
     success_url=reverse_lazy('contact')
     success_message='Thank you, your message has been sent and someone will be in contact with you as soon as possible!'
+    
+
+class AdminOnly(UserPassesTestMixin, View):
+    """_summary_
+
+    Args:
+        View (_type_): _description_
+    """
+    def test_func(self):
+        """_summary_
+
+        Returns:
+            _type_: _description_
+        """
+        return self.request.user.is_superuser
+
+    def get(self, request, *args, **kwargs):
+        """_summary_
+
+        Args:
+            request (_type_): _description_
+
+        Returns:
+            _type_: _description_
+        """
+
+
+        for_approval = Book.objects.filter(book_approved=False).order_by('-book_created_on')
+        reviews = BookReview.objects.filter(review_approved=False).order_by('-review_created_on')
+
+        return render(
+            request,
+            'approvals.html',
+            {
+                'for_approval': for_approval,
+                'reviews':reviews
+            },
+        )

@@ -1,0 +1,109 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+
+<!--Books for Approval-->
+<section class="pt-5 pb-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-10">
+      <h2 class="page-subtitle text-center">Books for Approval</h2>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    {% for book in for_approval %}
+    <div class="card mt-4 col-12 col-md-8">
+      <div class="card-body">
+        <div class="review-heading row py-2">
+          <div class="col-12 col-md-6">
+            <h4>{{ book.title }}</h4>
+            <h4>by {{ book.book_author }}</h3>
+                <p>{{ book.book_created_on }}</p>
+            <p> {{ book.book_genre}}</p>
+          </div>
+          <div class="col-12 col-md-6 d-flex justify-content-center">
+            {% if "placeholder" in book.book_image.url %}
+            <img class="img-approval"
+                src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg"
+                alt="{{ book.title }} by {{ book.book_author }} book listing with no book cover"
+            />
+            {% else %}
+            <img class="img-approval"
+                src=" {{ book.book_image.url }}"
+                alt="{{ book.title }} by {{ book.book_author }} book listing"
+            />
+            {% endif %}     
+          </div>
+        </div>
+        <div class="row">
+          <div class="review-body col-12">
+            <p class="p-bold">Blurb:</p>
+            <p>{{ book.book_blurb | linebreaks}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <a href="#">
+              <button class="btn btn-styles mt-2 me-4">Approve</button>
+            </a>
+            <a href="#">
+              <button class="btn btn-styles mt-2 me-4">Update</button>
+            </a>
+            <a href="#">
+              <button class="btn btn-styles mt-2">Delete</button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% empty %}
+    <div class="col-12 col-md-8">
+      <h3>No books for approval</h3>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- Reviews for Approval -->
+<section class="bg-seashell pt-5 pb-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-10">
+      <h2 class="page-subtitle text-center">Reviews for Approval</h2>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    {% for review in reviews %}
+    <div class="card mt-4 col-12 col-md-8">
+      <div class="card-body">
+        <div class="review-heading row py-2">
+          <div class="col-12 col-md-6">
+            <h4>{{ review.review_username }}</h4>
+          </div>
+          <div class="col-12 col-md-6">
+            <p>{{ review.review_created_on }}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="review-body col-12">
+            <p class="p-bold">reviewed:</p>
+            <p>{{ review.review_detail | linebreaks}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col d-flex align-items-center">
+            <a href="#">
+              <button class="btn btn-styles me-4">Approve</button>
+            </a>
+            <a href="{% url 'delete_review' review.pk %}">
+              <button class="btn btn-styles">Delete</button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% empty %}
+    <div class="col-12 col-md-8">
+      <h3>No reviews for approval</h3>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% endblock %}
