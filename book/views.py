@@ -362,7 +362,7 @@ class AdminOnly(UserPassesTestMixin, ListView):
         """
         return self.request.user.is_superuser
 
-    template_name = 'approvals.html'
+    template_name = 'admin_only.html'
     model = Book
     queryset = Book.objects.filter(
         book_approved=False).order_by('-book_created_on')
@@ -429,3 +429,19 @@ class DeleteBook(SuccessMessageMixin, DeleteView):
     model = Book
     success_url = reverse_lazy('admin_only')
     success_message = "Book successfully deleted!"
+    
+    
+class DeleteReviewAdmin(SuccessMessageMixin, DeleteView):
+    """_summary_
+
+    Args:
+        SuccessMessageMixin (_type_): _description_
+        LoginRequiredMixin (_type_): _description_
+        generic (_type_): _description_
+
+    Returns:
+        _type_: _description_
+    """
+    model = BookReview
+    success_url = reverse_lazy('admin_only')
+    success_message = "Book Review successfully deleted!"

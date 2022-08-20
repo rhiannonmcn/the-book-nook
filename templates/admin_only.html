@@ -114,7 +114,7 @@
                 {% csrf_token %}
               <button class="btn btn-styles me-4">Approve</button>
             </form>
-            <form action="#" method="post">
+            <form action="{% url 'delete_review_admin' review.pk %}" method="post">
                 {% csrf_token %}
               <button class="btn btn-styles">Delete</button>
             </form>
