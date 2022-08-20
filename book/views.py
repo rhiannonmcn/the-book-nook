@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views.generic import View, CreateView, ListView, UpdateView, DeleteView, FormView
 from django.http import HttpResponseRedirect
 from django.db.models import Q
@@ -73,9 +73,14 @@ class AddBook(CreateView):
     """
     template_name = 'book/add_book.html'
     form_class = AddBookForm
-    queryset = Book.objects.all()
-    get_context_object_name = 'book_form'
-    success_message = "You have added a book listing and it has been flagged for approval!"
+    
+    def get_success_url(self):
+        """_summary_
+
+        Returns:
+            _type_: _description_
+        """
+        return reverse('book_shelf')
 
     def form_valid(self, form):
         """_summary_
@@ -86,18 +91,11 @@ class AddBook(CreateView):
         Returns:
             _type_: _description_
         """
-        form = AddBookForm(self.request.POST, self.request.FILES)
         form = form.save(commit=False)
+        messages.success(self.request, 'You have added a new book and it has been flagged for approval!')
         form.slug = slugify(form.title + "-" + form.book_author)
-        return (super().form_valid(form))
-
-    def get_success_url(self):
-        """_summary_
-
-        Returns:
-            _type_: _description_
-        """
-        return reverse('book_shelf')
+        return super().form_valid(form)
+    
 
 
 class BookDetails(View):
@@ -383,3 +381,49 @@ class AdminOnly(UserPassesTestMixin, View):
                 'reviews':reviews
             },
         )
+
+
+class EditBookListing(SuccessMessageMixin, UpdateView):
+
+    model = Book
+    fields = [
+        'title', 'book_author', 'book_blurb', 'book_genre',
+    ]
+    template_name = 'approve_book.html'
+    success_url = reverse_lazy('admin_only')
+    success_message = "You approved the book"
+
+    def form_valid(self, form):
+        form.instance.book_approved = True
+        form.save()
+        return super().form_valid(form)
+    
+
+class ApproveReview(SuccessMessageMixin, UpdateView):
+    
+    model = BookReview 
+    fields = ['review_approved',]
+    success_url = reverse_lazy('admin_only')
+    success_message = "You approved the review"
+    
+    def form_valid(self, form):
+        form.instance.review_approved = True
+        form.save()
+        return super().form_valid(form)
+    
+class DeleteBook(SuccessMessageMixin, DeleteView):
+    """_summary_
+
+    Args:
+        SuccessMessageMixin (_type_): _description_
+        LoginRequiredMixin (_type_): _description_
+        generic (_type_): _description_
+
+    Returns:
+        _type_: _description_
+    """
+    model = Book
+    success_url = reverse_lazy('admin_only')
+    success_message = "Book successfully deleted!"
+
+    

@@ -40,6 +40,12 @@ body {
   background-color: var(--seashell);
 }
 
+/* Any element that needs a font-color */
+
+.irresistable{
+  color:var(--irresistable);
+}
+
 /* Any icons that need the lighter color */
 .icon-lg {
   color: var(--linen);
