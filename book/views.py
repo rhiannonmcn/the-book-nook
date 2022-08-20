@@ -347,43 +347,6 @@ class Contact(SuccessMessageMixin, FormView):
     success_message = 'Thank you, your message has been sent and someone will be in contact with you as soon as possible!'
 
 
-# class AdminOnly(UserPassesTestMixin, View):
-#     """_summary_
-
-#     Args:
-#         View (_type_): _description_
-#     """
-#     def test_func(self):
-#         """_summary_
-
-#         Returns:
-#             _type_: _description_
-#         """
-#         return self.request.user.is_superuser
-
-#     def get(self, request, *args, **kwargs):
-#         """_summary_
-
-#         Args:
-#             request (_type_): _description_
-
-#         Returns:
-#             _type_: _description_
-#         """
-
-#         for_approval = Book.objects.filter(book_approved=False).order_by('-book_created_on')
-#         reviews = BookReview.objects.filter(review_approved=False).order_by('-review_created_on')
-
-#         return render(
-#             request,
-#             'approvals.html',
-#             {
-#                 'for_approval': for_approval,
-#                 'reviews':reviews
-#             },
-#         )
-
-
 class AdminOnly(UserPassesTestMixin, ListView):
     """_summary_
 
@@ -399,7 +362,7 @@ class AdminOnly(UserPassesTestMixin, ListView):
         """
         return self.request.user.is_superuser
 
-    template_name = 'approvals.html'
+    template_name = 'admin_only.html'
     model = Book
     queryset = Book.objects.filter(
         book_approved=False).order_by('-book_created_on')
@@ -466,3 +429,19 @@ class DeleteBook(SuccessMessageMixin, DeleteView):
     model = Book
     success_url = reverse_lazy('admin_only')
     success_message = "Book successfully deleted!"
+    
+    
+class DeleteReviewAdmin(SuccessMessageMixin, DeleteView):
+    """_summary_
+
+    Args:
+        SuccessMessageMixin (_type_): _description_
+        LoginRequiredMixin (_type_): _description_
+        generic (_type_): _description_
+
+    Returns:
+        _type_: _description_
+    """
+    model = BookReview
+    success_url = reverse_lazy('admin_only')
+    success_message = "Book Review successfully deleted!"
