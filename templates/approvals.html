@@ -1,0 +1,134 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+
+<!--Books for Approval-->
+<section class="pt-5 pb-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-10">
+      <h2 class="page-subtitle text-center">Books for Approval</h2>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    {% for book in for_approval %}
+    <div class="card mt-4 col-12 col-md-8">
+      <div class="card-body">
+        <div class="review-heading row py-2">
+          <div class="col-12 col-md-6">
+            <h4>{{ book.title }}</h4>
+            <h4 class="irresistable">by {{ book.book_author }}</h3>
+                <p>{{ book.book_created_on }}</p>
+            <p> {{ book.book_genre}}</p>
+          </div>
+          <div class="col-12 col-md-6 d-flex justify-content-center">
+            {% if "placeholder" in book.book_image.url %}
+            <img class="img-approval"
+                src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg"
+                alt="{{ book.title }} by {{ book.book_author }} book listing with no book cover"
+            />
+            {% else %}
+            <img class="img-approval"
+                src=" {{ book.book_image.url }}"
+                alt="{{ book.title }} by {{ book.book_author }} book listing"
+            />
+            {% endif %}     
+          </div>
+        </div>
+        <div class="row">
+          <div class="review-body col-12">
+            <p class="p-bold irresistable">Blurb:</p>
+            <p>{{ book.book_blurb | linebreaks}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col d-flex">
+
+            <form action=" {% url 'edit_book_listing' book.pk %}" method="get">
+                {% csrf_token %}
+            <button id="approve-review" class="btn btn-styles me-4">Approve</button>
+            </form>
+
+            <form action="{% url 'delete_book_admin' book.pk %}" method="post">
+                {% csrf_token %}
+              <button class="btn btn-styles">Delete</button>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    {% empty %}
+    <div class="col-12 col-md-8">
+      <h3>No books for approval</h3>
+    </div>
+    {% endfor %}
+  </div>
+  {% if is_paginated %}
+      <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+          {% if page_obj.has_previous %}
+          <li>
+            <a
+              href="?page={{ page_obj.previous_page_number }}"
+              class="page-link"
+              >&laquo; PREV
+            </a>
+          </li>
+          {% endif %} {% if page_obj.has_next %}
+          <li>
+            <a href="?page={{ page_obj.next_page_number }}" class="page-link">
+              NEXT &raquo;</a
+            >
+          </li>
+          {% endif %}
+        </ul>
+      </nav>
+      {% endif %}
+</section>
+
+<!-- Reviews for Approval -->
+<section class="bg-seashell pt-5 pb-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-10">
+      <h2 class="page-subtitle text-center">Reviews for Approval</h2>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    {% for review in reviews %}
+    <div class="card mt-4 col-12 col-md-8">
+      <div class="card-body">
+        <div class="review-heading row py-2">
+          <div class="col-12 col-md-6">
+            <h4>{{ review.review_username }}</h4>
+          </div>
+          <div class="col-12 col-md-6">
+            <p>{{ review.review_created_on }}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="review-body col-12">
+            <p class="p-bold">reviewed:</p>
+            <p>{{ review.review_detail | linebreaks}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col d-flex align-items-center">
+            <form action="{% url 'approve_review' review.pk %}" method="post">
+                {% csrf_token %}
+              <button class="btn btn-styles me-4">Approve</button>
+            </form>
+            <form action="#" method="post">
+                {% csrf_token %}
+              <button class="btn btn-styles">Delete</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% empty %}
+    <div class="col-12 col-md-8">
+      <h3>No reviews for approval</h3>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% endblock %}

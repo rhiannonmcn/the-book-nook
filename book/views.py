@@ -9,6 +9,8 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 from .models import Book, BookReview, Genre
 from .forms import AddBookForm, BookForm, ContactForm
+from django.contrib.auth.mixins import UserPassesTestMixin
+
 
 
 class HomeList(ListView):
@@ -72,8 +74,14 @@ class AddBook(CreateView):
     """
     template_name = 'book/add_book.html'
     form_class = AddBookForm
-    queryset = Book.objects.all()
-    get_context_object_name = 'book_form'
+
+    def get_success_url(self):
+        """_summary_
+
+        Returns:
+            _type_: _description_
+        """
+        return reverse('book_shelf')
 
     def form_valid(self, form):
         """_summary_
@@ -84,18 +92,12 @@ class AddBook(CreateView):
         Returns:
             _type_: _description_
         """
-        form = AddBookForm(self.request.POST, self.request.FILES)
         form = form.save(commit=False)
+        messages.success(
+            self.request,
+            'You have added a new book and it has been flagged for approval!')
         form.slug = slugify(form.title + "-" + form.book_author)
-        return (super().form_valid(form))
-
-    def get_success_url(self):
-        """_summary_
-
-        Returns:
-            _type_: _description_
-        """
-        return reverse('book_shelf')
+        return super().form_valid(form)
 
 
 class BookDetails(View):
@@ -330,16 +332,137 @@ class DeleteReview(SuccessMessageMixin, LoginRequiredMixin, DeleteView):
         context['date'] = self.object.review_created_on
 
         return context
-    
 
-class Contact(SuccessMessageMixin, FormView ):
+
+class Contact(SuccessMessageMixin, FormView):
     """_summary_
 
     Args:
         CreateView (_type_): _description_
     """
-    
+
     template_name = 'contact.html'
     form_class = ContactForm
-    success_url=reverse_lazy('contact')
-    success_message='Thank you, your message has been sent and someone will be in contact with you as soon as possible!'
+    success_url = reverse_lazy('contact')
+    success_message = 'Thank you, your message has been sent and someone will be in contact with you as soon as possible!'
+
+
+# class AdminOnly(UserPassesTestMixin, View):
+#     """_summary_
+
+#     Args:
+#         View (_type_): _description_
+#     """
+#     def test_func(self):
+#         """_summary_
+
+#         Returns:
+#             _type_: _description_
+#         """
+#         return self.request.user.is_superuser
+
+#     def get(self, request, *args, **kwargs):
+#         """_summary_
+
+#         Args:
+#             request (_type_): _description_
+
+#         Returns:
+#             _type_: _description_
+#         """
+
+#         for_approval = Book.objects.filter(book_approved=False).order_by('-book_created_on')
+#         reviews = BookReview.objects.filter(review_approved=False).order_by('-review_created_on')
+
+#         return render(
+#             request,
+#             'approvals.html',
+#             {
+#                 'for_approval': for_approval,
+#                 'reviews':reviews
+#             },
+#         )
+
+
+class AdminOnly(UserPassesTestMixin, ListView):
+    """_summary_
+
+    Args:
+        View (_type_): _description_
+    """
+
+    def test_func(self):
+        """_summary_
+
+        Returns:
+            _type_: _description_
+        """
+        return self.request.user.is_superuser
+
+    template_name = 'approvals.html'
+    model = Book
+    queryset = Book.objects.filter(
+        book_approved=False).order_by('-book_created_on')
+    context_object_name = 'for_approval'
+    paginate_by = 3
+
+    def get_context_data(self, **kwargs):
+        """_summary_
+
+        Returns:
+            _type_: _description_
+        """
+        context = super().get_context_data(**kwargs)
+        context['reviews'] = BookReview.objects.filter(
+            review_approved=False).order_by('-review_created_on')
+        return context
+
+
+class EditBookListing(SuccessMessageMixin, UpdateView):
+
+    model = Book
+    fields = [
+        'title',
+        'book_author',
+        'book_blurb',
+        'book_genre',
+    ]
+    template_name = 'approve_book.html'
+    success_url = reverse_lazy('admin_only')
+    success_message = "You approved the book"
+
+    def form_valid(self, form):
+        form.instance.book_approved = True
+        form.save()
+        return super().form_valid(form)
+
+
+class ApproveReview(SuccessMessageMixin, UpdateView):
+
+    model = BookReview
+    fields = [
+        'review_approved',
+    ]
+    success_url = reverse_lazy('admin_only')
+    success_message = "You approved the review"
+
+    def form_valid(self, form):
+        form.instance.review_approved = True
+        form.save()
+        return super().form_valid(form)
+
+
+class DeleteBook(SuccessMessageMixin, DeleteView):
+    """_summary_
+
+    Args:
+        SuccessMessageMixin (_type_): _description_
+        LoginRequiredMixin (_type_): _description_
+        generic (_type_): _description_
+
+    Returns:
+        _type_: _description_
+    """
+    model = Book
+    success_url = reverse_lazy('admin_only')
+    success_message = "Book successfully deleted!"
