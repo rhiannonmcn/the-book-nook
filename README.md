@@ -251,6 +251,16 @@ Each page, except the Home Page, has a clear heading when landing on the page. T
 
 ## Log Out Page
 
+![Log out page desktop](docs/images/logout-page-desktop.png)
+
+* The Log Out page can only be accessed from the navigation bar and only when the user is logged in.
+* The Log Out page has a button for users to confirm they wish to log out.
+* It uses django-allauth to provide all the settings for user authentication.
+* Styles are consistent with the rest of the website
+* The page is fully responsive
+
+![Log out page mobile](docs/images/logout-page-mobile.png)
+
 ## Bookshelf Page
 
 ### Create a Review
