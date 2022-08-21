@@ -29,11 +29,10 @@ body {
   flex-direction: column;
 }
 
-.user-alert{
+.user-alert {
   background-color: var(--irresistable);
-  color:var(--seashell);
+  color: var(--seashell);
 }
-
 
 /* Any sections that need the lighter color background */
 .bg-seashell {
@@ -42,8 +41,8 @@ body {
 
 /* Any element that needs a font-color */
 
-.irresistable{
-  color:var(--irresistable);
+.irresistable {
+  color: var(--irresistable);
 }
 
 /* Any icons that need the lighter color */
@@ -129,11 +128,11 @@ a:hover {
 
 .user-nav-item {
   background-color: var(--irresistable);
-  border-radius: 2px;;
+  border-radius: 2px;
 }
 
-.user-nav-item p{
-  color:var(--seashell);
+.user-nav-item p {
+  color: var(--seashell);
 }
 
 /*Footer Styles */
@@ -307,12 +306,12 @@ footer {
   border: none;
 }
 
-.alert-link a{
-  color:var(--seashell);
+.alert-link a {
+  color: var(--seashell);
 }
 
-.alert-link a:hover{
-  color:var(--mediumPurple);
+.alert-link a:hover {
+  color: var(--mediumPurple);
 }
 
 /* Log In Styles */
@@ -355,14 +354,14 @@ footer {
   color: var(--mediumPurple);
 }
 
-.approval-tag{
+.approval-tag {
   border-radius: 2px;
   background-color: var(--irresistable);
-  max-width:225px;
+  max-width: 225px;
 }
 
-.approval-tag p{
-  color:var(--seashell);
+.approval-tag p {
+  color: var(--seashell);
   font-size: 1rem;
   font-weight: 400;
 }
@@ -377,8 +376,18 @@ footer {
 
 /* Approvals styles */
 
-.img-approval{
- max-width:50%;
+.img-approval {
+  max-width: 50%;
+}
+
+/*Styles for 404 page */
+
+section#error{
+  height: 100vh;
+}
+
+.error-heading{
+  font-size:6rem;
 }
 
 @media screen and (min-width: 700px) {
