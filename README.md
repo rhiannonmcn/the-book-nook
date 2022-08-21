@@ -217,10 +217,8 @@ Each page, except the Home Page, has a clear heading when landing on the page. T
 
   ![Homepage Logged In](docs/images/homepage-logged-in.png)
 
- * Below the hero section is a carousel of books, intending to entice the user. The section is called Discover, and draws from the entire database of approved books in random order. If the user clicks on a book, the link brings the user to that books' page.
-
+ * Below the hero section is a carousel of books, intending to entice the user. The section is called Discover, and draws from the entire database of approved books and those with uploaded book images, in random order. If the user clicks on a book, the link brings the user to that books' page.
  * Below this, there is a Genre section. This is the only place the Book genres can be accessed. If the user clicks on a book genre, the user is brought to a page with that genres books listed in only.
-
  * Each section is fully responsive.
 
 ## Log In Page
@@ -263,11 +261,26 @@ Each page, except the Home Page, has a clear heading when landing on the page. T
 
 ## Bookshelf Page
 
+* The Bookshelf page can be accessed from the navigation bar. It can be accessed by both users who are and are not logged in.
+* If the user is not logged in, the Add Book button is not available. You can only add books if you are logged in.
+
+![Bookshelf page desktop - user not logged in](docs/images/bookshelf-desktop.png)
+
+* There is a search function, which searches the approved books in the database using two parameters; Title and Author. The enter button on the keyboard and the search button on the website can be used to trigger the search. To exit the search function, the X button can be clicked.
+* The Bookshelf contains a list of books that are approved and ordered by the date they were added. 
+* In mobile view, just the book image can be seen and in desktop view the title, author and start of the book blurb can be seen.
+* If a book is uploaded without an image, a placeholder image is set.
+* The book list is paginated once 12 listings are onscreen.
+* If a book listing is clicked, the user is brought to the Books' page.
+* The page is fully responsive
+
+![Bookshelf page mobile - user logged in](docs/images/bookshelf-mobile.png)
+
+## My Books Page
+
 ### Create a Review
 
 ### Bookmark a Book
-
-## My Books Page
 
 ### Update Review
 
