@@ -244,6 +244,10 @@ footer {
   max-width: 60%;
 }
 
+.mobile-hide {
+  display: none;
+}
+
 /* book.html */
 
 .book-title {
@@ -382,12 +386,21 @@ footer {
 
 /*Styles for 404 page */
 
-section#error{
+section#error {
   height: 100vh;
 }
 
-.error-heading{
-  font-size:6rem;
+.error-heading {
+  font-size: 6rem;
+}
+
+@media screen and (min-width: 350px) {
+
+  /* Bookshelf styles */
+
+  .mobile-hide {
+    display: block;
+  }
 }
 
 @media screen and (min-width: 700px) {

@@ -1,4 +1,6 @@
-{% extends "base.html" %} {% load static %} {% block content %}
+{% extends "base.html" %} {% load static %}{% block title %}
+<title>Admin Only</title>
+{% endblock %} {% block content %}
 
 <!--Books for Approval-->
 <section class="pt-5 pb-5">
@@ -21,7 +23,7 @@
           <div class="col-12 col-md-6 d-flex justify-content-center">
             {% if "placeholder" in book.book_image.url %}
             <img class="img-approval"
-                src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg"
+                src="https://res.cloudinary.com/ddhmc5wvm/image/upload/v1661075789/book-nook/images/bookworm-3.png"
                 alt="{{ book.title }} by {{ book.book_author }} book listing with no book cover"
             />
             {% else %}

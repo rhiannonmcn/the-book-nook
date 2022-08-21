@@ -1,4 +1,6 @@
-{% extends "base.html" %} {% load static %} {% block content %}
+{% extends "base.html" %} {% load static %} {% block title %}
+<title>Bookshelf</title>
+{% endblock %} {% block content %}
 
 <section id="bookshelf">
   <div class="row justify-content-center">
@@ -10,7 +12,7 @@
     <div class="row justify-content-center">
       <div class="col-12 col-sm-10">
         <div class="row">
-          <div class="col-12 col-sm-6 col-md-8 mt-4 mb-4 ">
+          <div class="col-12 col-sm-6 col-md-8 mt-4 mb-4">
             <form method="GET" action="">
               {% csrf_token %}
               <input
@@ -22,13 +24,16 @@
               <button type="submit" class="btn btn-styles" value="Search">
                 <i class="fa-solid fa-magnifying-glass icon-lg"></i>
               </button>
-              <a href="{% url 'book_shelf' %}"><button class="btn btn-styles" value="Search">
-                <i class="fa-solid fa-x icon-lg"></i>
-              </button></a>
+              <a href="{% url 'book_shelf' %}"
+                ><button class="btn btn-styles" value="Search">
+                  <i class="fa-solid fa-x icon-lg"></i></button
+              ></a>
             </form>
           </div>
           {% if user.is_authenticated %}
-          <div class="col-12 col-sm-6 col-md-4 mt-4 mb-4 d-flex justify-content-center ">
+          <div
+            class="col-12 col-sm-6 col-md-4 mt-4 mb-4 d-flex justify-content-center"
+          >
             <a href="{% url 'add_book' %}"
               ><button class="btn btn-styles mb-5">Add a Book</button></a
             >
@@ -49,18 +54,20 @@
       <div class="row">
         <!-- Book Entries -->
         <div class="col-12">
-          <div class="row">
+          <div class="row mb-2">
             {% for book in bookshelf %}
-            <div class="col-4 col-sm-4 col-md-2">
+            <div class="col-4 col-sm-4 col-md-2 mb-2">
               <div class="card">
                 <div class="card-body book-listing-body">
                   <a href="{% url 'book_detail' book.slug %}">
                     {% if "placeholder" in book.book_image.url %}
                     <img
-                      class="card-img-top"
-                      src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg"
+                      class="card-img-top mobile-hide"
+                      src="https://res.cloudinary.com/ddhmc5wvm/image/upload/v1661075789/book-nook/images/bookworm-3.png"
                       alt="{{ book.title }} by {{ book.book_author }} book listing with no book cover"
                     />
+                    <p class="text-center p-bold">{{ book.title }}</p>
+
                     {% else %}
                     <img
                       class="card-img-top"
@@ -81,7 +88,7 @@
             </div>
             {% if forloop.counter|divisibleby:6 %}
           </div>
-          <div class="row">
+          <div class="row mb-2">
             {% endif %} {% empty %}
             <div class="col-12 col-md-8">
               <h3>No Books</h3>
@@ -95,17 +102,13 @@
         <ul class="pagination justify-content-center mt-4">
           {% if page_obj.has_previous %}
           <li>
-            <a
-              href="?page={{ page_obj.previous_page_number }}"
-              
+            <a href="?page={{ page_obj.previous_page_number }}"
               >&laquo; PREV
             </a>
           </li>
           {% endif %} {% if page_obj.has_next %}
           <li>
-            <a href="?page={{ page_obj.next_page_number }}" >
-              NEXT &raquo;</a
-            >
+            <a href="?page={{ page_obj.next_page_number }}"> NEXT &raquo;</a>
           </li>
           {% endif %}
         </ul>

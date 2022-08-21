@@ -1,4 +1,6 @@
-{% extends "base.html" %} {% load static %} {% block content %}
+{% extends "base.html" %} {% load static %}{% block title %}
+<title>{{ genres }} Genre</title>
+{% endblock %} {% block content %}
 
 <section id="genre" class="pb-5 pt-5">
   <div class="row justify-content-center">
@@ -21,7 +23,7 @@
                       {% if "placeholder" in book.book_image.url %}
                       <img
                         class="card-img-top"
-                        src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg"
+                        src="https://res.cloudinary.com/ddhmc5wvm/image/upload/v1661072185/book-nook/images/bookworm-2.png"
                         alt="{{ book.title }} by {{ book.book_author }} book listing with no book cover"
                       />
                       {% else %}
