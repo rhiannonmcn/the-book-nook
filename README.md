@@ -31,6 +31,11 @@ The aim of this site is to deliver an interactive website that users can engage 
 
 ## Site Aims
 
+* To provide the user with a website that allows them to view book listings and reviews
+* To allow the user the user to create, update and delete reviews
+* To allow the user to add a book listing if the book listing isn't already in the database
+* To provide the admin user with the ability to approve, update and delete book listings and reviews in the frontend
+* To provide a clear and appropriate response to any user inputs or actions
 
 ## Agile Methodology
 
@@ -71,6 +76,9 @@ Development branches were used to complete User Stories. This offered a greater 
 * As a **user**  I can **search the website for books** so that **so I can easily find book lisitings**
 * As a **user**  I can **add book listings** so that **review a book that isn't already in the database**
 
+**Iteration 3**
+* As a **site admin**  I can **access book listings and reviews to be approved** so that **I can approve or not approve and delete user uploads**
+* As a **user**  I can **see if I navigate to a wrong page on the website** so that **navigate easily back via the navbar**
 
 ## Design Wireframes
 
