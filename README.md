@@ -207,9 +207,47 @@ Each page, except the Home Page, has a clear heading when landing on the page. T
 
 ## Home Screen
 
+ * The Home Page is the landing page of the website and that's visible first when the site loads. It is designed that the purpose of the website easily determined.
+
+ ![Homepage Desktop](docs/images/homepage.png)
+
+ ![Homepage Mobile](docs/images/homepage-mobile.png)
+
+ * There is a large hero section to catch the user's eye. It includes the site logo, the site name, quote and a log in and signup button. If the user logs in, a welcome message appears, addressing the user by username and a button which links to the user's page (My Books).
+
+  ![Homepage Logged In](docs/images/homepage-logged-in.png)
+
+ * Below the hero section is a carousel of books, intending to entice the user. The section is called Discover, and draws from the entire database of approved books in random order. If the user clicks on a book, the link brings the user to that books' page.
+
+ * Below this, there is a Genre section. This is the only place the Book genres can be accessed. If the user clicks on a book genre, the user is brought to a page with that genres books listed in only.
+
+ * Each section is fully responsive.
+
 ## Log In Page
 
+  ![Log In page desktop](docs/images/log-in-desktop.png)
+
+* The Log In page is accessed from either the navigation bar or a button on the homepage.
+* The Log In page contains a link to the Sign Up page for the user who may have misclicked and needs to Sign Up rather than log in.
+* It uses django-allauth to provide all the settings for user authentication.
+* Styles are consistent with the rest of the website
+* The page is fully responsive
+
+![Log In page mobile](docs/images/log-in-mobile.png)
+
 ## Sign Up Page
+
+![Sign Up page desktop](docs/images/signup-page-desktop.png)
+
+* The Sign Up page is accessed from either the navigation bar or a button on the homepage.
+* The Sign Up page contains a link to the Log In page for the user who may have misclicked and already has an account.
+* It uses django-allauth to provide all the settings for user authentication.
+    * Unique username
+    * Strength of password
+* Styles are consistent with the rest of the website
+* The page is fully responsive
+
+![Sign Up page mobile](docs/images/signup-page-mobile.png)
 
 ## Log Out Page
 

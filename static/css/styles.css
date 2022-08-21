@@ -49,6 +49,10 @@ body {
   color: var(--irresistable);
 }
 
+.seashell{
+  color:var(--seashell);
+}
+
 /* Any icons that need the lighter color */
 .icon-lg {
   color: var(--linen);

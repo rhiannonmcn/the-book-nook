@@ -58,7 +58,7 @@
       })();
     </script>
 
-{% block title %}{% endblock %}
+    {% block title %}{% endblock %}
   </head>
   <body>
     <!--Page Header-->
@@ -79,6 +79,21 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <a href="{% url 'home' %}">
+              <div class="row justify-content-center justify-content-md-start">
+                <div class="col-auto">
+                  <img
+                    src="https://res.cloudinary.com/ddhmc5wvm/image/upload/v1658737960/book-nook/images/open-book-image-1_pbji0b.svg"
+                    height="50 "
+                    width="50"
+                    alt="Image of an open book with sparkles"
+                  />
+                </div>
+                <div class="col-auto d-flex align-items-center">
+                  <p class="mt-3 seashell">The Book Nook</p>
+                </div>
+              </div>
+            </a>
             <ul class="navbar-nav ms-auto">
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'home' %}">Home</a>
