@@ -1,4 +1,6 @@
-{% extends "base.html" %} {% load static %} {% block content %} {% load crispy_forms_tags %}
+{% extends "base.html" %} {% load static %} {% block title %}
+<title>{{ book.title }}</title>
+{% endblock %}{% block content %} {% load crispy_forms_tags %}
 
 <section id="book-detail" class="pb-5 pt-5">
   <div class="book-container conatiner-fluid">

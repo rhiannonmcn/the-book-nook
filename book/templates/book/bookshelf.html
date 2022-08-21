@@ -1,4 +1,6 @@
-{% extends "base.html" %} {% load static %} {% block content %}
+{% extends "base.html" %} {% load static %} {% block title %}
+<title>Bookshelf</title>
+{% endblock %} {% block content %}
 
 <section id="bookshelf">
   <div class="row justify-content-center">
@@ -10,7 +12,7 @@
     <div class="row justify-content-center">
       <div class="col-12 col-sm-10">
         <div class="row">
-          <div class="col-12 col-sm-6 col-md-8 mt-4 mb-4 ">
+          <div class="col-12 col-sm-6 col-md-8 mt-4 mb-4">
             <form method="GET" action="">
               {% csrf_token %}
               <input
@@ -22,13 +24,16 @@
               <button type="submit" class="btn btn-styles" value="Search">
                 <i class="fa-solid fa-magnifying-glass icon-lg"></i>
               </button>
-              <a href="{% url 'book_shelf' %}"><button class="btn btn-styles" value="Search">
-                <i class="fa-solid fa-x icon-lg"></i>
-              </button></a>
+              <a href="{% url 'book_shelf' %}"
+                ><button class="btn btn-styles" value="Search">
+                  <i class="fa-solid fa-x icon-lg"></i></button
+              ></a>
             </form>
           </div>
           {% if user.is_authenticated %}
-          <div class="col-12 col-sm-6 col-md-4 mt-4 mb-4 d-flex justify-content-center ">
+          <div
+            class="col-12 col-sm-6 col-md-4 mt-4 mb-4 d-flex justify-content-center"
+          >
             <a href="{% url 'add_book' %}"
               ><button class="btn btn-styles mb-5">Add a Book</button></a
             >
@@ -95,17 +100,13 @@
         <ul class="pagination justify-content-center mt-4">
           {% if page_obj.has_previous %}
           <li>
-            <a
-              href="?page={{ page_obj.previous_page_number }}"
-              
+            <a href="?page={{ page_obj.previous_page_number }}"
               >&laquo; PREV
             </a>
           </li>
           {% endif %} {% if page_obj.has_next %}
           <li>
-            <a href="?page={{ page_obj.next_page_number }}" >
-              NEXT &raquo;</a
-            >
+            <a href="?page={{ page_obj.next_page_number }}"> NEXT &raquo;</a>
           </li>
           {% endif %}
         </ul>
