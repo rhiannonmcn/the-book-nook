@@ -25,7 +25,7 @@ class HomeList(ListView):
 
     model = Book
     template_name = 'index.html'
-    queryset = Book.objects.filter(book_approved=True).order_by('?')
+    queryset = Book.objects.filter(book_approved=True).exclude(book_image__icontains='placeholder').order_by('?')
 
     def get_context_data(self, **kwargs):
         """_summary_
@@ -48,7 +48,7 @@ class BookList(ListView):
     queryset = Book.objects.filter(
         book_approved=True).order_by('-book_created_on')
     template_name = 'book/bookshelf.html'
-    paginate_by = 18
+    paginate_by = 12
     context_object_name = 'bookshelf'
 
     def get_queryset(self):
