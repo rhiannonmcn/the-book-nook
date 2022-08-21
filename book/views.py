@@ -25,7 +25,7 @@ class HomeList(ListView):
 
     model = Book
     template_name = 'index.html'
-    queryset = Book.objects.filter(book_approved=True).order_by('?')
+    queryset = Book.objects.filter(book_approved=True).exclude(book_image__icontains='placeholder').order_by('?')
 
     def get_context_data(self, **kwargs):
         """_summary_

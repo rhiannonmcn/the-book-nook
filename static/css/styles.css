@@ -103,12 +103,6 @@ a:hover {
 
 /* book listing styles across all pages */
 
-.image-listing {
-  width: 100%;
-  height: 35vw;
-  object-fit: cover;
-}
-
 .card-title-full {
   background-color: var(--seashell);
   width: 100%;
@@ -411,6 +405,21 @@ section#error {
   font-size: 6rem;
 }
 
+@media screen and (min-width: 300px) {
+.image-listing {
+  width: 100%;
+  height: 35vw;
+  object-fit: cover;
+}
+
+.owl-book-listing{
+  width: 100%;
+  height: 40vw;
+  object-fit: cover;
+}
+
+}
+
 @media screen and (min-width: 700px) {
   /* General Styles */
 
@@ -430,6 +439,11 @@ section#error {
   .card-title-full p {
     display: none;
   }
+
+  .owl-book-listing{
+    height: 28vw;
+  }
+  
 
   /* Home styles */
 
@@ -462,6 +476,10 @@ section#error {
 
   .book-listing-text {
     display: block;
+  }
+
+  .owl-book-listing{
+    height: 18vw;
   }
 
   /* bookshelf styles */

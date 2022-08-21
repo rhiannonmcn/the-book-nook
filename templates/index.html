@@ -43,35 +43,21 @@
     </div>
   </div>
 </section>
-
+<!-- Book carousel Section-->
 <section id="carousel-section" class="bg-seashell">
   <h3 class="text-center page-subtitle">Discover</h3>
   <!--Owl Carousel-->
   <div class="owl-carousel owl-theme">
     {% for book in book_list %}
     <div class="item">
-      <div class="card card-home bg-transparent border-0">
+      <div class="card h-100 card-home bg-transparent border-0">
         <div class="card-body book-listing-body">
           <a href="{% url 'book_detail' book.slug %}">
-            {% if "placeholder" in book.book_image.url %}
             <img
-              class="card-img-top home-carousel-img"
-              src="https://res.cloudinary.com/ddhmc5wvm/image/upload/v1661072185/book-nook/images/bookworm-3.png"
-              alt="{{ book.title }} by {{ book.book_author }} book listing with no book cover"
-            />
-            <p class="text-center p-bold">{{ book.title }} by {{ book.book_author }}</p>
-            {% else %}
-            <img
-              class="card-img-top home-carousel-img"
+              class="card-img-top owl-book-listing"
               src=" {{ book.book_image.url }}"
               alt="{{ book.title }} by {{ book.book_author }} book listing"
             />
-            {% endif %}
-            <p class="book-listing-text card-text">
-              {{book.book_blurb|truncatewords:10}}
-            </p>
-            <h2 class="book-listing-title card-title">{{ book.title }}</h2>
-            <p class="book-listing-author">by {{ book.book_author }}</p>
           </a>
         </div>
       </div>
@@ -79,7 +65,7 @@
     {% endfor %}
   </div>
 </section>
-
+<!--Genre Section-->
 <section id="home-genres">
   <h3 class="text-center page-subtitle">Book Genres</h3>
   <!--Owl Carousel-->
@@ -94,10 +80,8 @@
               src=" {{ genre.genre_image.url }} "
               alt="image associated with {{ genre.genre.name }}"
             />
-            <div class="card-img-overlay align-items-center">
-              <div class="card-img-overlay card-title-bg">
-                <h4 class="card-title text-center">{{ genre.genre_name }}</h4>
-              </div>
+            <div class="card-title-bg">
+              <h4 class="card-title text-center">{{ genre.genre_name }}</h4>
             </div>
           </a>
         </div>
