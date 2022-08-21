@@ -29,6 +29,10 @@ body {
   flex-direction: column;
 }
 
+/* Styles for mobile first */
+
+/* Message Alert styles */
+
 .user-alert {
   background-color: var(--irresistable);
   color: var(--seashell);
@@ -97,7 +101,33 @@ a:hover {
   color: var(--linen);
 }
 
-/* Styles for mobile first */
+/* book listing styles across all pages */
+
+.image-listing {
+  width: 100%;
+  height: 35vw;
+  object-fit: cover;
+}
+
+.card-title-full {
+  background-color: var(--seashell);
+  width: 100%;
+  opacity: 0.8;
+  padding: 0;
+}
+
+.book-listing-title,
+.book-listing-author {
+  display: none;
+}
+
+.book-listing-text {
+  display: none;
+}
+
+.book-card{
+  border: 1px solid var(--linen);
+}
 
 /* Navbar Styles */
 
@@ -230,22 +260,9 @@ footer {
   padding: 0px;
 }
 
-.book-listing-title,
-.book-listing-author {
-  display: none;
-}
-
-.book-listing-text {
-  display: none;
-}
-
 .searchfield {
   display: inline;
   max-width: 60%;
-}
-
-.mobile-hide {
-  display: none;
 }
 
 /* book.html */
@@ -394,16 +411,26 @@ section#error {
   font-size: 6rem;
 }
 
-@media screen and (min-width: 350px) {
+@media screen and (min-width: 700px) {
+  /* General Styles */
 
-  /* Bookshelf styles */
+  .book-listing-author {
+    display: block;
+    font-size: 1.2rem;
+  }
 
-  .mobile-hide {
+  .book-listing-title{
+    font-size: 1.2rem;
     display: block;
   }
-}
 
-@media screen and (min-width: 700px) {
+  .card-title-full {
+    background-color: transparent;
+  }
+  .card-title-full p {
+    display: none;
+  }
+
   /* Home styles */
 
   #hero-section {
@@ -427,6 +454,16 @@ section#error {
 }
 
 @media screen and (min-width: 1000px) {
+  /* GenERAL Styles */
+
+  .image-listing {
+    height: 20vw;
+  }
+
+  .book-listing-text {
+    display: block;
+  }
+
   /* bookshelf styles */
 
   .searchfield {

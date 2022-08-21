@@ -5,7 +5,7 @@
 <section id="book-detail" class="pb-5 pt-5">
   <div class="book-container conatiner-fluid">
     <div class="row justify-content-center">
-      <div class="col-4 col-md-2">
+      <div class="col-auto mt-3 col-md-2">
         {% if "placeholder" in book.book_image.url %}
         <img
           class="card-img-top book-detail-image"
@@ -20,22 +20,22 @@
         />
         {% endif %}
       </div>
-      <div class="col-8 col-md-6">
-        <div class="row">
+      <div class="col-auto mt-3 col-md-6">
+        <div class="row align-items-center">
           <div class="col-12">
-            <h1 class="book-title">{{ book.title }}</h1>
+            <h1 class="book-title text-center text-md-start">{{ book.title }}</h1>
           </div>
           <div class="col-12">
-            <h2 class="book-subtitle">by {{ book.book_author }}</h2>
+            <h2 class="book-subtitle text-center text-md-start">by {{ book.book_author }}</h2>
           </div>
-          <div class="row align-items-center">
-            <div class="col-6 col-md-4">
+          <div class="row mt-3">
+            <div class="col-6 d-flex justify-content-center justify-content-md-start col-md-4">
               <a href="#reviews"
                 ><button type="button" class="btn btn-styles">Review</button></a
               >
             </div>
-            <div class="col-12 col-md-6 mt-3">
-              <strong>
+            <div class="col-6 mt-2">
+              <strong class="d-flex justify-content-center justify-content-md-start">
                 {% if user.is_authenticated %}
                 <form
                   class="d-inline"
@@ -81,9 +81,9 @@
                 {% endif %}
               </strong>
             </div>
-            <div class="row mt-2">
+            <!-- <div class="row mt-2">
               <div class="col-12">Rating stars</div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>

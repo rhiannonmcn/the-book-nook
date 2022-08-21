@@ -56,37 +56,47 @@
         <div class="col-12">
           <div class="row mb-2">
             {% for book in bookshelf %}
-            <div class="col-4 col-sm-4 col-md-2 mb-2">
-              <div class="card">
+            <div class="col-4 col-sm-4 col-md-3 col-lg-2 mb-5">
+              <div class="card h-100 book-card">
                 <div class="card-body book-listing-body">
                   <a href="{% url 'book_detail' book.slug %}">
                     {% if "placeholder" in book.book_image.url %}
                     <img
-                      class="card-img-top mobile-hide"
-                      src="https://res.cloudinary.com/ddhmc5wvm/image/upload/v1661075789/book-nook/images/bookworm-3.png"
+                      class="card-img-top image-listing"
+                      src="https://res.cloudinary.com/ddhmc5wvm/image/upload/v1661075789/book-nook/images/bookworm-2.png"
                       alt="{{ book.title }} by {{ book.book_author }} book listing with no book cover"
                     />
-                    <p class="text-center p-bold">{{ book.title }}</p>
+                    <div
+                      class="card-img-overlay d-flex align-items-center justify-content-center card-title-full"
+                    >
+                      <p class="text-center p-bold">{{ book.title }}</p>
+                    </div>
 
                     {% else %}
                     <img
-                      class="card-img-top"
+                      class="card-img-top image-listing"
                       src=" {{ book.book_image.url }}"
                       alt="{{ book.title }} by {{ book.book_author }} book listing"
                     />
                     {% endif %}
-                    <p class="book-listing-text card-text">
+                    
+                      <h2 class=" m-2 text-center book-listing-title p-bold">
+                        {{ book.title }}
+                      </h2>
+                   
+                    <p
+                      class="mx-2 book-listing-author text-center irresistable p-bold"
+                    >
+                      by {{ book.book_author }}
+                    </p>
+                    <p class="book-listing-text text-center mx-2 card-text">
                       {{book.book_blurb|truncatewords:10}}
                     </p>
-                    <h2 class="book-listing-title card-title">
-                      {{ book.title }}
-                    </h2>
-                    <p class="book-listing-author">by {{ book.book_author }}</p>
                   </a>
                 </div>
               </div>
             </div>
-            {% if forloop.counter|divisibleby:6 %}
+            {% if forloop.counter|divisibleby:12 %}
           </div>
           <div class="row mb-2">
             {% endif %} {% empty %}

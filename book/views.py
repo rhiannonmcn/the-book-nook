@@ -48,7 +48,7 @@ class BookList(ListView):
     queryset = Book.objects.filter(
         book_approved=True).order_by('-book_created_on')
     template_name = 'book/bookshelf.html'
-    paginate_by = 18
+    paginate_by = 12
     context_object_name = 'bookshelf'
 
     def get_queryset(self):
