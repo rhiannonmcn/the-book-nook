@@ -56,9 +56,10 @@
             {% if "placeholder" in book.book_image.url %}
             <img
               class="card-img-top home-carousel-img"
-              src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg"
+              src="https://res.cloudinary.com/ddhmc5wvm/image/upload/v1661072185/book-nook/images/bookworm-3.png"
               alt="{{ book.title }} by {{ book.book_author }} book listing with no book cover"
             />
+            <p class="text-center p-bold">{{ book.title }} by {{ book.book_author }}</p>
             {% else %}
             <img
               class="card-img-top home-carousel-img"
