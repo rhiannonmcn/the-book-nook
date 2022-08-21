@@ -174,10 +174,70 @@ One font was chosen for this website and that was Courier Prime. Courier Prime i
 
 This gives a very vintage feel to the project but ties in nicely with the color scheme and theme and with the use of letter spacing it slightly modernises the look of the font.
 
-
 [Back to top](<#contents>)
 
 # Features
+
+The Book Nook was created to produce an interactive experience for the user through the use of both design and site structure.  It is designed and structured like a typical website, making it very natural and intuitive to use to entice the user to explore further.
+
+Each page, except the Home Page, has a clear heading when landing on the page. The language, colour and design used is intended to be friendly and easy to understand, and reflective of the website theme.
+
+## Navigation
+
+* The site navigation is done through the navigation bar at the top of each page and this does not change in style throughout the user's navigation of the website.
+* Tabs on the navigation bar change depending on whether the user is logged in or not, or is an admin or not. 
+
+    ![Navbar Admin Logged In](docs/images/nav-bar-admin-logged-in.png)
+
+    * If the user logs in or signs up, those two tabs are removed to be replaced with a log out tab.
+
+    ![Log out tab](docs/images/nav-bar-log-out.png)
+
+    * Once the user logs in or signs up, a completely new tab appears called My Books, which is essentially the users page
+
+    ![My Books tab](docs/images/nav-bar-my-books.png)
+
+    * If the user is a superuser and logs in, there is an Admin Only tab that appears that is only accessible to superusers that log in.
+
+    ![Admin Only Tab](docs/images/nav-bar-admin-only.png)
+
+* If the user is logged in, their username is reflected on the top right of the navbar, indicating to the user that they are logged in, and links to that users page (My Books).
+
+![Username](docs/images/nav-bar-username.png)
+
+## Home Screen
+
+## Log In Page
+
+## Sign Up Page
+
+## Log Out Page
+
+## Bookshelf Page
+
+### Create a Review
+
+### Bookmark a Book
+
+## My Books Page
+
+### Update Review
+
+### Delete a Review
+
+## Contact
+
+## Admin Only
+
+### Admin Approve Book
+
+### Admin Delete Book
+
+### Admin Approve Review
+
+### Admin Delete Review
+
+## 404 Page
 
 
 [Back to top](<#contents>)
