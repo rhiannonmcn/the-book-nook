@@ -1,0 +1,25 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+
+<section id='error' class="not-found pt-5 pb-5">
+  <div class="row justify-content-center align-items-center">
+    <div class="col col-md-8">
+      <div class="row align-items-center">
+        <div class="col col-md-6">
+          <h1 class="error-heading text-center p-bold">404</h1>
+          <h2 class="text-center p-bold">Bookworm has munched through the page you are looking for</h2>
+        </div>
+        <div class="col col-md-6">
+          <!--https://www.freepik.com/vectors/heart-->
+          <img
+            src="https://res.cloudinary.com/ddhmc5wvm/image/upload/v1661072185/book-nook/images/bookworm.png"
+            alt="Image of a cartoon bookworm smiling on some books"
+            height="250"
+            width="250"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
