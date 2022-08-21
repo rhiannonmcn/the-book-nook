@@ -9,44 +9,54 @@
     </div>
   </div>
   <div class="row justify-content-center">
-    <div class="col col-sm-10">
+    <div class="col">
       <div class="book-listing-container container-fluid">
         <div class="row">
           <!-- Book Entries for specific categories -->
           <div class="col-12">
             <div class="row">
               {% for book in books %} {% if book.book_genre == genres %}
-              <div class="col-4 col-sm-4 col-md-2">
-                <div class="card">
+              <div class="col-4 mb-5 col-sm-4 col-md-2">
+                <div class="card h-100 book-card">
                   <div class="card-body book-listing-body">
                     <a href="{% url 'book_detail' book.slug %}">
                       {% if "placeholder" in book.book_image.url %}
                       <img
-                        class="card-img-top"
-                        src="https://res.cloudinary.com/ddhmc5wvm/image/upload/v1661072185/book-nook/images/bookworm-2.png"
+                        class="card-img-top image-listing"
+                        src="https://res.cloudinary.com/ddhmc5wvm/image/upload/v1661075789/book-nook/images/bookworm-2.png"
                         alt="{{ book.title }} by {{ book.book_author }} book listing with no book cover"
                       />
+                      <div
+                        class="card-img-overlay d-flex align-items-center justify-content-center card-title-full"
+                      >
+                        <p class="text-center p-bold">{{ book.title }}</p>
+                      </div>
+
                       {% else %}
                       <img
-                        class="card-img-top"
+                        class="card-img-top image-listing"
                         src=" {{ book.book_image.url }}"
                         alt="{{ book.title }} by {{ book.book_author }} book listing"
                       />
                       {% endif %}
-                      <p class="book-listing-text card-text">
-                        {{book.book_blurb|truncatewords:10}}
-                      </p>
-                      <h2 class="book-listing-title card-title">
+
+                      <h2 class="m-2 text-center book-listing-title p-bold">
                         {{ book.title }}
                       </h2>
-                      <p class="book-listing-author">
+
+                      <p
+                        class="mx-2 book-listing-author text-center irresistable p-bold"
+                      >
                         by {{ book.book_author }}
+                      </p>
+                      <p class="book-listing-text text-center mx-2 card-text">
+                        {{book.book_blurb|truncatewords:10}}
                       </p>
                     </a>
                   </div>
                 </div>
               </div>
-              {% if forloop.counter|divisibleby:6 %}
+              {% if forloop.counter|divisibleby:12 %}
             </div>
             <div class="row">
               {% endif %} {% endif %} {% empty %}
@@ -81,6 +91,8 @@
   </div>
 </section>
 
+<!--More Genres section-->
+
 <section id="more-genres" class="bg-seashell pb-5 pt-5">
   <h3 class="text-center page-subtitle">More Genres</h3>
   <!--Owl Carousel-->
@@ -95,10 +107,8 @@
               src=" {{ value.genre_image.url }} "
               alt="#"
             />
-            <div class="card-img-overlay align-items-center">
-              <div class="card-img-overlay card-title-bg">
-                <h4 class="card-title text-center">{{ value.genre_name }}</h4>
-              </div>
+            <div class="card-title-bg">
+              <h4 class="card-title text-center">{{ value.genre_name }}</h4>
             </div>
           </a>
         </div>
