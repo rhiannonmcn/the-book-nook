@@ -412,6 +412,12 @@ section#error {
   object-fit: cover;
 }
 
+.my-books-listing {
+  width: 100%;
+  height: 45vw;
+  object-fit: cover;
+}
+
 .owl-book-listing{
   width: 100%;
   height: 40vw;
@@ -444,6 +450,9 @@ section#error {
     height: 28vw;
   }
   
+  .my-books-listing {
+    height: 35vw;
+  }
 
   /* Home styles */
 
@@ -480,6 +489,10 @@ section#error {
 
   .owl-book-listing{
     height: 18vw;
+  }
+
+  .my-books-listing {
+    height: 25vw;
   }
 
   /* bookshelf styles */
