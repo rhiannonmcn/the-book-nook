@@ -276,11 +276,58 @@ Each page, except the Home Page, has a clear heading when landing on the page. T
 
 ![Bookshelf page mobile - user logged in](docs/images/bookshelf-mobile.png)
 
-## My Books Page
+## Book Page
+
+![Book page desktop - user logged in](docs/images/book-page-logged-in.png)
+
+* The Book page is accessed by clicking on the links to particular books; mainly from the Bookshelf page, but can also be accessed via links from listings on the Home Page, and links from the review titles in My Books.
+* The Book page is unique to each book listing, and a book has to be approved by admin to access it. 
+* The url is unique for each book
+* The Book page pulls data from the database about the chosen book; Book image, title, author and blurb.
+* The user can bookmark (same concept as favouriting a book or item) and review a book if they are logged in.
+* Below the book blurb, there is a list of all the reviews related to that particular book, in order of the newest ones.
+* The user can only review a book if they are logged in.
+* Each review, contains the username of who review, the time and date it was reviewed and the review text itself.
+* The page is full responsive
+
+![Book page desktop - user logged out](docs/images/book-page-logged-out.png)
+
+![Book page mobile - user logged in](docs/images/book-page-mobile.png)
 
 ### Create a Review
 
+* The user must be logged in to review a book
+
+![Log in to review](docs/images/log-in-to-review.png)
+
+* If the user isn't logged in, text informs the user to log in to review.
+* The review button at the top of the page brings the user to the review section at the bottom.
+* Once the user reviews, they receive an alert that their review has been flagged for approval.
+
+![Review added alert](docs/images/review-added.png)
+
+* Once the review is approved it will appear with the other reviews.
+
+![Review form - user logged in](docs/images/review-form.png)
+
 ### Bookmark a Book
+
+* The user must be logged into bookmark a book and if they arent, text informs the users of so and provides links to the log in and sign up pages.
+
+![Bookmark - user logged out](docs/images/bookmark-not-logged-in.png)
+
+* Once the user logs in, they can click/press on the bookmark to bookmark the book.
+* An alert imforms the user that the book is bookmarked and anytime they access the book listing and they have favourited it, the alert will inform them.
+* The bookmark itself fills color also to inform the user that they have bookmarked the book.
+
+![Bookmark alert - user logged in](docs/images/bookmark-book-alert.png)
+
+* The number beside the bookmark indicated how many people have bookmarked it already.
+* A user can un-bookmark a book by clicking on the bookmark again.
+
+![Not bookmarked - user logged in](docs/images/bookmark-book.png)
+
+## My Books Page
 
 ### Update Review
 
