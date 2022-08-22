@@ -471,6 +471,24 @@ Each page, except the Home Page, has a clear heading when landing on the page. T
 
 # Future Features
 
+## Book Genre
+
+Currently the book genres play a small role on the website. The genre's themselves are already preset and the user just has to select the genre to go with the book. In the future the genre section would be a section all by itself. It would utilise a tag system, whereby books could have and be search for by multiple genres.
+
+## Social Media Login
+
+For ease of use, user's could use their social media credentials to log in, rather than creating another password to remember.
+
+## Admin Specific Buttons
+
+If an admin logs in, their would be admin only buttons on the book details page, allowing admin to update/delete books or reviews on the fly, if somehow mistakes or offensive material slipped passed the approval system, without having to go to the Admin Only page.
+
+## More Detailed User Profile Page
+
+The My Books page could be expanded  to include the ability of the user to add their bookmarked books in categories to organise them; for example, Read Again, or Must Read or Read.
+
+The page could also provide more user details that could also be added to the user profile in general. Such as a profile picture or avatar that could be utilised in their reviews, and the total number of books they have reviewed or bookmarked could be visible on their profile.
+
 
 [Back to top](<#contents>)
 
