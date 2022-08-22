@@ -329,9 +329,38 @@ Each page, except the Home Page, has a clear heading when landing on the page. T
 
 ## My Books Page
 
-### Update Review
+<details> <summary> My Books Page Screenshot, Desktop and Mobile versions</summary>
 
-### Delete a Review
+![My Books desktop page](docs/images/my-book-desktop.png)
+
+![My Books mobile page](docs/images/my-book-mobile.png)
+
+</details>
+
+
+* My Books page can only be accessed if the user is logged in and can be accessed from the My Books tab in the navbar or clicking on the username in the navbar.
+* The My Books page is essentially the user's profile page as such. It is personalised with the users name at the top, and contains a list of books bookmarked by the user and reviews made by the user.
+* If a book that has been bookmarked by the user is clicked, it brings the user to the books detailed page.
+* The page is fully responsive
+
+### User Reviews
+
+* The user can update or delete reviews they have already made here.
+* Clicking the update button, brings the user to an edit review page where the user can change the content of their review.
+* If the user decides to update their review, the review is removed from the Book's detail review list and is sent for approval by an admin again.
+* The user is brought back to their My Books page and an alert notifies the user that they have updated their review and that it has been sent for approval.
+
+![My Books sent for approval alert](docs/images/my-book-approval-alert.png)
+
+* The review itself will appear however in the user's My Books page but will contain a Waiting on Approval tag which is automatically removed if an admin approves the review.
+
+![My Books waiting on approval tag](docs/images/my-book-approval.png)
+
+* If the admin deletes the review, the review is removed completely from all lists and cannot be accessed again and the user is brought back to their my books page and alerted that they deleted their review.
+
+![My Books delete review alert](docs/images/my-book-delete-alert.png)
+
+* If the user decides to delete their review, they are brought to a delete review page, where they are asked to confirm whether they wish to delete the review. If they decide to delete the review, the review is removed from all lists.
 
 ## Contact
 
