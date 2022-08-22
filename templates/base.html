@@ -44,6 +44,16 @@
       referrerpolicy="no-referrer"
     />
 
+    <!--Django star ratings links-->
+    <link
+      rel="stylesheet"
+      href="{% static 'star-ratings/css/star-ratings.css' %}"
+    />
+    <script
+      type="text/javascript"
+      src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"
+    ></script>
+
     <!--styesheet link-->
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
 
@@ -52,6 +62,7 @@
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
     ></script>
+
     <script type="text/javascript">
       (function () {
         emailjs.init("lauwE--GbIW5Ohr0M");
@@ -59,6 +70,7 @@
     </script>
 
     {% block title %}{% endblock %}
+    
   </head>
   <body>
     <!--Page Header-->
