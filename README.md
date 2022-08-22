@@ -388,16 +388,57 @@ Each page, except the Home Page, has a clear heading when landing on the page. T
 
 ![Email](docs/images/contact-email-2.png)
 
+* The page is fully responsive
 
-## Admin Only
 
-### Admin Approve Book
+## Admin Only Page
 
-### Admin Delete Book
+<details> <summary> Admin Only Screenshot, Desktop and Mobile versions</summary>
 
-### Admin Approve Review
+![Admin Only desktop page](docs/images/admin-only-desktop.png)
 
-### Admin Delete Review
+![Admin Only mobile page](docs/images/admin-only-mobile.png)
+
+</details>
+
+* The Admin Only page can only be accessed if the user is logged in and is a Superuser.
+* It allows the admin to approve, edit and delete books and reviews from all users.
+* There is a list of books in the database ordered by the newest, unapproved books.
+* They are listed fully with title, author, book image, the book blurb, and the genre it was added to.
+* There are two buttons to allow the admin to approve or delete each listing individually.
+* The books paginate at 3 book listings
+* Below this there is a list of reviews that are awaiting approval, ordered by the newest, unapproved reviews.
+* The reviews are listed with the username of who made the review, the date and time it was made, the review text detail and two buttons to approve and delete the review.
+* The page is fully responsive.
+
+### Admin Approve and Delete Book
+
+* The admin can approve and delete books added by users.
+* If the admin decides to approve the listing they are brought to an approve book page where the admin can update the listing if need be (spelling mistakes etc), or submit it as is.
+
+![Approve Book page](docs/images/approve-book-page.png)
+
+* Once the book is approved, it is removed from the list and it automatically appears as part of any list that shows approved books. The admin is brought back to the Admin Only page and a message alerts the admin that the book was approved.
+
+![Approve Book alert](docs/images/approve-book-alert.png)
+
+* If the admin decides to delete the book, it is immediately deleted upon clicking of the delete button. 
+* Once deleted the admin is brought back to the Admin Only page and a message alerts the admin that they have deleted the book.
+
+![Delete Book alert](docs/images/book-deleted.png)
+
+### Admin Approve and Delete Reviews
+
+* The admin can approve and delete reviews added by users.
+* If the admin decides to approve the review the review is immediately approved upon clicking the approve button.
+* Once the review is approved, it is removed from the list and it automatically appears as part of any list that shows approved reviews. The admin is brought back to the Admin Only page and a message alerts the admin that the review was approved.
+
+![Approve Review alert](docs/images/approve-review-alert.png)
+
+* If the admin decides to delete the review, it is immediately deleted upon clicking of the delete button. 
+* Once deleted the admin is brought back to the Admin Only page and a message alerts the admin that they have deleted the review. The review is removed from the waiting for approval list and appears automatically on any lists calling for the approved reviews of a certain book.
+
+![Delete Review alert](docs/images/delete-review-alert.png)
 
 ## 404 Page
 
