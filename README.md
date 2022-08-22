@@ -364,6 +364,31 @@ Each page, except the Home Page, has a clear heading when landing on the page. T
 
 ## Contact
 
+![Contact desktop page](docs/images/contact.png)
+
+![Contact mobile page](docs/images/contact-mobile.png)
+
+* The contact page can be accessed by all users, logged in or not.
+* It uses EmailJS to send the user's message, contact details and name to an email address.
+
+![EmailJS Template](docs/images/contact-template.png)
+
+* All fields have to be filled by the user before sending the contact form.
+
+![Contact required fields](docs/images/contact-required-field.png)
+
+* If the user doesn't fill all the fields, a pop up will ask the user to please fill out the required field.
+* The email field requires a proper email address with the @ symbol to be able to field the field correctly.
+
+![Contact email field](docs/images/contact-email-field.png)
+
+* Once the user sends the email an alert let's the user know that they have sent a message successfully and a message will be sent to the email chosen when setting up EmailJS
+
+![Email](docs/images/contact-email.png)
+
+![Email](docs/images/contact-email-2.png)
+
+
 ## Admin Only
 
 ### Admin Approve Book
