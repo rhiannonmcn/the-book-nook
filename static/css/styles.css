@@ -362,6 +362,20 @@ section#error {
   font-size: 6rem;
 }
 
+/* Star Ratings App Custom Styles */
+
+.star .star-ratings-rating-count{
+  display:none;
+}
+
+.star .star-ratings-rating-average{
+  display:none;
+}
+
+.star .star-ratings-rating-user{
+  display:none;
+}
+
 @media screen and (min-width: 300px) {
   .image-listing {
     width: 100%;
