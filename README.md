@@ -543,9 +543,20 @@ A copy of the GitHub Repository can be made by forking the GitHub account. Chang
 
 # Credits
 
+* [Owl Carousel](https://owlcarousel2.github.io/OwlCarousel2/)
+* [EmailJS](https://www.emailjs.com/)
+* [Unique Constraint Info](https://stackoverflow.com/questions/56024059/django-uniqueconstraint)
+* [Crispy Forms Fix](https://stackoverflow.com/questions/65133364/django-crispy-forms-is-not-working-correctly)
+* [Fix Image upload via form](https://forum.djangoproject.com/t/image-does-not-save/4664/3)
+* [Fix Image Upload via form link 2](https://stackoverflow.com/questions/53429359/django-form-valid-missing-1-required-positional-argument-form)
+)
+* [EmailJS tutorial](https://martinezjf2.medium.com/how-to-setup-emailjs-33809350f0f8)
+
 [Back to top](<#contents>)
 
 # Acknowledgements
+
+This website, The Book Nook was designed and developed in conjunction with the Full Stack Software Developer Diploma course (eccommerce) at the Code Institute. I would like to thank my mentor, my cohort facilitator, the members of our cohort, the Slack community and Code Institute for all their support.
 
 
 [Back to top](<#contents>)
