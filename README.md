@@ -494,6 +494,23 @@ The page could also provide more user details that could also be added to the us
 
 # Technologies Used
 
+* HTML - Used to structure all the templates on the site
+* CSS - to provide extra styling to the site
+* Python - To provide functionality to the site. Packages used in the project can be found in requirements.txt
+* Django - Python framework used in the project
+* Heroku - Used to deploy the site publicly
+* Heroku PostgreSQL - Used for the database during development and deployment
+* Javascript - Minimum javascript was used, to initialise and set some settings for packages such as EmailJS and Owl Carousel
+* Bootstrap 5.2.0 -  used for providing layouts and styling the html in the templates
+* Font Awesome - All icons throughout the page
+* Owl Carousel - Used to create a carousel on the home pages and genre pages of the site
+* Adobe Illustrator - Used to edit any vectors or svgs for the project
+* Figma - Used to create wireframes for the progect
+* Diagram.net - Used to create Diagrams for the project
+* Cloudinary - Used to host Static files for the site
+* VSCode - Used to create, edit and compile the code for the program
+* EmailJS - Used to enable the contact form functionality
+
 
 [Back to top](<#contents>)
 
