@@ -471,10 +471,45 @@ Each page, except the Home Page, has a clear heading when landing on the page. T
 
 # Future Features
 
+## Book Genre
+
+Currently the book genres play a small role on the website. The genre's themselves are already preset and the user just has to select the genre to go with the book. In the future the genre section would be a section all by itself. It would utilise a tag system, whereby books could have and be search for by multiple genres.
+
+## Social Media Login
+
+For ease of use, user's could use their social media credentials to log in, rather than creating another password to remember.
+
+## Admin Specific Buttons
+
+If an admin logs in, their would be admin only buttons on the book details page, allowing admin to update/delete books or reviews on the fly, if somehow mistakes or offensive material slipped passed the approval system, without having to go to the Admin Only page.
+
+## More Detailed User Profile Page
+
+The My Books page could be expanded  to include the ability of the user to add their bookmarked books in categories to organise them; for example, Read Again, or Must Read or Read.
+
+The page could also provide more user details that could also be added to the user profile in general. Such as a profile picture or avatar that could be utilised in their reviews, and the total number of books they have reviewed or bookmarked could be visible on their profile.
+
 
 [Back to top](<#contents>)
 
 # Technologies Used
+
+* HTML - Used to structure all the templates on the site
+* CSS - to provide extra styling to the site
+* Python - To provide functionality to the site. Packages used in the project can be found in requirements.txt
+* Django - Python framework used in the project
+* Heroku - Used to deploy the site publicly
+* Heroku PostgreSQL - Used for the database during development and deployment
+* Javascript - Minimum javascript was used, to initialise and set some settings for packages such as EmailJS and Owl Carousel
+* Bootstrap 5.2.0 -  used for providing layouts and styling the html in the templates
+* Font Awesome - All icons throughout the page
+* Owl Carousel - Used to create a carousel on the home pages and genre pages of the site
+* Adobe Illustrator - Used to edit any vectors or svgs for the project
+* Figma - Used to create wireframes for the progect
+* Diagram.net - Used to create Diagrams for the project
+* Cloudinary - Used to host Static files for the site
+* VSCode - Used to create, edit and compile the code for the program
+* EmailJS - Used to enable the contact form functionality
 
 
 [Back to top](<#contents>)
@@ -508,9 +543,20 @@ A copy of the GitHub Repository can be made by forking the GitHub account. Chang
 
 # Credits
 
+* [Owl Carousel](https://owlcarousel2.github.io/OwlCarousel2/)
+* [EmailJS](https://www.emailjs.com/)
+* [Unique Constraint Info](https://stackoverflow.com/questions/56024059/django-uniqueconstraint)
+* [Crispy Forms Fix](https://stackoverflow.com/questions/65133364/django-crispy-forms-is-not-working-correctly)
+* [Fix Image upload via form](https://forum.djangoproject.com/t/image-does-not-save/4664/3)
+* [Fix Image Upload via form link 2](https://stackoverflow.com/questions/53429359/django-form-valid-missing-1-required-positional-argument-form)
+)
+* [EmailJS tutorial](https://martinezjf2.medium.com/how-to-setup-emailjs-33809350f0f8)
+
 [Back to top](<#contents>)
 
 # Acknowledgements
+
+This website, The Book Nook was designed and developed in conjunction with the Full Stack Software Developer Diploma course (eccommerce) at the Code Institute. I would like to thank my mentor, my cohort facilitator, the members of our cohort, the Slack community and Code Institute for all their support.
 
 
 [Back to top](<#contents>)
