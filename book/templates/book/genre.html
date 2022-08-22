@@ -99,14 +99,16 @@
     <div class="item">
       <div class="card h-100 genre-card">
         <div class="card-body p-0">
-          <div
-            class="p-0 card-header linen genre-card-title d-flex align-items-center justify-content-center"
-          >
-            <h4 class="m-0 f-medium p-bold card-title irresistable text-center">
-              {{ value.genre_name }}
-            </h4>
-          </div>
           <a href="{% url 'genre_detail' value.slug %}">
+            <div
+              class="p-0 card-header linen genre-card-title d-flex align-items-center justify-content-center"
+            >
+              <h4
+                class="m-0 f-medium p-bold card-title irresistable text-center"
+              >
+                {{ value.genre_name }}
+              </h4>
+            </div>
             <img
               class="card-img genre-card-img"
               src=" {{ value.genre_image.url }} "
