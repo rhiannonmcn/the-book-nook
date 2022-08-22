@@ -43,14 +43,26 @@ body {
   background-color: var(--seashell);
 }
 
-/* Any element that needs a font-color */
+/* Any element that needs a font-color and sizes */
+
+.red-bg {
+  background-color: var(--darkSienna);
+}
 
 .irresistable {
   color: var(--irresistable);
 }
 
-.seashell{
-  color:var(--seashell);
+.f-small {
+  font-size: 11px;
+}
+
+.f-medium {
+  font-size: 1rem;
+}
+
+.seashell {
+  color: var(--seashell);
 }
 
 /* Any icons that need the lighter color */
@@ -69,6 +81,20 @@ body {
   font-size: 2.6rem;
   font-weight: 700;
   color: var(--irresistable);
+}
+
+/* Bootstrap Card general styles */
+
+.card-img-top {
+  border-radius: 0;
+}
+
+.card-header {
+  background-color: var(--linen);
+}
+
+.card {
+  background-color: #fffefe;
 }
 
 /* needed to clear bootstrap padding and margins */
@@ -114,16 +140,7 @@ a:hover {
   padding: 0;
 }
 
-.book-listing-title,
-.book-listing-author {
-  display: none;
-}
-
-.book-listing-text {
-  display: none;
-}
-
-.book-card{
+.book-card {
   border: 1px solid var(--linen);
 }
 
@@ -141,10 +158,6 @@ a:hover {
   color: var(--linen);
 }
 
-.red-bg {
-  background-color: var(--darkSienna);
-}
-
 .nav-item {
   padding: 0 13px;
   transition: all 0.2s ease-in-out;
@@ -159,10 +172,6 @@ a:hover {
   border-radius: 2px;
 }
 
-.user-nav-item p {
-  color: var(--seashell);
-}
-
 /*Footer Styles */
 
 footer {
@@ -174,10 +183,6 @@ footer {
 }
 
 /* Home Page Styles */
-
-.hero-info {
-  padding-bottom: 40px;
-}
 
 .homepage-subtitle {
   font-size: 1.8rem;
@@ -205,21 +210,8 @@ footer {
   margin-top: 20px;
 }
 
-.card-home {
-  margin: 0 8px;
-}
-
 #home-genres {
   padding: 20px 0;
-}
-
-.home-card-body {
-  padding: 0;
-}
-
-.home-card-body h4 {
-  font-size: 1.2rem;
-  color: var(--linen);
 }
 
 .genre-card {
@@ -229,34 +221,16 @@ footer {
   border: none;
 }
 
+.genre-card-title {
+  height: 50px;
+}
+
 .genre-card-img {
   height: 80px;
   object-fit: cover;
 }
 
-.home-card-body .card-img-overlay {
-  padding: 0 2px;
-  border-radius: 0;
-}
-
-.card-title-bg {
-  background-color: var(--seashell);
-  width: 100%;
-  opacity: 0.8;
-  height: 50px;
-}
-
-.card-title-bg h4 {
-  color: var(--darkSienna);
-  font-weight: 700;
-  padding-top: 10px;
-}
-
 /* Bookshelf Styles */
-
-.book-listing-body {
-  padding: 0px;
-}
 
 .searchfield {
   display: inline;
@@ -281,15 +255,6 @@ footer {
 .book-detail-image {
   max-height: 120px;
   width: auto;
-}
-
-.excerpt,
-.reviews-container {
-  padding: 40px 0;
-}
-
-.reviews-container {
-  margin: 0 10px;
 }
 
 .p-bold,
@@ -335,14 +300,6 @@ footer {
 
 /* Log In Styles */
 
-.accounts-section-styles {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-bottom: 20px;
-  height: 100%;
-}
-
 .book-image {
   width: 250px;
   height: auto;
@@ -363,10 +320,6 @@ footer {
 
 .user-title {
   font-size: 1.8rem;
-}
-
-.book-link {
-  color: var(--irresistable);
 }
 
 .book-link:hover {
@@ -410,38 +363,21 @@ section#error {
 }
 
 @media screen and (min-width: 300px) {
-.image-listing {
-  width: 100%;
-  height: 35vw;
-  object-fit: cover;
-}
+  .image-listing {
+    width: 100%;
+    height: 40vw;
+    object-fit: cover;
+  }
 
-.my-books-listing {
-  width: 100%;
-  height: 45vw;
-  object-fit: cover;
-}
-
-.owl-book-listing{
-  width: 100%;
-  height: 40vw;
-  object-fit: cover;
-}
-
+  .owl-book-listing {
+    width: 100%;
+    height: 36vw;
+    object-fit: cover;
+  }
 }
 
 @media screen and (min-width: 700px) {
   /* General Styles */
-
-  .book-listing-author {
-    display: block;
-    font-size: 1.2rem;
-  }
-
-  .book-listing-title{
-    font-size: 1.2rem;
-    display: block;
-  }
 
   .card-title-full {
     background-color: transparent;
@@ -450,22 +386,18 @@ section#error {
     display: none;
   }
 
-  .owl-book-listing{
-    height: 28vw;
+  .image-listing {
+    height: 18vw;
   }
-  
-  .my-books-listing {
-    height: 35vw;
+
+  .owl-book-listing {
+    height: 25vw;
   }
 
   /* Home styles */
 
   #hero-section {
     padding: 40px;
-  }
-
-  .genre-card-img {
-    height: 100px;
   }
 
   /* book.html */
@@ -483,20 +415,9 @@ section#error {
 @media screen and (min-width: 1000px) {
   /* GenERAL Styles */
 
+  .owl-book-listing,
   .image-listing {
-    height: 20vw;
-  }
-
-  .book-listing-text {
-    display: block;
-  }
-
-  .owl-book-listing{
-    height: 18vw;
-  }
-
-  .my-books-listing {
-    height: 25vw;
+    height: 14vw;
   }
 
   /* bookshelf styles */

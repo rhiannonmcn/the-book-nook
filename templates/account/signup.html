@@ -1,7 +1,7 @@
 {% extends "base.html" %} {% load i18n %} {% block head_title %}{% trans
 "Signup" %}{% endblock %} {% block content %}
 
-<section class="accounts-section-styles">
+<section class="d-flex align-items-center justify-content-center pb-3">
   <div class="signup-container">
     <div class="row">
       <div
@@ -29,7 +29,7 @@
         </p>
 
         <form
-          class="signup"
+          class="signup mb-3"
           id="signup_form"
           method="post"
           action="{% url 'account_signup' %}"
