@@ -43,11 +43,15 @@ body {
   background-color: var(--seashell);
 }
 
-/* Any element that needs a font-color and sizes */
-
 .red-bg {
   background-color: var(--darkSienna);
 }
+
+.linen{
+  background-color: var(--linen);
+}
+
+/* Any element that needs a font-color and sizes */
 
 .irresistable {
   color: var(--irresistable);
@@ -87,10 +91,6 @@ body {
 
 .card-img-top {
   border-radius: 0;
-}
-
-.card-header {
-  background-color: var(--linen);
 }
 
 .card {
