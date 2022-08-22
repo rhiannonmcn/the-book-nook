@@ -47,6 +47,8 @@ Through the use of the Kanban board in the projects view in Github, the project 
 * In Progress
 * Done
 
+![Kanban board github](docs/images/agile-kanban.png)
+
 Github issues were used to create User Stories and any other Fixes or Updates for the project. This was where the project user was assigned, labels were added to provide clarity, and the story was added to the appropriate Iteration and the project. Each User Story, Fix or Update had a clear title, acceptance criteria and smaller tasks (if appropriate). 
 
 Milestones were used to create Iterations. There were 3 Iterations each dated appropriately. User Stories were completed based on the current Iteration that was in progress. Each Iteration was completed on time.
@@ -220,6 +222,19 @@ Each page, except the Home Page, has a clear heading when landing on the page. T
  * Below the hero section is a carousel of books, intending to entice the user. The section is called Discover, and draws from the entire database of approved books and those with uploaded book images, in random order. If the user clicks on a book, the link brings the user to that books' page.
  * Below this, there is a Genre section. This is the only place the Book genres can be accessed. If the user clicks on a book genre, the user is brought to a page with that genres books listed in only.
  * Each section is fully responsive.
+
+ ### Genre Section
+
+ ![Genre Desktop Page](docs/images/genre-desktop.png)
+
+ * The Genre page can only be accessed by the user from the homepage and from within the genre page itself.
+ * The page is specific to the genre you have clicked on and only contains approved books from that particular category.
+ * The title and heading of the page is the specific category the user clicked on.
+ * The books are listed, giving the user a preview of each, which the user can then click on to go to a specific book in more detail.
+ * The user can also switch categories from within the page at the bottom.
+ * The page is fully responsive.
+
+ ![Genre Mobile Page](docs/images/genre-mobile.png)
 
 ## Log In Page
 
@@ -441,6 +456,15 @@ Each page, except the Home Page, has a clear heading when landing on the page. T
 ![Delete Review alert](docs/images/delete-review-alert.png)
 
 ## 404 Page
+
+![404 Desktop Page](docs/images/404-desktop.png)
+
+* A custom 404 page was created for any pages not found.
+* This custom page allows the user to navigate back to website via the navbar if they click/type a url which causes a 404 error.
+* The page has text and a cute image informing the user of their mistake.
+* The page is fully responsive.
+
+![404 Mobile Page](docs/images/404-mobile.png)
 
 
 [Back to top](<#contents>)
