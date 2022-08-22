@@ -253,7 +253,7 @@ footer {
 }
 
 .book-detail-image {
-  max-height: 120px;
+  max-height: 200px;
   width: auto;
 }
 
@@ -406,10 +406,6 @@ section#error {
   
 
   /* book.html */
-
-  .book-detail-image {
-    max-height: 160px;
-  }
 
   .book-title {
     font-size: 2.4rem;

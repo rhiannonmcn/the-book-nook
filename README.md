@@ -442,6 +442,15 @@ Each page, except the Home Page, has a clear heading when landing on the page. T
 
 ## 404 Page
 
+![404 Desktop Page](docs/images/404-desktop.png)
+
+* A custom 404 page was created for any pages not found.
+* This custom page allows the user to navigate back to website via the navbar if they click/type a url which causes a 404 error.
+* The page has text and a cute image informing the user of their mistake.
+* The page is fully responsive.
+
+![404 Mobile Page](docs/images/404-mobile.png)
+
 
 [Back to top](<#contents>)
 
