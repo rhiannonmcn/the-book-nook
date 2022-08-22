@@ -300,7 +300,7 @@ footer {
 
 /* Log In Styles */
 
-.book-image {
+.book-image, .book-image-auth {
   width: 250px;
   height: auto;
   padding: 20px 0;
