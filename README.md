@@ -31,6 +31,11 @@ The aim of this site is to deliver an interactive website that users can engage 
 
 ## Site Aims
 
+* To provide the user with a website that allows them to view book listings and reviews
+* To allow the user the user to create, update and delete reviews
+* To allow the user to add a book listing if the book listing isn't already in the database
+* To provide the admin user with the ability to approve, update and delete book listings and reviews in the frontend
+* To provide a clear and appropriate response to any user inputs or actions
 
 ## Agile Methodology
 
@@ -71,6 +76,9 @@ Development branches were used to complete User Stories. This offered a greater 
 * As a **user**  I can **search the website for books** so that **so I can easily find book lisitings**
 * As a **user**  I can **add book listings** so that **review a book that isn't already in the database**
 
+**Iteration 3**
+* As a **site admin**  I can **access book listings and reviews to be approved** so that **I can approve or not approve and delete user uploads**
+* As a **user**  I can **see if I navigate to a wrong page on the website** so that **navigate easily back via the navbar**
 
 ## Design Wireframes
 
@@ -166,10 +174,273 @@ One font was chosen for this website and that was Courier Prime. Courier Prime i
 
 This gives a very vintage feel to the project but ties in nicely with the color scheme and theme and with the use of letter spacing it slightly modernises the look of the font.
 
-
 [Back to top](<#contents>)
 
 # Features
+
+The Book Nook was created to produce an interactive experience for the user through the use of both design and site structure.  It is designed and structured like a typical website, making it very natural and intuitive to use to entice the user to explore further.
+
+Each page, except the Home Page, has a clear heading when landing on the page. The language, colour and design used is intended to be friendly and easy to understand, and reflective of the website theme.
+
+## Navigation
+
+* The site navigation is done through the navigation bar at the top of each page and this does not change in style throughout the user's navigation of the website.
+* Tabs on the navigation bar change depending on whether the user is logged in or not, or is an admin or not. 
+
+    ![Navbar Admin Logged In](docs/images/nav-bar-admin-logged-in.png)
+
+    * If the user logs in or signs up, those two tabs are removed to be replaced with a log out tab.
+
+    ![Log out tab](docs/images/nav-bar-log-out.png)
+
+    * Once the user logs in or signs up, a completely new tab appears called My Books, which is essentially the users page
+
+    ![My Books tab](docs/images/nav-bar-my-books.png)
+
+    * If the user is a superuser and logs in, there is an Admin Only tab that appears that is only accessible to superusers that log in.
+
+    ![Admin Only Tab](docs/images/nav-bar-admin-only.png)
+
+* If the user is logged in, their username is reflected on the top right of the navbar, indicating to the user that they are logged in, and links to that users page (My Books).
+
+![Username](docs/images/nav-bar-username.png)
+
+## Home Screen
+
+ * The Home Page is the landing page of the website and that's visible first when the site loads. It is designed that the purpose of the website easily determined.
+
+ ![Homepage Desktop](docs/images/homepage.png)
+
+ ![Homepage Mobile](docs/images/homepage-mobile.png)
+
+ * There is a large hero section to catch the user's eye. It includes the site logo, the site name, quote and a log in and signup button. If the user logs in, a welcome message appears, addressing the user by username and a button which links to the user's page (My Books).
+
+  ![Homepage Logged In](docs/images/homepage-logged-in.png)
+
+ * Below the hero section is a carousel of books, intending to entice the user. The section is called Discover, and draws from the entire database of approved books and those with uploaded book images, in random order. If the user clicks on a book, the link brings the user to that books' page.
+ * Below this, there is a Genre section. This is the only place the Book genres can be accessed. If the user clicks on a book genre, the user is brought to a page with that genres books listed in only.
+ * Each section is fully responsive.
+
+## Log In Page
+
+  ![Log In page desktop](docs/images/log-in-desktop.png)
+
+* The Log In page is accessed from either the navigation bar or a button on the homepage.
+* The Log In page contains a link to the Sign Up page for the user who may have misclicked and needs to Sign Up rather than log in.
+* It uses django-allauth to provide all the settings for user authentication.
+* Styles are consistent with the rest of the website
+* The page is fully responsive
+
+![Log In page mobile](docs/images/log-in-mobile.png)
+
+## Sign Up Page
+
+![Sign Up page desktop](docs/images/signup-page-desktop.png)
+
+* The Sign Up page is accessed from either the navigation bar or a button on the homepage.
+* The Sign Up page contains a link to the Log In page for the user who may have misclicked and already has an account.
+* It uses django-allauth to provide all the settings for user authentication.
+    * Unique username
+    * Strength of password
+* Styles are consistent with the rest of the website
+* The page is fully responsive
+
+![Sign Up page mobile](docs/images/signup-page-mobile.png)
+
+## Log Out Page
+
+![Log out page desktop](docs/images/logout-page-desktop.png)
+
+* The Log Out page can only be accessed from the navigation bar and only when the user is logged in.
+* The Log Out page has a button for users to confirm they wish to log out.
+* It uses django-allauth to provide all the settings for user authentication.
+* Styles are consistent with the rest of the website
+* The page is fully responsive
+
+![Log out page mobile](docs/images/logout-page-mobile.png)
+
+## Bookshelf Page
+
+* The Bookshelf page can be accessed from the navigation bar. It can be accessed by both users who are and are not logged in.
+* If the user is not logged in, the Add Book button is not available. You can only add books if you are logged in.
+
+![Bookshelf page desktop - user not logged in](docs/images/bookshelf-desktop.png)
+
+* There is a search function, which searches the approved books in the database using two parameters; Title and Author. The enter button on the keyboard and the search button on the website can be used to trigger the search. To exit the search function, the X button can be clicked.
+* The Bookshelf contains a list of books that are approved and ordered by the date they were added. 
+* In mobile view, just the book image can be seen and in desktop view the title, author and start of the book blurb can be seen.
+* If a book is uploaded without an image, a placeholder image is set.
+* The book list is paginated once 12 listings are onscreen.
+* If a book listing is clicked, the user is brought to the Books' page.
+* The page is fully responsive
+
+![Bookshelf page mobile - user logged in](docs/images/bookshelf-mobile.png)
+
+## Book Page
+
+![Book page desktop - user logged in](docs/images/book-page-logged-in.png)
+
+* The Book page is accessed by clicking on the links to particular books; mainly from the Bookshelf page, but can also be accessed via links from listings on the Home Page, and links from the review titles in My Books.
+* The Book page is unique to each book listing, and a book has to be approved by admin to access it. 
+* The url is unique for each book
+* The Book page pulls data from the database about the chosen book; Book image, title, author and blurb.
+* The user can bookmark (same concept as favouriting a book or item) and review a book if they are logged in.
+* Below the book blurb, there is a list of all the reviews related to that particular book, in order of the newest ones.
+* The user can only review a book if they are logged in.
+* Each review, contains the username of who review, the time and date it was reviewed and the review text itself.
+* The page is full responsive
+
+![Book page desktop - user logged out](docs/images/book-page-logged-out.png)
+
+![Book page mobile - user logged in](docs/images/book-page-mobile.png)
+
+### Create a Review
+
+* The user must be logged in to review a book
+
+![Log in to review](docs/images/log-in-to-review.png)
+
+* If the user isn't logged in, text informs the user to log in to review.
+* The review button at the top of the page brings the user to the review section at the bottom.
+* Once the user reviews, they receive an alert that their review has been flagged for approval.
+
+![Review added alert](docs/images/review-added.png)
+
+* Once the review is approved it will appear with the other reviews.
+
+![Review form - user logged in](docs/images/review-form.png)
+
+### Bookmark a Book
+
+* The user must be logged into bookmark a book and if they arent, text informs the users of so and provides links to the log in and sign up pages.
+
+![Bookmark - user logged out](docs/images/bookmark-not-logged-in.png)
+
+* Once the user logs in, they can click/press on the bookmark to bookmark the book.
+* An alert imforms the user that the book is bookmarked and anytime they access the book listing and they have favourited it, the alert will inform them.
+* The bookmark itself fills color also to inform the user that they have bookmarked the book.
+
+![Bookmark alert - user logged in](docs/images/bookmark-book-alert.png)
+
+* The number beside the bookmark indicated how many people have bookmarked it already.
+* A user can un-bookmark a book by clicking on the bookmark again.
+
+![Not bookmarked - user logged in](docs/images/bookmark-book.png)
+
+## My Books Page
+
+<details> <summary> My Books Page Screenshot, Desktop and Mobile versions</summary>
+
+![My Books desktop page](docs/images/my-book-desktop.png)
+
+![My Books mobile page](docs/images/my-book-mobile.png)
+
+</details>
+
+
+* My Books page can only be accessed if the user is logged in and can be accessed from the My Books tab in the navbar or clicking on the username in the navbar.
+* The My Books page is essentially the user's profile page as such. It is personalised with the users name at the top, and contains a list of books bookmarked by the user and reviews made by the user.
+* If a book that has been bookmarked by the user is clicked, it brings the user to the books detailed page.
+* The page is fully responsive
+
+### User Reviews
+
+* The user can update or delete reviews they have already made here.
+* Clicking the update button, brings the user to an edit review page where the user can change the content of their review.
+* If the user decides to update their review, the review is removed from the Book's detail review list and is sent for approval by an admin again.
+* The user is brought back to their My Books page and an alert notifies the user that they have updated their review and that it has been sent for approval.
+
+![My Books sent for approval alert](docs/images/my-book-approval-alert.png)
+
+* The review itself will appear however in the user's My Books page but will contain a Waiting on Approval tag which is automatically removed if an admin approves the review.
+
+![My Books waiting on approval tag](docs/images/my-book-approval.png)
+
+* If the admin deletes the review, the review is removed completely from all lists and cannot be accessed again and the user is brought back to their my books page and alerted that they deleted their review.
+
+![My Books delete review alert](docs/images/my-book-delete-alert.png)
+
+* If the user decides to delete their review, they are brought to a delete review page, where they are asked to confirm whether they wish to delete the review. If they decide to delete the review, the review is removed from all lists.
+
+## Contact
+
+![Contact desktop page](docs/images/contact.png)
+
+![Contact mobile page](docs/images/contact-mobile.png)
+
+* The contact page can be accessed by all users, logged in or not.
+* It uses EmailJS to send the user's message, contact details and name to an email address.
+
+![EmailJS Template](docs/images/contact-template.png)
+
+* All fields have to be filled by the user before sending the contact form.
+
+![Contact required fields](docs/images/contact-required-field.png)
+
+* If the user doesn't fill all the fields, a pop up will ask the user to please fill out the required field.
+* The email field requires a proper email address with the @ symbol to be able to field the field correctly.
+
+![Contact email field](docs/images/contact-email-field.png)
+
+* Once the user sends the email an alert let's the user know that they have sent a message successfully and a message will be sent to the email chosen when setting up EmailJS
+
+![Email](docs/images/contact-email.png)
+
+![Email](docs/images/contact-email-2.png)
+
+* The page is fully responsive
+
+
+## Admin Only Page
+
+<details> <summary> Admin Only Screenshot, Desktop and Mobile versions</summary>
+
+![Admin Only desktop page](docs/images/admin-only-desktop.png)
+
+![Admin Only mobile page](docs/images/admin-only-mobile.png)
+
+</details>
+
+* The Admin Only page can only be accessed if the user is logged in and is a Superuser.
+* It allows the admin to approve, edit and delete books and reviews from all users.
+* There is a list of books in the database ordered by the newest, unapproved books.
+* They are listed fully with title, author, book image, the book blurb, and the genre it was added to.
+* There are two buttons to allow the admin to approve or delete each listing individually.
+* The books paginate at 3 book listings
+* Below this there is a list of reviews that are awaiting approval, ordered by the newest, unapproved reviews.
+* The reviews are listed with the username of who made the review, the date and time it was made, the review text detail and two buttons to approve and delete the review.
+* The page is fully responsive.
+
+### Admin Approve and Delete Book
+
+* The admin can approve and delete books added by users.
+* If the admin decides to approve the listing they are brought to an approve book page where the admin can update the listing if need be (spelling mistakes etc), or submit it as is.
+
+![Approve Book page](docs/images/approve-book-page.png)
+
+* Once the book is approved, it is removed from the list and it automatically appears as part of any list that shows approved books. The admin is brought back to the Admin Only page and a message alerts the admin that the book was approved.
+
+![Approve Book alert](docs/images/approve-book-alert.png)
+
+* If the admin decides to delete the book, it is immediately deleted upon clicking of the delete button. 
+* Once deleted the admin is brought back to the Admin Only page and a message alerts the admin that they have deleted the book.
+
+![Delete Book alert](docs/images/book-deleted.png)
+
+### Admin Approve and Delete Reviews
+
+* The admin can approve and delete reviews added by users.
+* If the admin decides to approve the review the review is immediately approved upon clicking the approve button.
+* Once the review is approved, it is removed from the list and it automatically appears as part of any list that shows approved reviews. The admin is brought back to the Admin Only page and a message alerts the admin that the review was approved.
+
+![Approve Review alert](docs/images/approve-review-alert.png)
+
+* If the admin decides to delete the review, it is immediately deleted upon clicking of the delete button. 
+* Once deleted the admin is brought back to the Admin Only page and a message alerts the admin that they have deleted the review. The review is removed from the waiting for approval list and appears automatically on any lists calling for the approved reviews of a certain book.
+
+![Delete Review alert](docs/images/delete-review-alert.png)
+
+## 404 Page
 
 
 [Back to top](<#contents>)

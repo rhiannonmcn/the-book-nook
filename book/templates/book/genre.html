@@ -16,47 +16,46 @@
           <div class="col-12">
             <div class="row">
               {% for book in books %} {% if book.book_genre == genres %}
-              <div class="col-4 mb-5 col-sm-4 col-md-2">
-                <div class="card h-100 book-card">
-                  <div class="card-body book-listing-body">
-                    <a href="{% url 'book_detail' book.slug %}">
-                      {% if "placeholder" in book.book_image.url %}
-                      <img
-                        class="card-img-top image-listing"
-                        src="https://res.cloudinary.com/ddhmc5wvm/image/upload/v1661075789/book-nook/images/bookworm-2.png"
-                        alt="{{ book.title }} by {{ book.book_author }} book listing with no book cover"
-                      />
-                      <div
-                        class="card-img-overlay d-flex align-items-center justify-content-center card-title-full"
-                      >
-                        <p class="text-center p-bold">{{ book.title }}</p>
-                      </div>
-
-                      {% else %}
-                      <img
-                        class="card-img-top image-listing"
-                        src=" {{ book.book_image.url }}"
-                        alt="{{ book.title }} by {{ book.book_author }} book listing"
-                      />
-                      {% endif %}
-
-                      <h2 class="m-2 text-center book-listing-title p-bold">
+              <div class="col-12 col-md-4 col-lg-3 mb-3 mb-md-5">
+                <a href="{% url 'book_detail' book.slug %}">
+                  <div class="card h-100 book-card">
+                    <div class="card-header bg-seashell">
+                      <h2 class="mt-2 book-listing-title f-small p-bold">
                         {{ book.title }}
+                        <span class="irresistable f-small p-bold"
+                          >by {{ book.book_author }}</span
+                        >
                       </h2>
-
-                      <p
-                        class="mx-2 book-listing-author text-center irresistable p-bold"
-                      >
-                        by {{ book.book_author }}
-                      </p>
-                      <p class="book-listing-text text-center mx-2 card-text">
-                        {{book.book_blurb|truncatewords:10}}
-                      </p>
-                    </a>
+                    </div>
+                    <div class="row">
+                      <div class="col-4 d-flex align-items-center p-0">
+                        <div class="card-body p-0">
+                          {% if "placeholder" in book.book_image.url %}
+                          <img
+                            class="card-img-top image-listing"
+                            src="https://res.cloudinary.com/ddhmc5wvm/image/upload/v1661075789/book-nook/images/bookworm-2.png"
+                            alt="{{ book.title }} by {{ book.book_author }} book listing with no book cover"
+                          />
+                          {% else %}
+                          <img
+                            class="card-img-top image-listing"
+                            src=" {{ book.book_image.url }}"
+                            alt="{{ book.title }} by {{ book.book_author }} book listing"
+                          />
+                          {% endif %}
+                        </div>
+                      </div>
+                      <div class="col-7 d-flex align-items-center">
+                        <p class="book-listing-text f-small card-text">
+                          {{book.book_blurb|truncatewords:20}}
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                </a>
               </div>
-              {% if forloop.counter|divisibleby:12 %}
+
+              {% if forloop.counter|divisibleby:8 %}
             </div>
             <div class="row">
               {% endif %} {% endif %} {% empty %}
@@ -98,17 +97,21 @@
   <div class="owl-carousel owl-theme">
     {% for value in genre_object %}
     <div class="item">
-      <div class="card genre-card">
-        <div class="card-body home-card-body">
+      <div class="card h-100 genre-card">
+        <div class="card-body p-0">
+          <div
+            class="p-0 card-header linen genre-card-title d-flex align-items-center justify-content-center"
+          >
+            <h4 class="m-0 f-medium p-bold card-title irresistable text-center">
+              {{ value.genre_name }}
+            </h4>
+          </div>
           <a href="{% url 'genre_detail' value.slug %}">
             <img
               class="card-img genre-card-img"
               src=" {{ value.genre_image.url }} "
-              alt="#"
+              alt="image associated with {{ genre.genre.name }}"
             />
-            <div class="card-title-bg">
-              <h4 class="card-title text-center">{{ value.genre_name }}</h4>
-            </div>
           </a>
         </div>
       </div>

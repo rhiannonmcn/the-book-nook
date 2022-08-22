@@ -17,7 +17,7 @@
         />
       </div>
       <div
-        class="hero-info col-12 col-sm-6 d-flex flex-column justify-content-center align-items-center"
+        class="pb-5 col-12 col-sm-6 d-flex flex-column justify-content-center align-items-center"
       >
         <h1 class="page-title text-center mt-5 mb-2">The Book Nook</h1>
         <h2 class="page-subtitle text-center homepage-subtitle">
@@ -72,17 +72,17 @@
   <div class="owl-carousel owl-theme">
     {% for genre in genre_list %}
     <div class="item">
-      <div class="card genre-card">
-        <div class="card-body home-card-body">
+      <div class="card h-100 genre-card">
+        <div class="card-body p-0">
+          <div class="p-0 card-header genre-card-title bg-seashell d-flex align-items-center justify-content-center">
+            <h4 class="m-0 f-medium p-bold card-title irresistable text-center">{{ genre.genre_name }}</h4>
+          </div>
           <a href="{% url 'genre_detail' genre.slug %}">
             <img
               class="card-img genre-card-img"
               src=" {{ genre.genre_image.url }} "
               alt="image associated with {{ genre.genre.name }}"
             />
-            <div class="card-title-bg">
-              <h4 class="card-title text-center">{{ genre.genre_name }}</h4>
-            </div>
           </a>
         </div>
       </div>
