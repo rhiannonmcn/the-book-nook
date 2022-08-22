@@ -390,15 +390,20 @@ section#error {
     height: 18vw;
   }
 
-  .owl-book-listing {
-    height: 25vw;
-  }
-
   /* Home styles */
 
   #hero-section {
     padding: 40px;
   }
+
+  .owl-book-listing {
+    height: 25vw;
+  }
+
+  .book-image {
+    width: 400px;
+  }
+  
 
   /* book.html */
 
