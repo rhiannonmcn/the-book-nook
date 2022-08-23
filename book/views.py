@@ -66,7 +66,7 @@ class BookList(ListView):
         return object_list
 
 
-class AddBook(CreateView):
+class AddBook(LoginRequiredMixin, CreateView):
     """_summary_
 
     Args:
