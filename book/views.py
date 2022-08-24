@@ -66,7 +66,7 @@ class BookList(ListView):
         return object_list
 
 
-class AddBook(CreateView):
+class AddBook(LoginRequiredMixin, CreateView):
     """_summary_
 
     Args:
@@ -179,7 +179,7 @@ class BookDetails(View):
         )
 
 
-class BookFavourite(View):
+class BookmarkBook(View):
     """_summary_
 
     Args:
@@ -381,7 +381,7 @@ class AdminOnly(UserPassesTestMixin, ListView):
         return context
 
 
-class EditBookListing(SuccessMessageMixin, UpdateView):
+class EditBookListing( UserPassesTestMixin ,SuccessMessageMixin, UpdateView):
 
     model = Book
     fields = [
@@ -393,6 +393,14 @@ class EditBookListing(SuccessMessageMixin, UpdateView):
     template_name = 'approve_book.html'
     success_url = reverse_lazy('admin_only')
     success_message = "You approved the book"
+    
+    def test_func(self):
+        """_summary_
+
+        Returns:
+            _type_: _description_
+        """
+        return self.request.user.is_superuser
 
     def form_valid(self, form):
         form.instance.book_approved = True

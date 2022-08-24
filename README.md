@@ -332,11 +332,7 @@ Each page, except the Home Page, has a clear heading when landing on the page. T
 ![Bookmark - user logged out](docs/images/bookmark-not-logged-in.png)
 
 * Once the user logs in, they can click/press on the bookmark to bookmark the book.
-* An alert imforms the user that the book is bookmarked and anytime they access the book listing and they have favourited it, the alert will inform them.
 * The bookmark itself fills color also to inform the user that they have bookmarked the book.
-
-![Bookmark alert - user logged in](docs/images/bookmark-book-alert.png)
-
 * The number beside the bookmark indicated how many people have bookmarked it already.
 * A user can un-bookmark a book by clicking on the bookmark again.
 
@@ -515,6 +511,8 @@ The page could also provide more user details that could also be added to the us
 [Back to top](<#contents>)
 
 # Testing
+
+I have included testing details in a separate document called [TESTING.md](TESTING.md)
 
 [Back to top](<#contents>)
 
