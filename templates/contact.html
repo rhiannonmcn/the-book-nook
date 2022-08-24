@@ -1,6 +1,6 @@
 {% extends "base.html" %} {% load static %}{% block title %}
 <title>Contact</title>
-{% endblock %} {% block content %} {% load crispy_forms_tags %}
+{% endblock %} {% block content %}
 
 <section id="reviews" class="bg-seashell pt-5 pb-5">
   <div class="row justify-content-center">
@@ -12,14 +12,72 @@
   <div class="row justify-content-center">
     <div class="col col-md-8">
       <div>
-        <form id='contact-form' method="post" style="margin-top: 1.3em">
-          {% csrf_token %} {{ form | crispy }}
-          <button id="send-button" class="btn btn-styles">Send</button>
+        <div id="contact-alert" class="row justify-content-center hide">
+          <div class="col col-md-8">
+            <div
+              class="alert mt-3 alert text-center alert-dismissible fade show user-alert"
+            >
+              Success! message sent successfully.
+              <button
+                type="button"
+                class="btn-close user-alert"
+                data-bs-dismiss="alert"
+                aria-label="Close"
+              ></button>
+            </div>
+          </div>
+        </div>
+        <form id="contact-form" method="post" style="margin-top: 1.3em">
+          {% csrf_token %}
+
+          <div class="form-group">
+            <label for="first-name" class="mt-4">First Name</label>
+            <input
+              name="first-name"
+              type="text"
+              class="form-control mt-2"
+              id="email"
+              placeholder="First Name"
+              required
+            />
+
+            <label for="last-name" class="mt-4">Last Name</label>
+            <input
+              name="last-name"
+              type="text"
+              class="form-control mt-2"
+              id="email"
+              placeholder="Last Name"
+              required
+            />
+
+            <label for="email" class="mt-4">Email</label>
+            <input
+              name="email"
+              type="email"
+              class="form-control mt-2"
+              id="email"
+              placeholder="Enter email"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="message" class="mt-4">Message</label>
+            <textarea
+              name="message"
+              class="form-control mt-2"
+              id="message"
+              rows="5"
+              placeholder="Enter message"
+              required
+            ></textarea>
+          </div>
+          <button id="send-button" class="btn btn-styles mt-4">Send</button>
         </form>
       </div>
     </div>
   </div>
-
 </section>
 
 {% endblock %}
