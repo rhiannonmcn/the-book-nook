@@ -549,6 +549,7 @@ A copy of the GitHub Repository can be made by forking the GitHub account. Chang
 * [Fix Image Upload via form link 2](https://stackoverflow.com/questions/53429359/django-form-valid-missing-1-required-positional-argument-form)
 )
 * [EmailJS tutorial](https://martinezjf2.medium.com/how-to-setup-emailjs-33809350f0f8)
+* [Validation Error Fix for action attribute in forms](https://stackoverflow.com/questions/32491347/bad-value-for-attribute-action-on-element-form-must-be-non-empty)
 
 [Back to top](<#contents>)
 

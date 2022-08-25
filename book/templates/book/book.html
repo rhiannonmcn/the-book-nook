@@ -43,14 +43,12 @@
               {% ratings book 18 18 %}
             </div>
             <div class="p-0 col-4 col-lg-3 d-flex justify-content-center">
-              <a href="#reviews"
-                ><button type="button" class="btn btn-styles">Review</button></a
-              >
+              <a href="#reviews" class="btn btn-styles review-btn">Review</a>
             </div>
 
             {% if user.is_authenticated %}
             <div class="p-0 col-3 mt-2">
-              <strong
+              <div
                 class="d-flex justify-content-center justify-content-md-start"
               >
                 <form
@@ -84,7 +82,7 @@
                   </button>
                   {% endif %}
                 </form>
-              </strong>
+              </div>
             </div>
             {% else %}
             <div class="p-0 col-md-3 col-12 mt-4 mt-md-2">
@@ -121,7 +119,7 @@
     <div class="row justify-content-center">
       <div class="col col-md-8">
         <h3 class="h3-styles">Blurb</h3>
-        <p>{{ book.book_blurb | linebreaks }}</p>
+        {{ book.book_blurb | linebreaks }}
       </div>
     </div>
   </div>
@@ -182,7 +180,7 @@
           <div class="row">
             <div class="review-body col-12">
               <p class="p-bold">reviewed:</p>
-              <p>{{ review.review_detail | linebreaks}}</p>
+              {{ review.review_detail | linebreaks}}
             </div>
           </div>
         </div>
