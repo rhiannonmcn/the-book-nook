@@ -320,7 +320,7 @@ In addition to the other tests, I have conducted a manual check list for myself 
 | &check; | That none of the fields can accept just blank spaces
 | &check; | That user feedback is provided if none of the required criteria to sub,it the form are met
 | &check; | Clicking the Send button sends the email to the Dummy Email account set up via EmailJS, that the user is redirected to the contact page.
-| &#88; | That an alert message informs the user that their message was sent successfully upon the user sending the message
+| &check; | That an alert message informs the user that their message was sent successfully upon the user sending the message
 
 
 | Status | **Admin Only Page - User Logged Out**

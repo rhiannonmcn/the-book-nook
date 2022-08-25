@@ -242,40 +242,6 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
-    <!-- Script for owl carousel initilisation and settings-->
-    <script>
-      $(".owl-carousel").owlCarousel({
-        loop: true,
-        margin: 10,
-        nav: true,
-        dots: false,
-        responsive: {
-          0: {
-            items: 1,
-          },
-          300: {
-            items: 3,
-          },
-          600: {
-            items: 5,
-          },
-          1000: {
-            items: 7,
-          },
-        },
-      });
-    </script>
-    <!--Script for emailjs contact form-->
-    <script type="text/javascript">
-      document
-        .getElementById("contact-form")
-        .addEventListener("submit", function () {
-          emailjs.sendForm(
-            "service_d8hp71m",
-            "template_so1j2dk",
-            "#contact-form"
-          );
-        });
-    </script>
+    {% block script %}{% endblock %}
   </body>
 </html>

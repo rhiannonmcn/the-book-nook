@@ -38,6 +38,10 @@ body {
   color: var(--seashell);
 }
 
+.hide{
+  display: none;
+}
+
 /* Any sections that need the lighter color background */
 .bg-seashell {
   background-color: var(--seashell);
