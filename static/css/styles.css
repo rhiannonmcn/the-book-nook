@@ -113,11 +113,6 @@ a {
   font-weight: 700;
 }
 
-a:visited {
-  text-decoration: none;
-  color: var(--irresistable);
-}
-
 a:hover {
   text-decoration: none;
   color: var(--mediumPurple);
