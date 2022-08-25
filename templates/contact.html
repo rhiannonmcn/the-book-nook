@@ -80,19 +80,14 @@
   </div>
 </section>
 
-{% endblock %}
-{% block script %}<!--Script for emailjs contact form-->
+{% endblock %} {% block script %}<!--Script for emailjs contact form-->
 <script type="text/javascript">
   document
     .getElementById("contact-form")
     .addEventListener("submit", function () {
       event.preventDefault();
       emailjs
-        .sendForm(
-          "service_d8hp71m",
-          "template_so1j2dk",
-          "#contact-form",
-        )
+        .sendForm("service_d8hp71m", "template_so1j2dk", "#contact-form")
         .then(function () {
           let success = document.getElementById("contact-alert");
           let contactForm = document.getElementById("contact-form");
@@ -101,4 +96,5 @@
           setInterval(() => window.location.reload(true), 3000);
         });
     });
-</script>{% endblock %}
+</script>
+{% endblock %}
