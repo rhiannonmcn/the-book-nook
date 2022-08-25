@@ -16,7 +16,7 @@
         <div class="review-heading row py-2">
           <div class="col-12 col-md-6">
             <h4>{{ book.title }}</h4>
-            <h4 class="irresistable">by {{ book.book_author }}</h3>
+            <h4 class="irresistable">by {{ book.book_author }}</h4>
                 <p>{{ book.book_created_on }}</p>
             <p> {{ book.book_genre}}</p>
           </div>
@@ -37,7 +37,7 @@
         <div class="row">
           <div class="review-body col-12">
             <p class="p-bold irresistable">Blurb:</p>
-            <p>{{ book.book_blurb | linebreaks}}</p>
+            {{ book.book_blurb | linebreaks}}
           </div>
         </div>
         <div class="row">
@@ -45,7 +45,7 @@
 
             <form action=" {% url 'edit_book_listing' book.pk %}" method="get">
                 {% csrf_token %}
-            <button id="approve-review" class="btn btn-styles me-4">Approve</button>
+            <button class="btn btn-styles me-4">Approve</button>
             </form>
 
             <form action="{% url 'delete_book_admin' book.pk %}" method="post">
@@ -107,7 +107,7 @@
         <div class="row">
           <div class="review-body col-12">
             <p class="p-bold">reviewed:</p>
-            <p>{{ review.review_detail | linebreaks}}</p>
+            {{ review.review_detail | linebreaks}}
           </div>
         </div>
         <div class="row">
