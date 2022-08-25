@@ -11,7 +11,7 @@
         <img
           class="book-image"
           src="https://res.cloudinary.com/ddhmc5wvm/image/upload/v1658737960/book-nook/images/open-book-image-1_pbji0b.svg"
-          height="260.311 "
+          height="260"
           width="400"
           alt="Image of an open book with sparkles"
         />
@@ -28,16 +28,20 @@
         </h3>
         {% if user.is_authenticated %}
         <h3 class="text-center page-subtitle">Welcome {{ user }}</h3>
-        <a href="{% url 'my_books' %}">
-          <button class="btn btn-homepage btn-styles">My Books</button>
+        <a class="btn btn-homepage btn-styles" href="{% url 'my_books' %}">
+          My Books
         </a>
         {% else %}
-        <a href="{% url 'account_login' %}"
-          ><button class="btn btn-homepage btn-styles">Login</button></a
+        <a
+          class="btn btn-homepage btn-styles seashell"
+          href="{% url 'account_login' %}"
+          >Login</a
         >
-        <a href="{% url 'account_signup' %}"
-          ><button class="btn btn-homepage mt-3 btn-styles">Sign Up</button></a
-        >
+        <a
+          class="btn btn-homepage mt-3 btn-styles"
+          href="{% url 'account_signup' %}"
+          >Sign Up
+        </a>
         {% endif %}
       </div>
     </div>
