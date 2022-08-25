@@ -1,5 +1,7 @@
 from django.shortcuts import render, get_object_or_404, reverse
-from django.views.generic import View, CreateView, ListView, UpdateView, DeleteView, TemplateView
+from django.views.generic import (
+    View, CreateView, ListView, UpdateView, DeleteView, TemplateView
+    )
 from django.http import HttpResponseRedirect
 from django.db.models import Q
 from django.utils.text import slugify
@@ -12,26 +14,22 @@ from .forms import AddBookForm, BookForm
 from django.contrib.auth.mixins import UserPassesTestMixin
 
 
-
 class HomeList(ListView):
-    """_summary_
-
-    Args:
-        ListView (_type_): _description_
-
-    Returns:
-        _type_: _description_
+    """
+    Takes the book object from Book model
+    and returns a list of those with approved
+    = True and in random order on the home page
     """
 
     model = Book
     template_name = 'index.html'
-    queryset = Book.objects.filter(book_approved=True).exclude(book_image__icontains='placeholder').order_by('?')
+    queryset = Book.objects.filter(book_approved=True).exclude(
+        book_image__icontains='placeholder').order_by('?')
 
     def get_context_data(self, **kwargs):
-        """_summary_
-
-        Returns:
-            _type_: _description_
+        """
+        Takes the genre object from Genre model
+        and returns a list
         """
         context_data = super().get_context_data(**kwargs)
         context_data['genre_list'] = Genre.objects.all()
@@ -39,10 +37,11 @@ class HomeList(ListView):
 
 
 class BookList(ListView):
-    """_summary_
-
-    Args:
-        generic (_type_): _description_
+    """
+    Takes the book object from Book model
+    and returns a list of those with approved
+    = True and in order of when they were created
+    in the Bookshelf page
     """
     model = Book
     queryset = Book.objects.filter(
@@ -52,45 +51,48 @@ class BookList(ListView):
     context_object_name = 'bookshelf'
 
     def get_queryset(self):
-        """_summary_
-
-        Returns:
-            _type_: _description_
+        """
+        Gets the user input in the search field
+        in the template and returns a list of books
+        from the Book model filtered by title,
+        book_author and book_blurb and the book
+        has approved = True
         """
         name = self.request.GET.get('search', '')
         object_list = Book.objects.filter(book_approved=True)
         if name:
             object_list = object_list.filter(
-                Q(title__icontains=name) | Q(book_author__icontains=name)
-                | Q(book_blurb__icontains=name))
+                Q(title__icontains=name) | Q(book_author__icontains=name) |
+                Q(book_blurb__icontains=name))
         return object_list
 
 
 class AddBook(LoginRequiredMixin, CreateView):
-    """_summary_
+    """
+    This view makes sure the user is logged in
+    before they can access the template
 
-    Args:
-        generic (_type_): _description_
+    Calls the AddBookForm from forms.py to add
+    a book to the database
     """
     template_name = 'book/add_book.html'
     form_class = AddBookForm
 
     def get_success_url(self):
-        """_summary_
-
-        Returns:
-            _type_: _description_
+        """
+        sets the reverse url for the
+        successful addition of the book
+        to the database
         """
         return reverse('book_shelf')
 
     def form_valid(self, form):
         """_summary_
-
-        Args:
-            form (_type_): _description_
-
-        Returns:
-            _type_: _description_
+        validates the form and adds a success message
+        to the template once abook is successfully added
+        Sets the automatic slug for the object created
+        from the user input on the title and book author
+        fields
         """
         form = form.save(commit=False)
         messages.success(
@@ -101,21 +103,18 @@ class AddBook(LoginRequiredMixin, CreateView):
 
 
 class BookDetails(View):
-    """_summary_
-
-    Args:
-        View (_type_): _description_
+    """
+    Displays the full individual book object from
+    Book model as well as the reviews associated
+    with the book object and the bookmark status
+    for the object
     """
 
     def get(self, request, slug, *args, **kwargs):
-        """_summary_
-
-        Args:
-            request (_type_): _description_
-            slug (_type_): _description_
-
-        Returns:
-            _type_: _description_
+        """
+        Gets full book detail with approved reviews
+        Checks if the book is bookmarked by the current user
+        Current user can bookmark/un-bookmark a book
         """
         queryset = Book.objects.filter(book_approved=True)
         book = get_object_or_404(queryset, slug=slug)
@@ -138,14 +137,12 @@ class BookDetails(View):
         )
 
     def post(self, request, slug, *args, **kwargs):
-        """_summary_
+        """
+        Gets full book detail with approved reviews
+        Checks if the book is bookmarked by the current user
+        Current user can bookmark/un-bookmark a book
+        Current user can submit a review form for approval
 
-        Args:
-            request (_type_): _description_
-            slug (_type_): _description_
-
-        Returns:
-            _type_: _description_
         """
         queryset = Book.objects.filter(book_approved=True)
         book = get_object_or_404(queryset, slug=slug)
@@ -180,21 +177,16 @@ class BookDetails(View):
 
 
 class BookmarkBook(View):
-    """_summary_
-
-    Args:
-        View (_type_): _description_
+    """
+    Users can bookmark or un-bookmark a book object
     """
 
     def post(self, request, slug, *args, **kwargs):
-        """_summary_
-
-        Args:
-            request (_type_): _description_
-            slug (_type_): _description_
-
-        Returns:
-            _type_: _description_
+        """
+        Gets the specific book instance from Book model
+        Checks if the user is attached to the book object
+        and adds or removes the user which will be called
+        via template book_detail
         """
         book = get_object_or_404(Book, slug=slug)
 
@@ -207,21 +199,19 @@ class BookmarkBook(View):
 
 
 class GenreDetail(View):
-    """_summary_
-
-    Args:
-        View (_type_): _description_
+    """
+    Returns all the book objects from the Book model
+    filtered by a genre and with book_approved = True
     """
 
     def get(self, request, slug, *args, **kwargs):
-        """_summary_
-
-        Args:
-            request (_type_): _description_
-            slug (_type_): _description_
-
-        Returns:
-            _type_: _description_
+        """
+        Get all the genre objects from the Genre model
+        and the specific slug of the genre object
+        Gets all the book objects filtered then by
+        their genre with book_approved = True
+        returns the single genre object instance,
+        the book object and the genre object list
         """
 
         genre_object = Genre.objects.all()
@@ -241,22 +231,24 @@ class GenreDetail(View):
 
 
 class MyBooks(LoginRequiredMixin, CreateView):
-    """_summary_
-
-    Args:
-        LoginRequiredMixin (_type_): _description_
-        View (_type_): _description_
+    """
+    Gets all the current users bookmarked books
+    and all the user's reviews and displays them
+    on the template
+    If the user is logged in the my_books template
+    can be accessed
 
     """
 
     def get(self, request, *args, **kwargs):
-        """_summary_
-
-        Args:
-            request (_type_): _description_
-
-        Returns:
-            _type_: _description_
+        """
+        Establishes the current user
+        Gets all the books where book_favourites =
+        current user
+        Gets all the reviews where the review_username =
+        current user
+        returns the user book favourites and user reviews
+        and the current user username
         """
         username = request.user
         user_fav = Book.objects.filter(book_favourites=request.user)
@@ -270,12 +262,11 @@ class MyBooks(LoginRequiredMixin, CreateView):
 
 
 class EditReview(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
-    """_summary_
-
-    Args:
-        SuccessMessageMixin (_type_): _description_
-        LoginRequiredMixin (_type_): _description_
-        UpdateView (_type_): _description_
+    """
+    Logged in user can edit any reviews they have made
+    which will then be sent to be approved again
+    template is edit_review.html
+    reverse url is my_books.html
     """
 
     model = BookReview
@@ -284,13 +275,12 @@ class EditReview(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     ]
     template_name = 'book/edit_review.html'
     success_url = reverse_lazy('my_books')
-    success_message = "You have updated your review and it has been flagged for approval!"
+    success_message = "You have updated your review and \
+    it has been flagged for approval!"
 
     def get_context_data(self, **kwargs):
-        """_summary_
-
-        Returns:
-            _type_: _description_
+        """
+        Get the object instance's book title
         """
         context = super().get_context_data(**kwargs)
         context['book_title'] = self.object.book_listing
@@ -298,21 +288,21 @@ class EditReview(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
         return context
 
     def form_valid(self, form):
+        """
+        Validate form
+        Set the review_approved status to False
+        Save and return the new object
+        """
         form.instance.review_approved = False
         form.save()
         return super().form_valid(form)
 
 
 class DeleteReview(SuccessMessageMixin, LoginRequiredMixin, DeleteView):
-    """_summary_
-
-    Args:
-        SuccessMessageMixin (_type_): _description_
-        LoginRequiredMixin (_type_): _description_
-        generic (_type_): _description_
-
-    Returns:
-        _type_: _description_
+    """
+    Delete the current's user's review
+    template is delete_review.html
+    reverse url is my_books.html
     """
     model = BookReview
     success_url = reverse_lazy('my_books')
@@ -320,10 +310,10 @@ class DeleteReview(SuccessMessageMixin, LoginRequiredMixin, DeleteView):
     template_name = 'book/delete_review.html'
 
     def get_context_data(self, **kwargs):
-        """_summary_
-
-        Returns:
-            _type_: _description_
+        """
+        Get and return the object instance book_title,
+        review_detail, current user's username,
+        review date created on
         """
         context = super().get_context_data(**kwargs)
         context['book_title'] = self.object.book_listing
@@ -333,24 +323,29 @@ class DeleteReview(SuccessMessageMixin, LoginRequiredMixin, DeleteView):
 
         return context
 
-    
-class Contact(TemplateView):
 
+class Contact(TemplateView):
+    """
+    returns the contact.html template
+    """
     template_name = 'contact.html'
 
-    
-class AdminOnly(UserPassesTestMixin, ListView):
-    """_summary_
 
-    Args:
-        View (_type_): _description_
+class AdminOnly(UserPassesTestMixin, ListView):
+    """
+    Checks that the user is a superuser only
+    Gets a list of books from Book model with
+    book_approved = False
+    Gets a list of reviews from BookReview
+    model with review_approved = False
+    template is admin_only.html
     """
 
     def test_func(self):
-        """_summary_
-
-        Returns:
-            _type_: _description_
+        """
+        Checks if the current user is
+        a superuser and allows access to
+        the template if they are
         """
         return self.request.user.is_superuser
 
@@ -362,10 +357,9 @@ class AdminOnly(UserPassesTestMixin, ListView):
     paginate_by = 3
 
     def get_context_data(self, **kwargs):
-        """_summary_
-
-        Returns:
-            _type_: _description_
+        """
+        Gets the review from the BookReview model
+        with the review_approved = False
         """
         context = super().get_context_data(**kwargs)
         context['reviews'] = BookReview.objects.filter(
@@ -373,7 +367,14 @@ class AdminOnly(UserPassesTestMixin, ListView):
         return context
 
 
-class EditBookListing( UserPassesTestMixin ,SuccessMessageMixin, UpdateView):
+class EditBookListing(UserPassesTestMixin, SuccessMessageMixin, UpdateView):
+    """
+    Checks the user is a superuser only
+    Gets the book object instance from
+    Book model and allows the superuser
+    to update the book object
+    template is approve_book.html
+    """
 
     model = Book
     fields = [
@@ -385,22 +386,32 @@ class EditBookListing( UserPassesTestMixin ,SuccessMessageMixin, UpdateView):
     template_name = 'approve_book.html'
     success_url = reverse_lazy('admin_only')
     success_message = "You approved the book"
-    
-    def test_func(self):
-        """_summary_
 
-        Returns:
-            _type_: _description_
+    def test_func(self):
+        """
+        Checks if the current user is
+        a superuser and allows access to
+        the template if they are
         """
         return self.request.user.is_superuser
 
     def form_valid(self, form):
+        """
+        Validate form
+        Set the book_approved status to True
+        Save and return the new object
+        """
         form.instance.book_approved = True
         form.save()
         return super().form_valid(form)
 
 
 class ApproveReview(SuccessMessageMixin, UpdateView):
+    """
+    Gets the review object instance from
+    BookReview model and allows the superuser
+    to update the review object
+    """
 
     model = BookReview
     fields = [
@@ -410,37 +421,32 @@ class ApproveReview(SuccessMessageMixin, UpdateView):
     success_message = "You approved the review"
 
     def form_valid(self, form):
+        """
+        Validate form
+        Set the review_approved status to True
+        Save and return the new object
+        """
         form.instance.review_approved = True
         form.save()
         return super().form_valid(form)
 
 
 class DeleteBook(SuccessMessageMixin, DeleteView):
-    """_summary_
-
-    Args:
-        SuccessMessageMixin (_type_): _description_
-        LoginRequiredMixin (_type_): _description_
-        generic (_type_): _description_
-
-    Returns:
-        _type_: _description_
+    """
+    Gets the book object instance from
+    Book model and allows the superuser
+    to delet the book object
     """
     model = Book
     success_url = reverse_lazy('admin_only')
     success_message = "Book successfully deleted!"
-    
-    
+
+
 class DeleteReviewAdmin(SuccessMessageMixin, DeleteView):
-    """_summary_
-
-    Args:
-        SuccessMessageMixin (_type_): _description_
-        LoginRequiredMixin (_type_): _description_
-        generic (_type_): _description_
-
-    Returns:
-        _type_: _description_
+    """
+    Gets the review object instance from
+    BookReview model and allows the superuser
+    to delete the review object
     """
     model = BookReview
     success_url = reverse_lazy('admin_only')
