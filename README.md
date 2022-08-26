@@ -1,4 +1,7 @@
 # **The Book Nook - Project Portfolio 4**
+
+![Website devices image](docs/images/website-devices.png)
+
 The Book Nook is a Book Search and Review website, for users who would like to look up book reviews to help them decide their nexxt book, and in turn to leave reviews on books to help others.
 
 
