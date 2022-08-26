@@ -281,7 +281,7 @@ Each page, except the Home Page, has a clear heading when landing on the page. T
 
 ![Bookshelf page desktop - user not logged in](docs/images/bookshelf-desktop.png)
 
-* There is a search function, which searches the approved books in the database using two parameters; Title and Author. The enter button on the keyboard and the search button on the website can be used to trigger the search. To exit the search function, the X button can be clicked.
+* There is a **search function**, which searches the approved books in the database using two parameters; Title and Author. The enter button on the keyboard and the search button on the website can be used to trigger the search. To exit the search function, the X button can be clicked.
 * The Bookshelf contains a list of books that are approved and ordered by the date they were added. 
 * In mobile view, just the book image can be seen and in desktop view the title, author and start of the book blurb can be seen.
 * If a book is uploaded without an image, a placeholder image is set.
@@ -462,6 +462,17 @@ Each page, except the Home Page, has a clear heading when landing on the page. T
 
 ![404 Mobile Page](docs/images/404-mobile.png)
 
+## 403 Page
+
+![403 Desktop Page](docs/images/403-desktop.png)
+
+* A custom 403 page was created for user's trying to access pages they do not have access to.
+* This custom page allows the user to navigate back to website via the navbar if they click/type a url which causes a 403 error.
+* The page has text and a cute image informing the user of their mistake.
+* The page is fully responsive.
+
+![403 Mobile Page](docs/images/403-mobile.png)
+
 
 [Back to top](<#contents>)
 
@@ -485,6 +496,10 @@ The My Books page could be expanded  to include the ability of the user to add t
 
 The page could also provide more user details that could also be added to the user profile in general. Such as a profile picture or avatar that could be utilised in their reviews, and the total number of books they have reviewed or bookmarked could be visible on their profile.
 
+
+## Better Pagination
+
+Pagination is implemented on some pages but it could definitely be expanded to more pages such as the My Books page or the Genre pages for better User Experience.
 
 [Back to top](<#contents>)
 
@@ -519,6 +534,105 @@ I have included testing details in a separate document called [TESTING.md](TESTI
 # Deployment
 
 ## Deployment to Heroku
+
+1. ### Creating the Django Project
+* If development if being done locally: Activate your virtual environment
+* To ensure the virtual environment is not tracked by version control, add .venv to the .gitignore file.
+* Install Django and gunicorn: `pip install django gunicorn`
+* Install supporting database libraries dj_database_url and psycopg2 library: `pip install dj_database_url psycopg2`
+* Install Cloudinary libraries to manage static files: `pip3 install dj-3-cloudinary-storage`
+* Create file for requirements: `pip freeze --local > requirements.txt`
+* Create project:`django-admin startproject project_name .`
+* Create app: `python3 manage.py startapp app_name`
+* Add app to list of `installed apps` in settings.py file: `'app_name'`
+* Migrate changes: `python3 manage.py migrate`
+* Test server works locally: `python3 manage.py runserver`
+
+#### 2. Create your Heroku app
+* Navigate to the Heroku website
+* Create a Heroku account by entering your email address and a password (or login if you have one already).
+* Activate the account through the authentication email sent to your email account
+* Click the **new button** on the top right corner of the screen and select create a new app from the dropdown menu.
+* Enter a unique name for the application.
+* Select the appropriate region for the application.
+* Click create app
+* In the Heroku dashboard click on the Resources tab
+* Scroll down to Add-Ons, search for and select 'Heroku Postgres'
+* In the Settings tab, scroll down to 'Reveal Config Vars' and copy the text in the box beside DATABASE_URL.
+
+#### 3. Set up Environment Variables
+* In you IDE create a new env.py file in the top level directory
+* Add env.py to the .gitignore file
+* In env.py import the os library
+* In env.py add `os.environ["DATABASE_URL"]` = "Paste in the text link copied above from Heroku DATABASE_URL"
+* In env.py add `os.environ["SECRET_KEY"] = "Make up your own random secret key"`
+* In Heroku Settings tab Config Vars enter the same secret key created in env.py by entering 'SECRET_KEY' in the box for 'KEY' and your randomly created secret key in the 'value' box.
+
+#### 4. Setting up settings.py
+
+* In your Django 'settings.py' file type:
+
+ ```
+ from pathlib import Path
+ import os
+ import dj_database_url
+
+ if os.path.isfile("env.py"):
+  import env
+ ```
+* Remove the default insecure secret key in settings.py and replace with the link to the secret key variable in Heroku by typing: `SECRET_KEY = os.environ.get(SECRET_KEY)`
+* Comment out the `DATABASES` section in settings.py and replace with:
+```
+DATABASES = {
+  'default': 
+  dj_database_url.parse(os.environ.get("DATABASE_URL"))
+  }`
+```
+* Create a Cloudinary account and from the 'Dashboard' in Cloudinary copy your url into the env.py file by typing: `os.environ["CLOUDINARY_URL"] = "cloudinary://<insert-your-url>"`
+* In Heroku  add cloudinary url to 'config vars'
+* In Heroku config vars add DISABLE_COLLECTSTATIC with value of '1' (note: this must be removed for final deployment)
+* Add Cloudinary libraries to the installed apps section of settings.py file:
+ ```
+ 'cloudinary_storage'
+ 'django.contrib.staticfiles''
+ 'cloudinary'
+ ```
+* Connect Cloudinary to the Django app in `settings.py`:
+```
+STATIC_URL = '/static'
+STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'STATIC')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+MEDIA_URL = '/media/'
+DEFAULT_FILE_STORAGE =
+'cloudinary_storage.storage.MediaCloudinaryStorage'
+* Link file to the templates directory in Heroku 
+* Place under the BASE_DIR: TEMPLATES_DIR = os.path.join(BASE_DIR,
+'templates')
+```
+* Change the templates directory to TEMPLATES_DIR. Place within the TEMPLATES array: `'DIRS': [TEMPLATES_DIR]`
+* Add Heroku Hostname to ALLOWED_HOSTS: ```ALLOWED_HOSTS =
+['rhi-book-nook.herokuapp.com', 'localhost']```
+*Create Procfile at the top level of the file structure and insert the following:
+    ``` web: gunicorn PROJECT_NAME.wsgi ```
+
+* Make an initial commit and push the code to the GitHub Repository.
+    ```git add .```
+    ```git commit -m "Initial deployment"```
+    ```git push```
+
+#### 5. Heroku Deployment: 
+* Click Deploy tab in Heroku
+* In the 'Deployment method' section select 'Github' and click the 'connect to Github' button to confirm.
+* In the 'search' box enter the Github repository name for the project
+* Click search and then click connect to link the heroku app with the Github repository. The box will confirm that heroku is connected to the repository.
+
+#### 6. Final Deployment
+In the IDE: 
+* When development is complete change the debug setting to: `DEBUG = False` in `settings.py` 
+* In Heroku settings config vars change the DISABLE_COLLECTSTATIC value to 0
+* Because DEBUG must be switched to True for development and False for production it is recommended that only manual deployment is used in Heroku. 
+* To manually deploy click the button 'Deploy Branch'. The default 'main' option in the dropdown menu should be selected in both cases. When the app is deployed a message 'Your app was successfully deployed' will be shown. Click 'view' to see the deployed app in the browser.
 
 ## To fork the repository on GitHub
 
