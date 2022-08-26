@@ -1,25 +1,8 @@
-# **The Book Nook - Project Portfolio 4 **
+# **The Book Nook - Project Portfolio 4**
 The Book Nook is a Book Search and Review website, for users who would like to look up book reviews to help them decide their nexxt book, and in turn to leave reviews on books to help others.
 
 
 You can view the live site here - <a href="https://rhi-book-nook.herokuapp.com/" target="_blank"> The Book Nook </a>
-
-# Contents
-
-* [Objective](<#objective>) 
-* [User Experience](<#user-experience-ux>)
-    * [Site Aims](<#site-aims>)
-    * [Agile Methodology](<#agile-methodology>)
-    * [Design Wireframes](<#design-wireframes>)
-    * [Site Structure](<#site-structure>)
-    * [Design Choices](<#design-choices>)
-* [Features](<#features>)
-* [Future Features](<#future-features>)
-* [Technologies Used](<#technologies-used>)
-* [Testing](<#testing>)
-* [Deployment](<#deployment>)
-* [Credits](<#credits>)
-* [Acknowledgements](<#acknowledgements>)
 
 # Objective
 
@@ -55,6 +38,8 @@ Milestones were used to create Iterations. There were 3 Iterations each dated ap
 
 Development branches were used to complete User Stories. This offered a greater level of control in developing the various aspects of the website. Certain User Stories could also be grouped together and worked on in one development branch. Once the User Stories were completed within the branch and the deveoplment branch was up to date with code pushed, a pull request was created. Using the **Closes #User-Story-number** keyword, the various in progress User Story issues that were being worked on would automatically be closed when the pull request was merged with the main branch. The development branch would then be deleted and a new one created with a new set of user story/ies to be worked on.
 
+The Github issues were not just used to record User Stories but also used to **FIX**, **UPDATE** and record **DOCUMENTATION** updates as well, with the use of these words in the issue title to keep track of work done, needing to be done.
+
 ### User Stories
 
 **Iteration 1**
@@ -81,6 +66,9 @@ Development branches were used to complete User Stories. This offered a greater 
 **Iteration 3**
 * As a **site admin**  I can **access book listings and reviews to be approved** so that **I can approve or not approve and delete user uploads**
 * As a **user**  I can **see if I navigate to a wrong page on the website** so that **navigate easily back via the navbar**
+* As a **user**  I can **see if I navigate to a wrong page on the website** so that **navigate easily back via the navbar**
+* As a **site admin**  I can **access book listings and reviews to be approved** so that **I can approve or not approve and delete user uploads**
+
 
 ## Design Wireframes
 
@@ -451,6 +439,22 @@ Each page, except the Home Page, has a clear heading when landing on the page. T
 
 ![Delete Review alert](docs/images/delete-review-alert.png)
 
+## Book Star Ratings
+* A package called [django-star-rating](https://django-star-ratings.readthedocs.io/en/latest/?badge=latest/#) was installed to track the rating users gave to objects (Books) and provide graphics to represent this.
+* The star rating appears on book listings on the Genre, Bookshelf and My Books and Book pages.
+* If the user is not logged the user cannot rate a book and is asked to log in to rate it
+
+![ Star Rating not logged in book listing](docs/images/star-rating-listing-not-logged-in.png)
+![ Star Rating not logged in book ](docs/images/star-rating-book-not-logged-in.png)
+
+* If the user is logged in, they can click the stars and rate the book
+* It provides a total average rating in visuals for the individual listing
+* It provides your own rating that you can the individual listing
+* It provides the count of how many people have rated the individual listing
+
+![ Star Rating book listing](docs/images/star-rating-book-listing.png)
+![ Star Rating ](docs/images/star-rating-book-page.png)
+
 ## 404 Page
 
 ![404 Desktop Page](docs/images/404-desktop.png)
@@ -664,6 +668,8 @@ A copy of the GitHub Repository can be made by forking the GitHub account. Chang
 )
 * [EmailJS tutorial](https://martinezjf2.medium.com/how-to-setup-emailjs-33809350f0f8)
 * [Validation Error Fix for action attribute in forms](https://stackoverflow.com/questions/32491347/bad-value-for-attribute-action-on-element-form-must-be-non-empty)
+* [django-star-ratings](https://django-star-ratings.readthedocs.io/en/latest/?badge=latest/#)
+* [Freepik - for bookwarm vectors](https://www.freepik.com/free-vector/collection-funny-cartoon-bookworm-character-reading-books-smiling_29081675.htm#query=bookworm%20vector&position=12&from_view=search)
 
 [Back to top](<#contents>)
 
