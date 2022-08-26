@@ -169,8 +169,127 @@ One warning of unused variable cropped up, however this variable is called elsew
 
 ## Lighthouse Testing
 
-Lighthouse testing here
+All pages were checked on lighthouse with the results between 80% and 100% for each page on mobile and desktop. Accessibility was impacted on a few pages. Similarly to the issues with html validation above, the accessibility issues are related to the django-star-ratings package installed.
 
+### Home Page
+
+#### **Desktop**
+
+![Home Page Desktop Lighthoue Validation](docs/images/lighthouse/home-desktop.png)
+
+#### **Mobile**
+
+![Home Page Mobile Lighthoue Validation](docs/images/lighthouse/home-mobile.png)
+
+### Genre Page
+
+#### **Desktop**
+
+![Genre Page Desktop Lighthoue Validation](docs/images/lighthouse/genre-desktop.png)
+
+#### **Mobile**
+
+![Genre Page Mobile Lighthoue Validation](docs/images/lighthouse/genre-mobile.png)
+
+### Log In Page
+
+#### **Desktop**
+
+![Log In Page Desktop Lighthoue Validation](docs/images/lighthouse/log-in-desktop.png)
+
+#### **Mobile**
+
+![Log In Page Mobile Lighthoue Validation](docs/images/lighthouse/login-mobile.png)
+
+### Sign Up Page
+
+#### **Desktop**
+
+![Sign Up Page Desktop Lighthoue Validation](docs/images/lighthouse/signup-desktop.png)
+
+#### **Mobile**
+
+![Sign Up Page Mobile Lighthoue Validation](docs/images/lighthouse/signup-mobile.png)
+
+### Bookshelf Page
+
+#### **Desktop**
+
+![Bookshelf Page Desktop Lighthoue Validation](docs/images/lighthouse/bookshelf-desktop.png)
+
+#### **Mobile**
+
+![Bookshelf Page Mobile Lighthoue Validation](docs/images/lighthouse/bookshelf-mobile.png)
+
+### My Books Page
+
+#### **Desktop**
+
+![Bookshelf Page Desktop Lighthoue Validation](docs/images/lighthouse/bookshelf-desktop.png)
+
+#### **Mobile**
+
+![Bookshelf Page Mobile Lighthoue Validation](docs/images/lighthouse/bookshelf-mobile.png)
+
+### Admin Only Page
+
+#### **Desktop**
+
+![Admin Only Page Desktop Lighthoue Validation](docs/images/lighthouse/admin-only-desktop.png)
+
+#### **Mobile**
+
+![Admin Only Page Mobile Lighthoue Validation](docs/images/lighthouse/admin-only-mobile.png)
+
+### Contact Page
+
+#### **Desktop**
+
+![Contact Page Desktop Lighthoue Validation](docs/images/lighthouse/contact-desktop.png)
+
+#### **Mobile**
+
+![Contact Page Mobile Lighthoue Validation](docs/images/lighthouse/contact-desktop.png)
+
+### Add Book Page
+
+#### **Desktop**
+
+![Add Book Page Desktop Lighthoue Validation](docs/images/lighthouse/add-book-desktop.png)
+
+#### **Mobile**
+
+![Add Book Page Mobile Lighthoue Validation](docs/images/lighthouse/add-book-mobile.png)
+
+### Edit Review Page
+
+#### **Desktop**
+
+![Edit Review Page Desktop Lighthoue Validation](docs/images/lighthouse/Eedit-review-desktop.png)
+
+#### **Mobile**
+
+![Edit Review Page Mobile Lighthoue Validation](docs/images/lighthouse//edit-review-mobile.png)
+
+### Delete Review Page
+
+#### **Desktop**
+
+![Delete Review Page Desktop Lighthoue Validation](docs/images/lighthouse/delete-review-desktop.png)
+
+#### **Mobile**
+
+![Delete Review Page Mobile Lighthoue Validation](docs/images/lighthouse/delete-review-mobile.png)
+
+### Approve Book Page
+
+#### **Desktop**
+
+![Approve Book Page Desktop Lighthoue Validation](docs/images/lighthouse/approve-book-admin-desktop.png)
+
+#### **Mobile**
+
+![Approve Book Page Mobile Lighthoue Validation](docs/images/lighthouse/approve-book-admin-mobile.png)
 
 ## Manual Testing
 

@@ -547,13 +547,13 @@ I have included testing details in a separate document called [TESTING.md](TESTI
 * To ensure the virtual environment is not tracked by version control, add .venv to the .gitignore file.
 * Install Django and gunicorn: `pip install django gunicorn`
 * Install supporting database libraries dj_database_url and psycopg2 library: `pip install dj_database_url psycopg2`
-* Install Cloudinary libraries to manage static files: `pip3 install dj-3-cloudinary-storage`
+* Install Cloudinary libraries to manage static files: `pip install dj-3-cloudinary-storage`
 * Create file for requirements: `pip freeze --local > requirements.txt`
 * Create project:`django-admin startproject project_name .`
-* Create app: `python3 manage.py startapp app_name`
+* Create app: `python manage.py startapp app_name`
 * Add app to list of `installed apps` in settings.py file: `'app_name'`
-* Migrate changes: `python3 manage.py migrate`
-* Test server works locally: `python3 manage.py runserver`
+* Migrate changes: `python manage.py migrate`
+* Test server works locally: `python manage.py runserver`
 
 #### 2. Create your Heroku app
 * Navigate to the Heroku website
