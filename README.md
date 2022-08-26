@@ -70,7 +70,6 @@ The Github issues were not just used to record User Stories but also used to **F
 * As a **site admin**  I can **access book listings and reviews to be approved** so that **I can approve or not approve and delete user uploads**
 
 
-
 ## Design Wireframes
 
 <details> <summary> Low fidelity mobile wireframes</summary>
@@ -441,7 +440,7 @@ Each page, except the Home Page, has a clear heading when landing on the page. T
 ![Delete Review alert](docs/images/delete-review-alert.png)
 
 ## Book Star Ratings
-* A package called star-rating-django was installed to track the rating users gave to objects (Books) and provide graphics to represent this.
+* A package called [django-star-rating](https://django-star-ratings.readthedocs.io/en/latest/?badge=latest/#) was installed to track the rating users gave to objects (Books) and provide graphics to represent this.
 * The star rating appears on book listings on the Genre, Bookshelf and My Books and Book pages.
 * If the user is not logged the user cannot rate a book and is asked to log in to rate it
 * If the user is logged in, they can click the stars and rate the book
@@ -662,6 +661,8 @@ A copy of the GitHub Repository can be made by forking the GitHub account. Chang
 )
 * [EmailJS tutorial](https://martinezjf2.medium.com/how-to-setup-emailjs-33809350f0f8)
 * [Validation Error Fix for action attribute in forms](https://stackoverflow.com/questions/32491347/bad-value-for-attribute-action-on-element-form-must-be-non-empty)
+* [django-star-ratings](https://django-star-ratings.readthedocs.io/en/latest/?badge=latest/#)
+* [Freepik - for bookwarm vectors](https://www.freepik.com/free-vector/collection-funny-cartoon-bookworm-character-reading-books-smiling_29081675.htm#query=bookworm%20vector&position=12&from_view=search)
 
 [Back to top](<#contents>)
 
