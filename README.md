@@ -281,7 +281,7 @@ Each page, except the Home Page, has a clear heading when landing on the page. T
 
 ![Bookshelf page desktop - user not logged in](docs/images/bookshelf-desktop.png)
 
-* There is a search function, which searches the approved books in the database using two parameters; Title and Author. The enter button on the keyboard and the search button on the website can be used to trigger the search. To exit the search function, the X button can be clicked.
+* There is a **search function**, which searches the approved books in the database using two parameters; Title and Author. The enter button on the keyboard and the search button on the website can be used to trigger the search. To exit the search function, the X button can be clicked.
 * The Bookshelf contains a list of books that are approved and ordered by the date they were added. 
 * In mobile view, just the book image can be seen and in desktop view the title, author and start of the book blurb can be seen.
 * If a book is uploaded without an image, a placeholder image is set.
@@ -462,6 +462,17 @@ Each page, except the Home Page, has a clear heading when landing on the page. T
 
 ![404 Mobile Page](docs/images/404-mobile.png)
 
+## 403 Page
+
+![403 Desktop Page](docs/images/403-desktop.png)
+
+* A custom 403 page was created for user's trying to access pages they do not have access to.
+* This custom page allows the user to navigate back to website via the navbar if they click/type a url which causes a 403 error.
+* The page has text and a cute image informing the user of their mistake.
+* The page is fully responsive.
+
+![403 Mobile Page](docs/images/403-mobile.png)
+
 
 [Back to top](<#contents>)
 
@@ -485,6 +496,10 @@ The My Books page could be expanded  to include the ability of the user to add t
 
 The page could also provide more user details that could also be added to the user profile in general. Such as a profile picture or avatar that could be utilised in their reviews, and the total number of books they have reviewed or bookmarked could be visible on their profile.
 
+
+## Better Pagination
+
+Pagination is implemented on some pages but it could definitely be expanded to more pages such as the My Books page or the Genre pages for better User Experience.
 
 [Back to top](<#contents>)
 
