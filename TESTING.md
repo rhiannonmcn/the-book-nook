@@ -1,5 +1,131 @@
 # Testing
 
+## Validation
+
+### Html Validation
+
+Html validation was done with [https://validator.w3.org/nu/](https://validator.w3.org/nu/). The deployed link from the site was used in most cases, however for restricted access pages, those that required users to log in, the source code text was manually input as the html validator was pulling in the Login Page only for those pages via the deployed link.
+
+#### Home Page
+![Home Page Html Validation](docs/images/validation/home-page.png)
+
+#### Genre Page
+
+#### Log In Page
+![Log In Html Validation](docs/images/validation/log-in.png)
+
+#### Log Out Page
+![Log Out Html Validation](docs/images/validation/log-out.png)
+
+#### Sign Up Page
+![Sign Up Html Validation](docs/images/validation/sign-up.png)
+
+#### Bookshelf
+
+#### Add Book Page
+![Add Book Html Validation](docs/images/validation/add-book.png)
+
+#### Book Page
+
+#### My Books Page
+
+Source code input tested
+
+#### Update Review - User Page
+
+
+<details><summary>Update Review page validation</summary>
+
+![Update Review Html Validation](docs/images/validation/edit-review-source-input.png)
+
+</details>
+
+Source code input tested
+
+#### Delete Review - User Page
+
+<details><summary>Delete Review page validation</summary>
+
+![Delete Review Html Validation](docs/images/validation/delete-review-user-code-input.png)
+
+</details>
+
+Source code input tested
+
+#### Admin Only Page
+
+<details><summary>Admin Only page validation</summary>
+
+![Admin Only Html Validation](docs/images/validation/admin-only.png)
+
+</details>
+
+Source code input tested
+
+#### Approve Book Page - Admin
+
+<details><summary>Approve Book page validation</summary>
+
+![Approve Book Html Validation](docs/images/validation/approve-book.png)
+
+</details>
+
+Source code input tested
+
+#### Contact Page
+
+![Contact Page Html Validation](docs/images/validation/contact.png)
+
+
+### CSS Validation
+
+The stylesheet was validated using [https://jigsaw.w3.org/css-validator/](https://jigsaw.w3.org/css-validator/)
+
+![Stylesheet validation](docs/images/validation/css-no-errors.png)
+
+There were however warnings issued regarding the use of css variables that it could not validate
+
+![Stylesheet validation warning](docs/images/validation/warnings.png)
+
+
+### Python Validation
+
+Python code was validated using [http://pep8online.com/](http://pep8online.com/)
+
+#### views.py
+
+![pep8 views.py validation](docs/images/validation/pep8-views.png)
+
+#### models.py
+
+![pep8 models.py validation](docs/images/validation/pep8-models.png)
+
+#### forms.py
+
+![pep8 forms.py validation](docs/images/validation/pep8-forms.png)
+
+#### admin.py
+
+![pep8 admin.py validation](docs/images/validation/pep8-admin.png)
+
+#### urls.py
+
+![pep8 urls.py validation](docs/images/validation/pep8-urls.png)
+
+
+### Javascript Validation
+
+Javascript was validated using [https://jshint.com/](https://jshint.com/)
+
+One warning of unused variable cropped up, however this variable is called elsewhere as part of EmailJS. No other errors were recorded
+
+![Javascript validation](docs/images/validation/emailjs.png)
+
+## Lighthouse Testing
+
+Lighthouse testing here
+
+
 ## Manual Testing
 
 In addition to the other tests, I have conducted a manual check list for myself to carry out to make sure that everything is working as intended.
@@ -369,3 +495,62 @@ In addition to the other tests, I have conducted a manual check list for myself 
 | &check; | That all the fields are required fields
 | &check; | Clicking the Approve Book Listing button, changes the approved status of the book to True and if any changes were made to the book, updates the database with the changes made
 | &check; | That if the book is approved, the user is redirected to the Admin Only page and an alert message informs the admin that the book was approved successfully, and that the book is successfully added to the approved book lists across the website and removed from the Book Approvals list on the Admin Only page
+
+
+## Bugs
+
+### Static Files
+
+There was an issue with the setting up of static files. This was due to a type error.
+
+![Static file error](docs/images/bugs/static-file-prob.png)
+
+**Fix:**
+
+![Static file fix](docs/images/bugs/static-file-fix.png)
+
+### Footer
+
+The footer would not stay at the bottom of the page
+
+![footer error](docs/images/bugs/footer-bug.png)
+
+**Fix:**
+In css the footer margin was set to auto and in the body tags the height was set to 100%, the display to flex and the flex direction to column.
+
+![footer code 1](docs/images/bugs/footer-bug-code1.png)
+![footer code 1](docs/images/bugs/footer-code-fix.png)
+![footer fix](docs/images/bugs/footer-fix-bug.png)
+
+### Restricted Pages Access
+
+If the not logged in user of the site, somehow managed to get the page url of the add_book.html or the approve_book.html the not logged in user could access those pages despite their access points existing on restricted pages.
+
+![Restricted access error](docs/images/bugs/login-bug-not-admin.png)
+
+**Fix:**
+In the AddBook view the LoginRequiredMixin was added so that users who were not logged in and accessed the url were redirected to the login page.
+
+![AddBook View code fix](docs/images/bugs/login-bug-2.png)
+
+In the EditReviewListing view, the UserPassesTestMixin was added and a function to the view to test if the user is a superuser before giving access to the user. If the user is not logged in they are redirected to the login page and if the user is logged in and is not a superuser and pastes in the url, they are redirected to the 403.html forbidden page.
+
+![EditReviewListing view code fix](docs/images/bugs/login-bug-3.png)
+![EditReviewListing view code fix screenshot](docs/images/bugs/login-bug-fix.png)
+
+### Console Error
+
+A console error was thrown due to javascript in the base.html being extended to all pages, however it was only needed on the one page, contact.html. Every other page it was being called on was throwing up error of null not being able to be read.
+
+![console error](docs/images/bugs/script-bug.png)
+
+**Fix:**
+In base.html a block scripts template tag was created for any extra small scripts that were needed. Thus the javascript for the contact page could be called on the contact page only.
+
+**Contact Form**
+The original design of the contact page was to call from the forms.py a form and render it via a view to the urls and to the template. The form then would be called via template tags and the emailjs functionality would be added. However two issues cropped up with this.
+
+Firstly the success messages were not loading as a event.preventdefault() code added in the JS was preventing the view from being run, however if this wasn't added, the view would run, but messages would only fire sporadically and not with every submit.
+
+**Fix:** 
+Change the structure of how the contact form was created. The form was removed, and the view changed to just a template view to render the url. The form input fields were then created from scratch in html using bootstrap and linked up via the javascript for the emailjs. A new success message was then hardcoded in the html and javascript added to the emailjs function to call the success messasge on the successful submission of the form.
