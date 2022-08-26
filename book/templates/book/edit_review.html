@@ -12,7 +12,7 @@
   <div class="row justify-content-center">
     <div class="col col-md-8">
       <div>
-        <h3 class="review-title">{{ book_title }}</h3>
+        <h2 class="review-title">{{ book_title }}</h2>
         <p class="p-bold">Posting as: {{ user.username }}</p>
         <form method="post" style="margin-top: 1.3em">
           {% csrf_token %} {{ form | crispy }}
