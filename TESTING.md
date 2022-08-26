@@ -712,7 +712,7 @@ A console error was thrown due to javascript in the base.html being extended to 
 **Fix:**
 In base.html a block scripts template tag was created for any extra small scripts that were needed. Thus the javascript for the contact page could be called on the contact page only.
 
-**Contact Form**
+### Contact Form
 The original design of the contact page was to call from the forms.py a form and render it via a view to the urls and to the template. The form then would be called via template tags and the emailjs functionality would be added. However two issues cropped up with this.
 
 Firstly the success messages were not loading as a event.preventdefault() code added in the JS was preventing the view from being run, however if this wasn't added, the view would run, but messages would only fire sporadically and not with every submit.

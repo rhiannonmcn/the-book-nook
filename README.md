@@ -48,7 +48,7 @@ The Github issues were not just used to record User Stories but also used to **F
 **Iteration 1**
 * As a **user**  I can **easily see the purpose of this website on the home page** so that **I can easily navigate it**
 * As a **user**  I can **view a list of book genres** so that **so that I can see a list of book reviews in a genre I am currently in**
-* As a **user**  I can **view a paginated list of books* so that **I can view book reviews easily**
+* As a **user**  I can **view a paginated list of books** so that **I can view book reviews easily**
 * As a **user**  I can **save books** so that **that I can have a list of books I want to read in the future**
 * As a **user**  I can **create a review for a book** so that **so that I can let other's know what I thought of the book**
 * As a **site admin**  I can **add a book listing** so that **users can review a book that isn't already on the website**
@@ -528,6 +528,7 @@ Pagination is implemented on some pages but it could definitely be expanded to m
 * Cloudinary - Used to host Static files for the site
 * VSCode - Used to create, edit and compile the code for the program
 * EmailJS - Used to enable the contact form functionality
+* Django-star-ratings - Used to enable star ratings functionality on the book listings
 
 
 [Back to top](<#contents>)
@@ -542,7 +543,7 @@ I have included testing details in a separate document called [TESTING.md](TESTI
 
 ## Deployment to Heroku
 
-1. ### Creating the Django Project
+### 1. Creating the Django Project
 * If development if being done locally: Activate your virtual environment
 * To ensure the virtual environment is not tracked by version control, add .venv to the .gitignore file.
 * Install Django and gunicorn: `pip install django gunicorn`
@@ -555,7 +556,7 @@ I have included testing details in a separate document called [TESTING.md](TESTI
 * Migrate changes: `python manage.py migrate`
 * Test server works locally: `python manage.py runserver`
 
-#### 2. Create your Heroku app
+### 2. Create your Heroku app
 * Navigate to the Heroku website
 * Create a Heroku account by entering your email address and a password (or login if you have one already).
 * Activate the account through the authentication email sent to your email account
@@ -567,7 +568,7 @@ I have included testing details in a separate document called [TESTING.md](TESTI
 * Scroll down to Add-Ons, search for and select 'Heroku Postgres'
 * In the Settings tab, scroll down to 'Reveal Config Vars' and copy the text in the box beside DATABASE_URL.
 
-#### 3. Set up Environment Variables
+### 3. Set up Environment Variables
 * In you IDE create a new env.py file in the top level directory
 * Add env.py to the .gitignore file
 * In env.py import the os library
@@ -575,7 +576,7 @@ I have included testing details in a separate document called [TESTING.md](TESTI
 * In env.py add `os.environ["SECRET_KEY"] = "Make up your own random secret key"`
 * In Heroku Settings tab Config Vars enter the same secret key created in env.py by entering 'SECRET_KEY' in the box for 'KEY' and your randomly created secret key in the 'value' box.
 
-#### 4. Setting up settings.py
+### 4. Setting up settings.py
 
 * In your Django 'settings.py' file type:
 
@@ -628,13 +629,13 @@ DEFAULT_FILE_STORAGE =
     ```git commit -m "Initial deployment"```
     ```git push```
 
-#### 5. Heroku Deployment: 
+### 5. Heroku Deployment: 
 * Click Deploy tab in Heroku
 * In the 'Deployment method' section select 'Github' and click the 'connect to Github' button to confirm.
 * In the 'search' box enter the Github repository name for the project
 * Click search and then click connect to link the heroku app with the Github repository. The box will confirm that heroku is connected to the repository.
 
-#### 6. Final Deployment
+### 6. Final Deployment
 In the IDE: 
 * When development is complete change the debug setting to: `DEBUG = False` in `settings.py` 
 * In Heroku settings config vars change the DISABLE_COLLECTSTATIC value to 0
