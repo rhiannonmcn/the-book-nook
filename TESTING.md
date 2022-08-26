@@ -6,71 +6,117 @@
 
 Html validation was done with [https://validator.w3.org/nu/](https://validator.w3.org/nu/). The deployed link from the site was used in most cases, however for restricted access pages, those that required users to log in, the source code text was manually input as the html validator was pulling in the Login Page only for those pages via the deployed link.
 
-#### Home Page
+All my own code passed validation, however a package called [django-star-ratings](https://django-star-ratings.readthedocs.io/en/latest/?badge=latest/#) caused a lot of validation errors in the code. The problem that being a style tag being injected directly into the body of the html rather than the head each time the star rating is called. To fix this issue, numerous hours was spent researching the problem and currently a solution has not been found in regards sorting the issue in relation to the package. In future, rather than using a package, hard coding the code would be researched so that all code and validation would be under the developer's control. Each validation error cause by the package will be labelled as **django-star-ratings error**
+
+#### **Home Page**
 ![Home Page Html Validation](docs/images/validation/home-page.png)
 
-#### Genre Page
+#### **Genre Page**
 
-#### Log In Page
+**django-star-ratings error**
+
+![Genre page Html Validation](docs/images/validation/genre-books.png)
+
+
+<details><summary>Genre Page with no Book listings in genre validation</summary>
+
+**No package code and it passes**
+
+![Genre No books Html Validation](docs/images/validation/genre-no-books.png)
+
+</details>
+<br>
+
+#### **Log In Page**
 ![Log In Html Validation](docs/images/validation/log-in.png)
 
-#### Log Out Page
+#### **Log Out Page**
 ![Log Out Html Validation](docs/images/validation/log-out.png)
 
-#### Sign Up Page
+#### **Sign Up Page**
 ![Sign Up Html Validation](docs/images/validation/sign-up.png)
 
-#### Bookshelf
+#### **Bookshelf**
 
-#### Add Book Page
+**django-star-ratings error**
+
+<details><summary>Update Review page validation</summary>
+
+![Bookshelf Html Validation](docs/images/validation/bookshelf.png)
+
+</details>
+<br>
+
+#### **Add Book Page**
 ![Add Book Html Validation](docs/images/validation/add-book.png)
 
-#### Book Page
+#### **Book Page**
 
-#### My Books Page
+**django-star-ratings error**
+
+<details><summary>Book page validation</summary>
+
+![Book page Html Validation](docs/images/validation/book.png)
+
+</details>
+<br>
+
+#### **My Books Page**
 
 Source code input tested
 
-#### Update Review - User Page
+**django-star-ratings error**
 
+<details><summary>My Books page validation</summary>
+
+![My Books page Html Validation](docs/images/validation/my-books.png)
+
+</details>
+<br>
+
+#### **Update Review - User Page**
+
+Source code input tested
 
 <details><summary>Update Review page validation</summary>
 
 ![Update Review Html Validation](docs/images/validation/edit-review-source-input.png)
 
 </details>
+<br>
+
+#### **Delete Review - User Page**
 
 Source code input tested
-
-#### Delete Review - User Page
 
 <details><summary>Delete Review page validation</summary>
 
 ![Delete Review Html Validation](docs/images/validation/delete-review-user-code-input.png)
 
 </details>
+<br>
+
+#### **Admin Only Page**
 
 Source code input tested
-
-#### Admin Only Page
 
 <details><summary>Admin Only page validation</summary>
 
 ![Admin Only Html Validation](docs/images/validation/admin-only.png)
 
 </details>
-
-Source code input tested
+<br>
 
 #### Approve Book Page - Admin
+
+Source code input tested
 
 <details><summary>Approve Book page validation</summary>
 
 ![Approve Book Html Validation](docs/images/validation/approve-book.png)
 
 </details>
-
-Source code input tested
+<br>
 
 #### Contact Page
 
