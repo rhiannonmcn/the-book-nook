@@ -674,6 +674,8 @@ A copy of the GitHub Repository can be made by forking the GitHub account. Chang
 * [Validation Error Fix for action attribute in forms](https://stackoverflow.com/questions/32491347/bad-value-for-attribute-action-on-element-form-must-be-non-empty)
 * [django-star-ratings](https://django-star-ratings.readthedocs.io/en/latest/?badge=latest/#)
 * [Freepik - for bookwarm vectors](https://www.freepik.com/free-vector/collection-funny-cartoon-bookworm-character-reading-books-smiling_29081675.htm#query=bookworm%20vector&position=12&from_view=search)
+* [Code for multiple queries in querysets](https://stackoverflow.com/questions/51121661/django-filter-multiple-values)
+* [Code that started off the development of the search bar function](https://stackoverflow.com/questions/66386490/making-search-bar-in-django)
 
 [Back to top](<#contents>)
 
