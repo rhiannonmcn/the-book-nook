@@ -440,6 +440,15 @@ Each page, except the Home Page, has a clear heading when landing on the page. T
 
 ![Delete Review alert](docs/images/delete-review-alert.png)
 
+## Book Star Ratings
+* A package called star-rating-django was installed to track the rating users gave to objects (Books) and provide graphics to represent this.
+* The star rating appears on book listings on the Genre, Bookshelf and My Books and Book pages.
+* If the user is not logged the user cannot rate a book and is asked to log in to rate it
+* If the user is logged in, they can click the stars and rate the book
+* It provides a total average rating in visuals for the individual listing
+* It provides your own rating that you can the individual listing
+* It provides the count of how many people have rated the individual listing
+
 ## 404 Page
 
 ![404 Desktop Page](docs/images/404-desktop.png)
